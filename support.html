@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Bites - Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Nav bar -->
+    <div class="nav-bar">
+        <div class="logo"><span>H</span>ope <span>B</span>ites</div>
+        <div class="links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="product.html">Products</a>
+            <a href="#">Support</a>
+            <div class="shopping">
+                <a href="shopping.html"><i class='bx bxs-shopping-bag'></i></a>
+            </div>
+            <div class="contact-btn">
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="dark-mode-container">
+                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+    <!-- Support Hero Section -->
+    <section class="support-hero">
+        <div class="container">
+            <h1>Support & <span>Resources</span></h1>
+            <p>Find answers to your questions and learn more about our mission</p>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="support-options">
+        <div class="container">
+            <h2>How Can We Help?</h2>
+            <p class="section-desc">Choose from these support options to get the assistance you need.</p>
+            
+            <div class="options-grid">
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class='bx bxs-help-circle'></i>
+                    </div>
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about our products, shipping, and more.</p>
+                    <a href="#faqs" class="btn-secondary">View FAQs</a>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class='bx bxs-phone-call'></i>
+                    </div>
+                    <h3>Contact Support</h3>
+                    <p>Reach out to our customer service team for personalized assistance.</p>
+                    <a href="contact.html" class="btn-secondary">Contact Us</a>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class='bx bxs-book'></i>
+                    </div>
+                    <h3>Nutrition Resources</h3>
+                    <p>Learn more about child nutrition and how our products can help.</p>
+                    <a href="#resources" class="btn-secondary">View Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faq-section alt-bg" id="faqs">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How should I store Hope Bites products?</h3>
+                        <span class="faq-toggle"><i class='bx bx-plus'></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All Hope Bites products should be stored in a cool, dry place. Once opened, we recommend consuming within 2 weeks for optimal freshness. Some products may be refrigerated for extended shelf life - check individual packaging for specific storage instructions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are Hope Bites products allergen-free?</h3>
+                        <span class="faq-toggle"><i class='bx bx-plus'></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer several allergen-free options. All products are clearly labeled with allergen information. Our facility handles nuts, dairy, and soy, so cross-contamination is possible. Please check product labels carefully if your child has food allergies.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does shipping typically take?</h3>
+                        <span class="faq-toggle"><i class='bx bx-plus'></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard shipping within Kenya takes 3-5 business days. International shipping times vary by destination (typically 7-14 business days). Expedited shipping options are available at checkout for faster delivery.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer discounts for bulk orders?</h3>
+                        <span class="faq-toggle"><i class='bx bx-plus'></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer quantity discounts for orders of 10+ units. Please contact our sales team at sales@hopebites.com for custom pricing on large orders.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your return policy?</h3>
+                        <span class="faq-toggle"><i class='bx bx-plus'></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day satisfaction guarantee. If you're not completely happy with your purchase, you may return unopened products within 30 days for a full refund. Please contact our customer service team to initiate a return.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Resources -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <h2>Nutrition Resources</h2>
+            <p class="section-desc">Educational materials to help you make informed decisions about your child's nutrition.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <img src="assets/img-1.jpg" alt="Child Nutrition Guide">
+                    </div>
+                    <div class="resource-info">
+                        <h3>Child Nutrition Guide</h3>
+                        <p>Comprehensive guide to essential nutrients for growing children and how to incorporate them into their diet.</p>
+                        <a href="#" class="btn-secondary">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <img src="assets/img-1.jpg" alt="Healthy Snack Ideas">
+                    </div>
+                    <div class="resource-info">
+                        <h3>Healthy Snack Ideas</h3>
+                        <p>Creative and nutritious snack ideas that kids will love, featuring Hope Bites products.</p>
+                        <a href="#" class="btn-secondary">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <img src="assets/img-1.jpg" alt="Nutrition Webinars">
+                    </div>
+                    <div class="resource-info">
+                        <h3>Nutrition Webinars</h3>
+                        <p>Join our monthly webinars featuring pediatric nutritionists discussing key topics in child nutrition.</p>
+                        <a href="#" class="btn-secondary">View Schedule</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section alt-bg">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <p class="section-desc">With every purchase, you're helping nourish children in need.</p>
+            
+            <div class="impact-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="25000">0</div>
+                    <div class="stat-label">Children Fed</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">Countries Reached</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500000">0</div>
+                    <div class="stat-label">Nutrient Packs Donated</div>
+                </div>
+            </div>
+            
+            <div class="impact-story">
+                <div class="story-img">
+                    <img src="assets/img-1.jpg" alt="Impact Story">
+                </div>
+                <div class="story-text">
+                    <h3>Making a Difference Together</h3>
+                    <p>Through our partnership with local schools and community organizations, Hope Bites has provided nutritional support to thousands of children facing food insecurity. Your purchases directly contribute to these efforts, helping us expand our reach and impact.</p>
+                    <p>In 2024 alone, we've distributed over 50,000 nutrient packs to children in underserved communities across East Africa, with plans to expand to additional regions next year.</p>
+                    <a href="about.html" class="btn-primary">Learn More About Our Mission</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="support-cta">
+        <div class="container">
+            <h2>Still Need Help?</h2>
+            <p>Our customer support team is ready to assist you with any questions or concerns.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">Contact Support</a>
+                <a href="tel:+254700000000" class="btn-secondary">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="ft-name">
+                <div class="logo"><img src="#" alt="Logo"></div>
+                <h1>Hope Bites</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.amazon.com/" target="_blank"><i class='bx bx-store'></i></a>
+            </div>
+            <div class="footer-nav">
+                <a href="about.html">About Us</a>
+                <a href="product.html">Products</a>
+                <a href="support.html">Support</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="ft-text">
+                <p>All rights reserved <i class='bx bx-copyright'></i> copyright 2025 Hope Bites</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const storageKey = 'theme-preference';
+
+        const onClick = () => {
+            // flip current value
+            theme.value = theme.value === 'light'
+                ? 'dark'
+                : 'light';
+
+            setPreference();
+        };
+
+        const getColorPreference = () => {
+            if (localStorage.getItem(storageKey))
+                return localStorage.getItem(storageKey);
+            else
+                return window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+        };
+
+        const setPreference = () => {
+            localStorage.setItem(storageKey, theme.value);
+            reflectPreference();
+        };
+
+        const reflectPreference = () => {
+            document.firstElementChild
+                .setAttribute('data-theme', theme.value);
+
+            document
+                .querySelector('#theme-toggle')
+                ?.setAttribute('aria-label', theme.value);
+                
+            // Toggle dark-mode class on body for compatibility with existing styles
+            if (theme.value === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        };
+
+        const theme = {
+            value: getColorPreference(),
+        };
+
+        // set early so no page flashes / CSS is made aware
+        reflectPreference();
+
+        window.onload = () => {
+            // set on load so screen readers can see latest value on the button
+            reflectPreference();
+
+            // now this script can find and listen for clicks on the control
+            document
+                .querySelector('#theme-toggle')
+                .addEventListener('click', onClick);
+                
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // Change the icon based on menu state
+                const icon = mobileToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('bx-menu');
+                    icon.classList.add('bx-x');
+                } else {
+                    icon.classList.remove('bx-x');
+                    icon.classList.add('bx-menu');
+                }
+            });
+            
+            // FAQ Toggle
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    
+                    // Change icon
+                    const icon = item.querySelector('.faq-toggle i');
+                    if (item.classList.contains('active')) {
+                        icon.classList.remove('bx-plus');
+                        icon.classList.add('bx-minus');
+                    } else {
+                        icon.classList.remove('bx-minus');
+                        icon.classList.add('bx-plus');
+                    }
+                });
+            });
+            
+            // Animate stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            function animateStats() {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-count'));
+                    const count = parseInt(stat.innerText);
+                    const increment = Math.ceil(target / speed);
+                    
+                    if (count < target) {
+                        stat.innerText = count + increment;
+                        setTimeout(animateStats, 1);
+                    } else {
+                        stat.innerText = target;
+                    }
+                });
+            }
+            
+            // Start animation when section is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelector('.impact-stats').style.opacity = 1;
+            observer.observe(document.querySelector('.impact-stats'));
+        };
+
+        // sync with system changes
+        window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', ({matches:isDark}) => {
+                theme.value = isDark ? 'dark' : 'light';
+                setPreference();
+            });
+    </script>
+</body>
+</html>

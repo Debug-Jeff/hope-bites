@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Bites</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Nav bar -->
+    <div class="nav-bar">
+        <div class="logo"><span>H</span>ope <span>B</span>ites</div>
+        <div class="links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="#">Products</a>
+            <a href="support.html">Support</a>
+            <div class="shopping">
+                <a href="shopping.html"><i class='bx bxs-shopping-bag'></i></a>
+            </div>
+            <div class="contact-btn">
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="dark-mode-container">
+                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+        <div class="container">
+            <h1>Our <span>Products</span></h1>
+            <p>Nutritious snacks designed to support children's growth and development</p>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="product-categories">
+        <div class="container">
+            <h2>Product Categories</h2>
+            <p class="section-desc">Each category is formulated to address specific nutritional needs while maintaining delicious flavors kids love.</p>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="assets/img-1.jpg" alt="Growth Support">
+                    </div>
+                    <div class="category-info">
+                        <h3>Growth Support</h3>
+                        <p>Essential nutrients for physical development and strong bones</p>
+                        <a href="#growth-products" class="btn-secondary">View Products</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="assets/img-1.jpg" alt="Brain Boost">
+                    </div>
+                    <div class="category-info">
+                        <h3>Brain Boost</h3>
+                        <p>Nutrients to support cognitive development and focus</p>
+                        <a href="#brain-products" class="btn-secondary">View Products</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="assets/img-1.jpg" alt="Immune Support">
+                    </div>
+                    <div class="category-info">
+                        <h3>Immune Support</h3>
+                        <p>Formulated to strengthen children's immune systems</p>
+                        <a href="#immune-products" class="btn-secondary">View Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Products -->
+    <section class="product-section" id="growth-products">
+        <div class="container">
+            <h2>Growth Support Products</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Growth Bites">
+                    </div>
+                    <div class="product-details">
+                        <h3>Growth Bites</h3>
+                        <p class="product-desc">Complete nutrition for growing children with essential proteins and minerals</p>
+                        <div class="product-price">
+                            <span class="current-price">$19.99</span>
+                            <span class="original-price">$24.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Protein Power">
+                    </div>
+                    <div class="product-details">
+                        <h3>Protein Power</h3>
+                        <p class="product-desc">High-protein snacks for muscle development and energy</p>
+                        <div class="product-price">
+                            <span class="current-price">$17.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Calcium Crunch">
+                    </div>
+                    <div class="product-details">
+                        <h3>Calcium Crunch</h3>
+                        <p class="product-desc">Calcium and vitamin D fortified snacks for strong bones</p>
+                        <div class="product-price">
+                            <span class="current-price">$16.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brain Products -->
+    <section class="product-section alt-bg" id="brain-products">
+        <div class="container">
+            <h2>Brain Boost Products</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-badge">New</div>
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Brain Boost Bites">
+                    </div>
+                    <div class="product-details">
+                        <h3>Brain Boost Bites</h3>
+                        <p class="product-desc">Omega-3 rich snacks to support cognitive development</p>
+                        <div class="product-price">
+                            <span class="current-price">$21.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Focus Fuel">
+                    </div>
+                    <div class="product-details">
+                        <h3>Focus Fuel</h3>
+                        <p class="product-desc">Nutrients to support concentration and mental clarity</p>
+                        <div class="product-price">
+                            <span class="current-price">$18.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Memory Munch">
+                    </div>
+                    <div class="product-details">
+                        <h3>Memory Munch</h3>
+                        <p class="product-desc">Choline-rich snacks to support memory and learning</p>
+                        <div class="product-price">
+                            <span class="current-price">$19.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immune Products -->
+    <section class="product-section" id="immune-products">
+        <div class="container">
+            <h2>Immune Support Products</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Immune Support Bites">
+                    </div>
+                    <div class="product-details">
+                        <h3>Immune Support Bites</h3>
+                        <p class="product-desc">Vitamin C, D, zinc and elderberry for immune defense</p>
+                        <div class="product-price">
+                            <span class="current-price">$20.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Seasonal</div>
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Gut Guardian">
+                    </div>
+                    <div class="product-details">
+                        <h3>Gut Guardian</h3>
+                        <p class="product-desc">Probiotic-rich snacks for digestive and immune health</p>
+                        <div class="product-price">
+                            <span class="current-price">$22.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="assets/img-1.jpg" alt="Defense Delight">
+                    </div>
+                    <div class="product-details">
+                        <h3>Defense Delight</h3>
+                        <p class="product-desc">Antioxidant-packed snacks to support immune function</p>
+                        <div class="product-price">
+                            <span class="current-price">$18.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">Add to Cart</button>
+                            <button class="btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials alt-bg">
+        <div class="container">
+            <h2>What Parents Say</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"My picky eater actually asks for Hope Bites snacks! I feel good knowing he's getting the nutrients he needs."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="assets/img-1.jpg" alt="Sarah M.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Parent of 6-year-old</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"We've seen noticeable improvements in our daughter's energy levels since switching to Hope Bites."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="assets/img-1.jpg" alt="David K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>David K.</h4>
+                            <p>Parent of twins</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"As a pediatrician, I recommend Hope Bites to my patients. The nutritional profile is excellent."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="assets/img-1.jpg" alt="Dr. Aisha P.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Dr. Aisha P.</h4>
+                            <p>Pediatrician</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="product-cta">
+        <div class="container">
+            <h2>Ready to Try Hope Bites?</h2>
+            <p>Join thousands of parents who trust Hope Bites for their children's nutrition.</p>
+            <div class="cta-buttons">
+                <a href="shopping.html" class="btn-primary">Shop Now</a>
+                <a href="contact.html" class="btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="ft-name">
+                <div class="logo"><img src="#" alt="Logo"></div>
+                <h1>Hope Bites</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.amazon.com/" target="_blank"><i class='bx bx-store'></i></a>
+            </div>
+            <div class="footer-nav">
+                <a href="about.html">About Us</a>
+                <a href="product.html">Products</a>
+                <a href="support.html">Support</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="ft-text">
+                <p>All rights reserved <i class='bx bx-copyright'></i> copyright 2025 Hope Bites</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+  // Theme toggle and mobile menu script
+  {
+    window.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.product-section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add animation classes to children
+        document.querySelectorAll('.product-card, .category-card, .testimonial-card').forEach((card, index) => {
+            card.classList.add('fade-in-up');
+            card.classList.add(`delay-${(index % 5 + 1) * 100}`);
+        });
+    });
+}
+
+        const storageKey = 'theme-preference';
+
+        const onClick = () => {
+            // flip current value
+            theme.value = theme.value === 'light'
+                ? 'dark'
+                : 'light';
+
+            setPreference();
+        };
+
+        const getColorPreference = () => {
+            if (localStorage.getItem(storageKey))
+                return localStorage.getItem(storageKey);
+            else
+                return window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+        };
+
+        const setPreference = () => {
+            localStorage.setItem(storageKey, theme.value);
+            reflectPreference();
+        };
+
+        const reflectPreference = () => {
+            document.firstElementChild
+                .setAttribute('data-theme', theme.value);
+
+            document
+                .querySelector('#theme-toggle')
+                ?.setAttribute('aria-label', theme.value);
+                
+            // Toggle dark-mode class on body for compatibility with existing styles
+            if (theme.value === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        };
+
+        const theme = {
+            value: getColorPreference(),
+        };
+
+        // set early so no page flashes / CSS is made aware
+        reflectPreference();
+
+        window.onload = () => {
+            // set on load so screen readers can see latest value on the button
+            reflectPreference();
+
+            // now this script can find and listen for clicks on the control
+            document
+                .querySelector('#theme-toggle')
+                .addEventListener('click', onClick);
+                
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // Change the icon based on menu state
+                const icon = mobileToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('bx-menu');
+                    icon.classList.add('bx-x');
+                } else {
+                    icon.classList.remove('bx-x');
+                    icon.classList.add('bx-menu');
+                }
+            });
+        };
+
+        // sync with system changes
+        window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', ({matches:isDark}) => {
+                theme.value = isDark ? 'dark' : 'light';
+                setPreference();
+            });
+    </script>
+</body>
+</html>
