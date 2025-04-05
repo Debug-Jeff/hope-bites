@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Bites</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Nav bar -->
+    <div class="nav-bar">
+        <div class="logo"><span>H</span>ope <span>B</span>ites</div>
+        <div class="links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="product.html">Products</a>
+            <a href="support.html">Support</a>
+            <div class="shopping">
+                <a href="shopping.html"><i class='bx bxs-shopping-bag'></i></a>
+            </div>
+            <div class="contact-btn">
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="dark-mode-container">
+                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About <span>Hope Bites</span></h1>
+            <p>Nourishing children worldwide with nutritious and delicious snacks.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="our-story">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="story-content">
+                <div class="story-image">
+                    <img src="assets/img-1.jpg" alt="Hope Bites Story">
+                </div>
+                <div class="story-text">
+                    <p>Hope Bites was born from a simple yet powerful idea: every child deserves access to nutritious food that supports their growth and development. Founded in 2022, our mission is to combat childhood malnutrition through innovative, nutrient-rich snacks that children actually enjoy eating.</p>
+                    <p>What began as a small project in a university nutrition lab has grown into a mission-driven company that creates fortified foods designed specifically to address common nutritional deficiencies in children around the world.</p>
+                    <p>With every purchase, we're able to donate nutritional supplements to communities in need, furthering our goal of creating a world where no child lacks the essential nutrients needed for healthy development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Products -->
+    <section class="our-products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <p class="section-desc">Each Hope Bites product is carefully formulated to address specific nutritional needs while maintaining delicious flavors that children love.</p>
+            
+            <div class="product-versions">
+                <div class="product-version">
+                    <div class="version-image">
+                        <img src="assets/img-1.jpg" alt="Growth Bites">
+                    </div>
+                    <div class="version-details">
+                        <h3>Growth Bites</h3>
+                        <p>Our flagship product designed to support overall growth and development with essential proteins and minerals.</p>
+                        <div class="ingredients">
+                            <h4>Key Ingredients:</h4>
+                            <ul>
+                                <li><span>Protein Blend:</span> Pea protein, quinoa protein, and rice protein for muscle development</li>
+                                <li><span>Calcium & Vitamin D:</span> For strong bone development</li>
+                                <li><span>Iron:</span> Essential for blood health and cognitive development</li>
+                                <li><span>B Vitamins:</span> Supporting energy metabolism and brain function</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-version">
+                    <div class="version-details">
+                        <h3>Brain Boost Bites</h3>
+                        <p>Formulated to support cognitive development and brain health with omega-3s and essential nutrients.</p>
+                        <div class="ingredients">
+                            <h4>Key Ingredients:</h4>
+                            <ul>
+                                <li><span>DHA & EPA:</span> Omega-3 fatty acids essential for brain development</li>
+                                <li><span>Choline:</span> Supporting memory and cognitive function</li>
+                                <li><span>Zinc:</span> For immune support and cognitive processing</li>
+                                <li><span>Antioxidants:</span> From blueberry and spinach concentrates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="version-image">
+                        <img src="assets/img-1.jpg" alt="Brain Boost Bites">
+                    </div>
+                </div>
+
+                <div class="product-version">
+                    <div class="version-image">
+                        <img src="assets/img-1.jpg" alt="Immune Support Bites">
+                    </div>
+                    <div class="version-details">
+                        <h3>Immune Support Bites</h3>
+                        <p>Designed to strengthen children's immune systems with targeted vitamins and nutrients.</p>
+                        <div class="ingredients">
+                            <h4>Key Ingredients:</h4>
+                            <ul>
+                                <li><span>Vitamin C:</span> From acerola cherry extract for immune support</li>
+                                <li><span>Vitamin D3:</span> Supporting immune regulation</li>
+                                <li><span>Zinc & Selenium:</span> Essential minerals for immune function</li>
+                                <li><span>Elderberry Extract:</span> Traditional immune-supporting botanical</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="our-team">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <p class="section-desc">The passionate experts behind Hope Bites who combine nutrition science with culinary expertise.</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="member-img">
+                        <img src="assets/img-1.jpg" alt="Dr. Sarah Johnson">
+                    </div>
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p class="member-title">Co-Founder & Nutrition Scientist</p>
+                    <p class="member-desc">With a PhD in Nutritional Science, Sarah leads our product development with evidence-based formulations.</p>
+                    <div class="member-social">
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-img">
+                        <img src="assets/img-1.jpg" alt="Michael Chen">
+                    </div>
+                    <h3>Michael Chen</h3>
+                    <p class="member-title">Co-Founder & Food Engineer</p>
+                    <p class="member-desc">Michael combines food science with engineering to create nutritious products children love.</p>
+                    <div class="member-social">
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-img">
+                        <img src="assets/img-1.jpg" alt="Dr. Aisha Patel">
+                    </div>
+                    <h3>Dr. Aisha Patel</h3>
+                    <p class="member-title">Pediatric Nutritionist</p>
+                    <p class="member-desc">Aisha ensures our products meet the specific nutritional needs of growing children.</p>
+                    <div class="member-social">
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-img">
+                        <img src="assets/img-1.jpg" alt="Carlos Rodriguez">
+                    </div>
+                    <h3>Carlos Rodriguez</h3>
+                    <p class="member-title">Executive Chef</p>
+                    <p class="member-desc">Carlos transforms nutritional requirements into delicious flavors that children enjoy.</p>
+                    <div class="member-social">
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-img">
+                        <img src="assets/img-1.jpg" alt="Emma Wilson">
+                    </div>
+                    <h3>Emma Wilson</h3>
+                    <p class="member-title">Impact Director</p>
+                    <p class="member-desc">Emma oversees our donation programs and partnerships with humanitarian organizations.</p>
+                    <div class="member-social">
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-img">
+                        <img src="assets/img-1.jpg" alt="David Okafor">
+                    </div>
+                    <h3>David Okafor</h3>
+                    <p class="member-title">Supply Chain Manager</p>
+                    <p class="member-desc">David ensures sustainable and ethical sourcing of all ingredients used in our products.</p>
+                    <div class="member-social">
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Partners -->
+    <section class="our-partners">
+        <div class="container">
+            <h2>Our Partners</h2>
+            <p class="section-desc">Working together with leading organizations to maximize our impact.</p>
+            
+            <div class="partners-container">
+                <div class="partners-row rightward">
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 1">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 2">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 3">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 4">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 5">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 1">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 2">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 3">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 4">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 5">
+                    </div>
+                </div>
+                
+                <div class="partners-row leftward">
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 6">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 7">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 8">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 9">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 10">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 6">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 7">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 8">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 9">
+                    </div>
+                    <div class="partner">
+                        <img src="assets/img-1.jpg" alt="Partner 10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="about-cta">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Be part of our journey to ensure every child has access to the nutrition they need to thrive.</p>
+            <div class="cta-buttons">
+                <a href="product.html" class="btn-primary">Shop Products</a>
+                <a href="support.html" class="btn-secondary">Support Our Cause</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="ft-name">
+                <div class="logo"><img src="#" alt="Logo"></div>
+                <h1>Hope Bites</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.amazon.com/" target="_blank"><i class='bx bx-store'></i></a>
+            </div>
+            <div class="footer-nav">
+                <a href="about.html">About Us</a>
+                <a href="product.html">Products</a>
+                <a href="support.html">Support</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="ft-text">
+                <p>All rights reserved <i class='bx bx-copyright'></i> copyright 2025 Hope Bites</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Theme toggle script (same as in index.html)
+        const storageKey = 'theme-preference';
+
+        const onClick = () => {
+            // flip current value
+            theme.value = theme.value === 'light'
+                ? 'dark'
+                : 'light';
+
+            setPreference();
+        };
+
+        const getColorPreference = () => {
+            if (localStorage.getItem(storageKey))
+                return localStorage.getItem(storageKey);
+            else
+                return window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+        };
+
+        const setPreference = () => {
+            localStorage.setItem(storageKey, theme.value);
+            reflectPreference();
+        };
+
+        const reflectPreference = () => {
+            document.firstElementChild
+                .setAttribute('data-theme', theme.value);
+
+            document
+                .querySelector('#theme-toggle')
+                ?.setAttribute('aria-label', theme.value);
+                
+            // Toggle dark-mode class on body for compatibility with existing styles
+            if (theme.value === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        };
+
+        const theme = {
+            value: getColorPreference(),
+        };
+
+        // set early so no page flashes / CSS is made aware
+        reflectPreference();
+
+        window.onload = () => {
+            // set on load so screen readers can see latest value on the button
+            reflectPreference();
+
+            // now this script can find and listen for clicks on the control
+            document
+                .querySelector('#theme-toggle')
+                .addEventListener('click', onClick);
+                
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // Change the icon based on menu state
+                const icon = mobileToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('bx-menu');
+                    icon.classList.add('bx-x');
+                } else {
+                    icon.classList.remove('bx-x');
+                    icon.classList.add('bx-menu');
+                }
+            });
+        };
+
+        // sync with system changes
+        window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', ({matches:isDark}) => {
+                theme.value = isDark ? 'dark' : 'light';
+                setPreference();
+            });
+    </script>
+</body>
+</html>
