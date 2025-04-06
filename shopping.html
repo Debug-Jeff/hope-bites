@@ -1,1053 +1,1195 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hope Bites - Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <!--<link rel="stylesheet" href="shopping.css">-->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
+    <link rel="stylesheet" href="shopping.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Nav bar -->
     <div class="nav-bar">
-        <div class="logo"><span>H</span>ope <span>B</span>ites</div>
-        <div class="links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="product.html">Products</a>
-            <a href="support.html">Support</a>
-            <div class="shopping active">
-                <a href="shopping.html"><i class='bx bxs-shopping-bag'></i><span class="cart-count" id="cartCount">0</span></a>
-            </div>
-            <div class="contact-btn">
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="dark-mode-container">
-                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                        <mask class="moon" id="moon-mask">
-                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                            <circle cx="24" cy="10" r="6" fill="black" />
-                        </mask>
-                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                        <g class="sun-beams" stroke="currentColor">
-                            <line x1="12" y1="1" x2="12" y2="3" />
-                            <line x1="12" y1="21" x2="12" y2="23" />
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                            <line x1="1" y1="12" x2="3" y2="12" />
-                            <line x1="21" y1="12" x2="23" y2="12" />
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                        </g>
-                    </svg>
-                </button>
-            </div>
+      <div class="logo"><span>H</span>ope <span>B</span>ites</div>
+      <div class="links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="product.html">Products</a>
+        <a href="support.html">Support</a>
+        <div class="shopping active">
+          <a href="shopping.html"
+            ><i class="bx bxs-shopping-bag"></i
+            ><span class="cart-count" id="cartCount">0</span></a
+          >
         </div>
-        <div class="mobile-toggle" id="mobileToggle">
-            <i class='bx bx-menu'></i>
+        <div class="contact-btn">
+          <a href="contact.html">Contact</a>
         </div>
+        <div class="dark-mode-container">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            title="Toggles light & dark"
+            aria-label="auto"
+            aria-live="polite"
+          >
+            <svg
+              class="sun-and-moon"
+              aria-hidden="true"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <mask class="moon" id="moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle cx="24" cy="10" r="6" fill="black" />
+              </mask>
+              <circle
+                class="sun"
+                cx="12"
+                cy="12"
+                r="6"
+                mask="url(#moon-mask)"
+                fill="currentColor"
+              />
+              <g class="sun-beams" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-toggle" id="mobileToggle">
+        <i class="bx bx-menu"></i>
+      </div>
     </div>
 
     <!-- Hero Carousel Section -->
     <section class="product-carousel">
-        <h1 class="section-title">Featured Products</h1>
-        <div class="carousel-container">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-slide">
-                    <img src="/api/placeholder/600/400" alt="Hope Bites Fruit Mix">
-                    <div class="slide-content">
-                        <h2>Fruit Mix</h2>
-                        <p>Delicious fruit-based nutritional snacks for growing children</p>
-                        <a href="#fruit-section" class="btn">Shop Now</a>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="/api/placeholder/600/400" alt="Hope Bites Protein Bars">
-                    <div class="slide-content">
-                        <h2>Protein Bars</h2>
-                        <p>Fortified protein snacks packed with essential nutrients</p>
-                        <a href="#protein-section" class="btn">Shop Now</a>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="/api/placeholder/600/400" alt="Hope Bites Vitamin Gummies">
-                    <div class="slide-content">
-                        <h2>Vitamin Gummies</h2>
-                        <p>Fun and tasty way to get daily vitamins and minerals</p>
-                        <a href="#vitamin-section" class="btn">Shop Now</a>
-                    </div>
-                </div>
+      <h1 class="section-title">Featured Products</h1>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <img src="assets/img-9.jpg" alt="Hope Bites Fruit Mix" />
+            <div class="slide-content">
+              <h2>Fruit Mix</h2>
+              <p>
+                Delicious fruit-based nutritional snacks for growing children
+              </p>
+              <a href="#fruit-section" class="btn">Shop Now</a>
             </div>
-            <button class="carousel-btn prev-btn" id="prevBtn"><i class='bx bx-chevron-left'></i></button>
-            <button class="carousel-btn next-btn" id="nextBtn"><i class='bx bx-chevron-right'></i></button>
-            <div class="carousel-indicators" id="carouselIndicators"></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/img-5.jpg" alt="Hope Bites Protein Bars" />
+            <div class="slide-content">
+              <h2>Protein Bars</h2>
+              <p>Fortified protein snacks packed with essential nutrients</p>
+              <a href="#protein-section" class="btn">Shop Now</a>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/img-8.jpg" alt="Hope Bites Vitamin Gummies" />
+            <div class="slide-content">
+              <h2>Vitamin Gummies</h2>
+              <p>Fun and tasty way to get daily vitamins and minerals</p>
+              <a href="#vitamin-section" class="btn">Shop Now</a>
+            </div>
+          </div>
         </div>
+        <button class="carousel-btn prev-btn" id="prevBtn">
+          <i class="bx bx-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next-btn" id="nextBtn">
+          <i class="bx bx-chevron-right"></i>
+        </button>
+        <div class="carousel-indicators" id="carouselIndicators"></div>
+      </div>
     </section>
 
     <!-- Product Filter Bar -->
     <section class="filter-bar">
-        <div class="container">
-            <div class="filters">
-                <div class="filter-group">
-                    <label for="categoryFilter">Category:</label>
-                    <select id="categoryFilter" class="filter-select">
-                        <option value="all">All Categories</option>
-                        <option value="fruit">Fruit Snacks</option>
-                        <option value="protein">Protein Bars</option>
-                        <option value="vitamin">Vitamin Gummies</option>
-                        <option value="organic">Organic Line</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="ageFilter">Age Group:</label>
-                    <select id="ageFilter" class="filter-select">
-                        <option value="all">All Ages</option>
-                        <option value="toddler">2-4 years</option>
-                        <option value="kids">5-8 years</option>
-                        <option value="preteen">9-12 years</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="sortBy">Sort By:</label>
-                    <select id="sortBy" class="filter-select">
-                        <option value="popular">Most Popular</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="newest">Newest First</option>
-                    </select>
-                </div>
-            </div>
-            <div class="search-container">
-                <input type="text" id="productSearch" placeholder="Search products...">
-                <button id="searchBtn"><i class='bx bx-search'></i></button>
-            </div>
+      <div class="container">
+        <div class="filters">
+          <div class="filter-group">
+            <label for="categoryFilter">Category:</label>
+            <select id="categoryFilter" class="filter-select">
+              <option value="all">All Categories</option>
+              <option value="fruit">Fruit Snacks</option>
+              <option value="protein">Protein Bars</option>
+              <option value="vitamin">Vitamin Gummies</option>
+              <option value="organic">Organic Line</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="ageFilter">Age Group:</label>
+            <select id="ageFilter" class="filter-select">
+              <option value="all">All Ages</option>
+              <option value="toddler">2-4 years</option>
+              <option value="kids">5-8 years</option>
+              <option value="preteen">9-12 years</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="sortBy">Sort By:</label>
+            <select id="sortBy" class="filter-select">
+              <option value="popular">Most Popular</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
         </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="productSearch"
+            placeholder="Search products..."
+          />
+          <button id="searchBtn"><i class="bx bx-search"></i></button>
+        </div>
+      </div>
     </section>
 
     <!-- Product Display -->
     <section class="products-container" id="product-container">
-        <!-- Fruit Snacks Section -->
-        <section class="product-section" id="fruit-section">
-            <h2 class="section-title">Fruit Snacks</h2>
-            <div class="product-grid">
-                <div class="product-card" data-id="fruit1" data-category="fruit" data-age="kids">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Mixed Berry Bites">
-                        <div class="product-badges">
-                            <span class="badge new">New</span>
-                            <span class="badge bestseller">Bestseller</span>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Mixed Berry Bites</h3>
-                        <p class="product-short-desc">Mixed fruit snack with added vitamins</p>
-                        <div class="product-price">
-                            <span class="price">$12.99</span>
-                            <span class="price-per">(3-pack)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="fruit1">View Details</button>
-                            <button class="add-to-cart" data-product="fruit1"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="fruit2" data-category="fruit" data-age="toddler">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Apple Cinnamon Crisps">
-                    </div>
-                    <div class="product-info">
-                        <h3>Apple Cinnamon Crisps</h3>
-                        <p class="product-short-desc">Crispy apple snacks with a hint of cinnamon</p>
-                        <div class="product-price">
-                            <span class="price">$10.99</span>
-                            <span class="price-per">(3-pack)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="fruit2">View Details</button>
-                            <button class="add-to-cart" data-product="fruit2"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="fruit3" data-category="fruit" data-age="preteen">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Tropical Fruit Medley">
-                    </div>
-                    <div class="product-info">
-                        <h3>Tropical Fruit Medley</h3>
-                        <p class="product-short-desc">Exotic fruit blend with added fiber</p>
-                        <div class="product-price">
-                            <span class="price">$13.99</span>
-                            <span class="price-per">(3-pack)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="fruit3">View Details</button>
-                            <button class="add-to-cart" data-product="fruit3"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
+      <!-- Fruit Snacks Section -->
+      <section class="product-section" id="fruit-section">
+        <h2 class="section-title">Fruit Snacks</h2>
+        <div class="product-grid">
+          <div
+            class="product-card"
+            data-id="fruit1"
+            data-category="fruit"
+            data-age="kids"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Mixed Berry Bites" />
+              <div class="product-badges">
+                <span class="badge new">New</span>
+                <span class="badge bestseller">Bestseller</span>
+              </div>
             </div>
-        </section>
+            <div class="product-info">
+              <h3>Mixed Berry Bites</h3>
+              <p class="product-short-desc">
+                Mixed fruit snack with added vitamins
+              </p>
+              <div class="product-price">
+                <span class="price">$12.99</span>
+                <span class="price-per">(3-pack)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="fruit1">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="fruit1">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <!-- Protein Bars Section -->
-        <section class="product-section" id="protein-section">
-            <h2 class="section-title">Protein Bars</h2>
-            <div class="product-grid">
-                <div class="product-card" data-id="protein1" data-category="protein" data-age="kids">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Chocolate Chip Protein Bar">
-                    </div>
-                    <div class="product-info">
-                        <h3>Chocolate Chip Protein Bar</h3>
-                        <p class="product-short-desc">Delicious protein bar with chocolate chips</p>
-                        <div class="product-price">
-                            <span class="price">$14.99</span>
-                            <span class="price-per">(6-pack)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="protein1">View Details</button>
-                            <button class="add-to-cart" data-product="protein1"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="protein2" data-category="protein" data-age="preteen">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Peanut Butter Blast Bar">
-                        <div class="product-badges">
-                            <span class="badge bestseller">Bestseller</span>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Peanut Butter Blast Bar</h3>
-                        <p class="product-short-desc">Rich peanut butter protein bar</p>
-                        <div class="product-price">
-                            <span class="price">$15.99</span>
-                            <span class="price-per">(6-pack)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="protein2">View Details</button>
-                            <button class="add-to-cart" data-product="protein2"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="protein3" data-category="protein" data-age="kids">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Berry Yogurt Protein Bar">
-                    </div>
-                    <div class="product-info">
-                        <h3>Berry Yogurt Protein Bar</h3>
-                        <p class="product-short-desc">Creamy yogurt coating with berry pieces</p>
-                        <div class="product-price">
-                            <span class="price">$16.99</span>
-                            <span class="price-per">(6-pack)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="protein3">View Details</button>
-                            <button class="add-to-cart" data-product="protein3"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
+          <div
+            class="product-card"
+            data-id="fruit2"
+            data-category="fruit"
+            data-age="toddler"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Apple Cinnamon Crisps" />
             </div>
-        </section>
+            <div class="product-info">
+              <h3>Apple Cinnamon Crisps</h3>
+              <p class="product-short-desc">
+                Crispy apple snacks with a hint of cinnamon
+              </p>
+              <div class="product-price">
+                <span class="price">$10.99</span>
+                <span class="price-per">(3-pack)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="fruit2">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="fruit2">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <!-- Vitamin Gummies Section -->
-        <section class="product-section" id="vitamin-section">
-            <h2 class="section-title">Vitamin Gummies</h2>
-            <div class="product-grid">
-                <div class="product-card" data-id="vitamin1" data-category="vitamin" data-age="toddler">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Multi-Vitamin Fruit Gummies">
-                        <div class="product-badges">
-                            <span class="badge new">New</span>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Multi-Vitamin Fruit Gummies</h3>
-                        <p class="product-short-desc">Complete daily vitamins in tasty gummies</p>
-                        <div class="product-price">
-                            <span class="price">$19.99</span>
-                            <span class="price-per">(60 gummies)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="vitamin1">View Details</button>
-                            <button class="add-to-cart" data-product="vitamin1"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="vitamin2" data-category="vitamin" data-age="kids">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Immune Boost Gummies">
-                    </div>
-                    <div class="product-info">
-                        <h3>Immune Boost Gummies</h3>
-                        <p class="product-short-desc">Vitamin C & zinc for immune support</p>
-                        <div class="product-price">
-                            <span class="price">$21.99</span>
-                            <span class="price-per">(60 gummies)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="vitamin2">View Details</button>
-                            <button class="add-to-cart" data-product="vitamin2"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="vitamin3" data-category="vitamin" data-age="preteen">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Brain Boost Omega Gummies">
-                        <div class="product-badges">
-                            <span class="badge bestseller">Bestseller</span>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Brain Boost Omega Gummies</h3>
-                        <p class="product-short-desc">Omega-3 for brain development</p>
-                        <div class="product-price">
-                            <span class="price">$24.99</span>
-                            <span class="price-per">(60 gummies)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="vitamin3">View Details</button>
-                            <button class="add-to-cart" data-product="vitamin3"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
+          <div
+            class="product-card"
+            data-id="fruit3"
+            data-category="fruit"
+            data-age="preteen"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Tropical Fruit Medley" />
             </div>
-        </section>
-        
-        <!-- Organic Line Section -->
-        <section class="product-section" id="organic-section">
-            <h2 class="section-title">Organic Line</h2>
-            <div class="product-grid">
-                <div class="product-card" data-id="organic1" data-category="organic" data-age="toddler">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Organic Apple Puffs">
-                        <div class="product-badges">
-                            <span class="badge new">New</span>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Organic Apple Puffs</h3>
-                        <p class="product-short-desc">100% organic apple snack puffs</p>
-                        <div class="product-price">
-                            <span class="price">$9.99</span>
-                            <span class="price-per">(4 pouches)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="organic1">View Details</button>
-                            <button class="add-to-cart" data-product="organic1"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-id="organic2" data-category="organic" data-age="kids">
-                    <div class="product-image">
-                        <img src="/api/placeholder/300/300" alt="Organic Veggie Straws">
-                    </div>
-                    <div class="product-info">
-                        <h3>Organic Veggie Straws</h3>
-                        <p class="product-short-desc">Crunchy organic vegetable snacks</p>
-                        <div class="product-price">
-                            <span class="price">$11.99</span>
-                            <span class="price-per">(6 pouches)</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="view-details-btn" data-product="organic2">View Details</button>
-                            <button class="add-to-cart" data-product="organic2"><i class='bx bx-cart-add'></i></button>
-                        </div>
-                    </div>
-                </div>
+            <div class="product-info">
+              <h3>Tropical Fruit Medley</h3>
+              <p class="product-short-desc">
+                Exotic fruit blend with added fiber
+              </p>
+              <div class="product-price">
+                <span class="price">$13.99</span>
+                <span class="price-per">(3-pack)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="fruit3">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="fruit3">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- Protein Bars Section -->
+      <section class="product-section" id="protein-section">
+        <h2 class="section-title">Protein Bars</h2>
+        <div class="product-grid">
+          <div
+            class="product-card"
+            data-id="protein1"
+            data-category="protein"
+            data-age="kids"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Chocolate Chip Protein Bar" />
+            </div>
+            <div class="product-info">
+              <h3>Chocolate Chip Protein Bar</h3>
+              <p class="product-short-desc">
+                Delicious protein bar with chocolate chips
+              </p>
+              <div class="product-price">
+                <span class="price">$14.99</span>
+                <span class="price-per">(6-pack)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="protein1">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="protein1">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-id="protein2"
+            data-category="protein"
+            data-age="preteen"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Peanut Butter Blast Bar" />
+              <div class="product-badges">
+                <span class="badge bestseller">Bestseller</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Peanut Butter Blast Bar</h3>
+              <p class="product-short-desc">Rich peanut butter protein bar</p>
+              <div class="product-price">
+                <span class="price">$15.99</span>
+                <span class="price-per">(6-pack)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="protein2">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="protein2">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-id="protein3"
+            data-category="protein"
+            data-age="kids"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Berry Yogurt Protein Bar" />
+            </div>
+            <div class="product-info">
+              <h3>Berry Yogurt Protein Bar</h3>
+              <p class="product-short-desc">
+                Creamy yogurt coating with berry pieces
+              </p>
+              <div class="product-price">
+                <span class="price">$16.99</span>
+                <span class="price-per">(6-pack)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="protein3">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="protein3">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vitamin Gummies Section -->
+      <section class="product-section" id="vitamin-section">
+        <h2 class="section-title">Vitamin Gummies</h2>
+        <div class="product-grid">
+          <div
+            class="product-card"
+            data-id="vitamin1"
+            data-category="vitamin"
+            data-age="toddler"
+          >
+            <div class="product-image">
+              <img src="/assets/img-1.jpg" alt="Multi-Vitamin Fruit Gummies" />
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Multi-Vitamin Fruit Gummies</h3>
+              <p class="product-short-desc">
+                Complete daily vitamins in tasty gummies
+              </p>
+              <div class="product-price">
+                <span class="price">$19.99</span>
+                <span class="price-per">(60 gummies)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="vitamin1">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="vitamin1">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-id="vitamin2"
+            data-category="vitamin"
+            data-age="kids"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Immune Boost Gummies" />
+            </div>
+            <div class="product-info">
+              <h3>Immune Boost Gummies</h3>
+              <p class="product-short-desc">
+                Vitamin C & zinc for immune support
+              </p>
+              <div class="product-price">
+                <span class="price">$21.99</span>
+                <span class="price-per">(60 gummies)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="vitamin2">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="vitamin2">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-id="vitamin3"
+            data-category="vitamin"
+            data-age="preteen"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Brain Boost Omega Gummies" />
+              <div class="product-badges">
+                <span class="badge bestseller">Bestseller</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Brain Boost Omega Gummies</h3>
+              <p class="product-short-desc">Omega-3 for brain development</p>
+              <div class="product-price">
+                <span class="price">$24.99</span>
+                <span class="price-per">(60 gummies)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="vitamin3">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="vitamin3">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Organic Line Section -->
+      <section class="product-section" id="organic-section">
+        <h2 class="section-title">Organic Line</h2>
+        <div class="product-grid">
+          <div
+            class="product-card"
+            data-id="organic1"
+            data-category="organic"
+            data-age="toddler"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Organic Apple Puffs" />
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Organic Apple Puffs</h3>
+              <p class="product-short-desc">100% organic apple snack puffs</p>
+              <div class="product-price">
+                <span class="price">$9.99</span>
+                <span class="price-per">(4 pouches)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="organic1">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="organic1">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-id="organic2"
+            data-category="organic"
+            data-age="kids"
+          >
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Organic Veggie Straws" />
+            </div>
+            <div class="product-info">
+              <h3>Organic Veggie Straws</h3>
+              <p class="product-short-desc">Crunchy organic vegetable snacks</p>
+              <div class="product-price">
+                <span class="price">$11.99</span>
+                <span class="price-per">(6 pouches)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="organic2">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="organic2">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!-- Product Detail Modal -->
     <div class="product-modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="product-detail-container">
-                <div class="product-gallery">
-                    <div class="main-image">
-                        <img id="modalMainImage" src="/api/placeholder/500/500" alt="Product Image">
-                    </div>
-                    <div class="thumbnail-container">
-                        <img class="thumbnail active" src="/api/placeholder/100/100" alt="Thumbnail 1" data-src="/api/placeholder/500/500">
-                        <img class="thumbnail" src="/api/placeholder/100/100" alt="Thumbnail 2" data-src="/api/placeholder/500/500?v=2">
-                        <img class="thumbnail" src="/api/placeholder/100/100" alt="Thumbnail 3" data-src="/api/placeholder/500/500?v=3">
-                    </div>
-                </div>
-                <div class="product-details">
-                    <h2 id="modalProductTitle">Product Name</h2>
-                    <div class="rating">
-                        <i class='bx bxs-star'></i>
-                        <i class='bx bxs-star'></i>
-                        <i class='bx bxs-star'></i>
-                        <i class='bx bxs-star'></i>
-                        <i class='bx bxs-star-half'></i>
-                        <span>(24 reviews)</span>
-                    </div>
-                    <div class="product-price-detail">
-                        <span class="current-price" id="modalProductPrice">$12.99</span>
-                        <span class="original-price" id="modalOriginalPrice">$15.99</span>
-                        <span class="discount-badge">20% OFF</span>
-                    </div>
-                    <div class="product-description">
-                        <p id="modalProductDesc">Detailed description of the product goes here. This will be populated dynamically based on the selected product.</p>
-                    </div>
-                    <div class="product-details-list">
-                        <h4>Key Benefits:</h4>
-                        <ul id="modalProductBenefits">
-                            <li>Rich in essential vitamins and minerals</li>
-                            <li>Supports healthy growth and development</li>
-                            <li>No artificial flavors or preservatives</li>
-                            <li>Kids-approved great taste</li>
-                        </ul>
-                    </div>
-                    <div class="product-nutrition">
-                        <h4>Nutrition Facts:</h4>
-                        <table class="nutrition-table" id="modalNutritionTable">
-                            <tr>
-                                <th>Nutrient</th>
-                                <th>Amount per Serving</th>
-                                <th>% Daily Value</th>
-                            </tr>
-                            <tr>
-                                <td>Calories</td>
-                                <td>80</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>Protein</td>
-                                <td>2g</td>
-                                <td>4%</td>
-                            </tr>
-                            <tr>
-                                <td>Vitamin A</td>
-                                <td>300 IU</td>
-                                <td>6%</td>
-                            </tr>
-                            <tr>
-                                <td>Vitamin C</td>
-                                <td>60mg</td>
-                                <td>100%</td>
-                            </tr>
-                            <tr>
-                                <td>Calcium</td>
-                                <td>100mg</td>
-                                <td>10%</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="purchase-options">
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus" id="quantityMinus">-</button>
-                            <input type="number" id="productQuantity" value="1" min="1" max="10">
-                            <button class="quantity-btn plus" id="quantityPlus">+</button>
-                        </div>
-                        <div class="size-options">
-                            <h4>Pack Size:</h4>
-                            <div class="size-selector">
-                                <button class="size-btn active" data-size="small" data-price="12.99">Small (3-pack)</button>
-                                <button class="size-btn" data-size="medium" data-price="22.99">Medium (6-pack)</button>
-                                <button class="size-btn" data-size="large" data-price="32.99">Large (12-pack)</button>
-                            </div>
-                        </div>
-                        <div class="subscription-option">
-                            <label>
-                                <input type="checkbox" id="subscribeOption"> Subscribe & Save 10%
-                                <span class="tooltip">Get regular deliveries and save 10% on each order!</span>
-                            </label>
-                        </div>
-                        <button class="add-to-cart-btn" id="modalAddToCart">Add to Cart</button>
-                    </div>
-                </div>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="product-detail-container">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img
+                id="modalMainImage"
+                src="assets/img-1.jpg"
+                alt="Product Image"
+              />
             </div>
-            
-            <div class="product-reviews">
-                <h3>Customer Reviews</h3>
-                <div class="review-summary">
-                    <div class="average-rating">
-                        <span class="big-rating">4.5</span>
-                        <div class="stars">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star-half'></i>
-                        </div>
-                        <span>Based on 24 reviews</span>
-                    </div>
-                    <div class="rating-breakdown">
-                        <div class="rating-bar">
-                            <span>5 stars</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 70%;"></div>
-                            </div>
-                            <span>70%</span>
-                        </div>
-                        <div class="rating-bar">
-                            <span>4 stars</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 20%;"></div>
-                            </div>
-                            <span>20%</span>
-                        </div>
-                        <div class="rating-bar">
-                            <span>3 stars</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 5%;"></div>
-                            </div>
-                            <span>5%</span>
-                        </div>
-                        <div class="rating-bar">
-                            <span>2 stars</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 3%;"></div>
-                            </div>
-                            <span>3%</span>
-                        </div>
-                        <div class="rating-bar">
-                            <span>1 star</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 2%;"></div>
-                            </div>
-                            <span>2%</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="customer-reviews">
-                    <div class="review">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">Sarah J.</span>
-                                <span class="review-date">March 15, 2025</span>
-                            </div>
-                            <div class="review-rating">
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                            </div>
-                        </div>
-                        <h4>My kids love these!</h4>
-                        <p>I've been searching for healthy snacks that my picky eaters will actually enjoy. These are perfect! They love the taste and I love the nutritional value.</p>
-                        <div class="verified-purchase">✓ Verified Purchase</div>
-                    </div>
-                    
-                    <div class="review">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">Michael T.</span>
-                                <span class="review-date">February 28, 2025</span>
-                            </div>
-                            <div class="review-rating">
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bx-star'></i>
-                            </div>
-                        </div>
-                        <h4>Great nutritional profile</h4>
-                        <p>As a nutritionist, I'm impressed with the vitamin and mineral content. Took off one star because they're a bit too sweet for my liking, but kids will probably love that.</p>
-                        <div class="verified-purchase">✓ Verified Purchase</div>
-                    </div>
-                    
-                    <div class="review">
-                        <div class="review-header">
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">Jessica A.</span>
-                                <span class="review-date">March 2, 2025</span>
-                            </div>
-                            <div class="review-rating">
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star-half'></i>
-                            </div>
-                        </div>
-                        <h4>School lunch savior</h4>
-                        <p>These are perfect for my daughter's lunch box. She gets excited when I pack these, and I've noticed she has more energy throughout the day.</p>
-                        <div class="verified-purchase">✓ Verified Purchase</div>
-                    </div>
-                </div>
+            <div class="thumbnail-container">
+              <img
+                class="thumbnail active"
+                src="assets/img-1.jpg"
+                alt="Thumbnail 1"
+                data-src="/api/placeholder/500/500"
+              />
+              <img
+                class="thumbnail"
+                src="assets/img-1.jpg"
+                alt="Thumbnail 2"
+                data-src="/api/placeholder/500/500?v=2"
+              />
+              <img
+                class="thumbnail"
+                src="assets/img-1.jpg"
+                alt="Thumbnail 3"
+                data-src="/api/placeholder/500/500?v=3"
+              />
             </div>
+          </div>
+          <div class="product-details">
+            <h2 id="modalProductTitle">Product Name</h2>
+            <div class="rating">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star-half"></i>
+              <span>(24 reviews)</span>
+            </div>
+            <div class="product-price-detail">
+              <span class="current-price" id="modalProductPrice">$12.99</span>
+              <span class="original-price" id="modalOriginalPrice">$15.99</span>
+              <span class="discount-badge">20% OFF</span>
+            </div>
+            <div class="product-description">
+              <p id="modalProductDesc">
+                Detailed description of the product goes here. This will be
+                populated dynamically based on the selected product.
+              </p>
+            </div>
+            <div class="product-details-list">
+              <h4>Key Benefits:</h4>
+              <ul id="modalProductBenefits">
+                <li>Rich in essential vitamins and minerals</li>
+                <li>Supports healthy growth and development</li>
+                <li>No artificial flavors or preservatives</li>
+                <li>Kids-approved great taste</li>
+              </ul>
+            </div>
+            <div class="product-nutrition">
+              <h4>Nutrition Facts:</h4>
+              <table class="nutrition-table" id="modalNutritionTable">
+                <tr>
+                  <th>Nutrient</th>
+                  <th>Amount per Serving</th>
+                  <th>% Daily Value</th>
+                </tr>
+                <tr>
+                  <td>Calories</td>
+                  <td>80</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Protein</td>
+                  <td>2g</td>
+                  <td>4%</td>
+                </tr>
+                <tr>
+                  <td>Vitamin A</td>
+                  <td>300 IU</td>
+                  <td>6%</td>
+                </tr>
+                <tr>
+                  <td>Vitamin C</td>
+                  <td>60mg</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>Calcium</td>
+                  <td>100mg</td>
+                  <td>10%</td>
+                </tr>
+              </table>
+            </div>
+            <div class="purchase-options">
+              <div class="quantity-selector">
+                <button class="quantity-btn minus" id="quantityMinus">-</button>
+                <input
+                  type="number"
+                  id="productQuantity"
+                  value="1"
+                  min="1"
+                  max="10"
+                />
+                <button class="quantity-btn plus" id="quantityPlus">+</button>
+              </div>
+              <div class="size-options">
+                <h4>Pack Size:</h4>
+                <div class="size-selector">
+                  <button
+                    class="size-btn active"
+                    data-size="small"
+                    data-price="12.99"
+                  >
+                    Small (3-pack)
+                  </button>
+                  <button
+                    class="size-btn"
+                    data-size="medium"
+                    data-price="22.99"
+                  >
+                    Medium (6-pack)
+                  </button>
+                  <button class="size-btn" data-size="large" data-price="32.99">
+                    Large (12-pack)
+                  </button>
+                </div>
+              </div>
+              <div class="subscription-option">
+                <label>
+                  <input type="checkbox" id="subscribeOption" /> Subscribe &
+                  Save 10%
+                  <span class="tooltip"
+                    >Get regular deliveries and save 10% on each order!</span
+                  >
+                </label>
+              </div>
+              <button class="add-to-cart-btn" id="modalAddToCart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
         </div>
+
+        <div class="product-reviews">
+          <h3>Customer Reviews</h3>
+          <div class="review-summary">
+            <div class="average-rating">
+              <span class="big-rating">4.5</span>
+              <div class="stars">
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star-half"></i>
+              </div>
+              <span>Based on 24 reviews</span>
+            </div>
+            <div class="rating-breakdown">
+              <div class="rating-bar">
+                <span>5 stars</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 70%"></div>
+                </div>
+                <span>70%</span>
+              </div>
+              <div class="rating-bar">
+                <span>4 stars</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 20%"></div>
+                </div>
+                <span>20%</span>
+              </div>
+              <div class="rating-bar">
+                <span>3 stars</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 5%"></div>
+                </div>
+                <span>5%</span>
+              </div>
+              <div class="rating-bar">
+                <span>2 stars</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 3%"></div>
+                </div>
+                <span>3%</span>
+              </div>
+              <div class="rating-bar">
+                <span>1 star</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 2%"></div>
+                </div>
+                <span>2%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="customer-reviews">
+            <div class="review">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">Sarah J.</span>
+                  <span class="review-date">March 15, 2025</span>
+                </div>
+                <div class="review-rating">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                </div>
+              </div>
+              <h4>My kids love these!</h4>
+              <p>
+                I've been searching for healthy snacks that my picky eaters will
+                actually enjoy. These are perfect! They love the taste and I
+                love the nutritional value.
+              </p>
+              <div class="verified-purchase">✓ Verified Purchase</div>
+            </div>
+
+            <div class="review">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">Michael T.</span>
+                  <span class="review-date">February 28, 2025</span>
+                </div>
+                <div class="review-rating">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bx-star"></i>
+                </div>
+              </div>
+              <h4>Great nutritional profile</h4>
+              <p>
+                As a nutritionist, I'm impressed with the vitamin and mineral
+                content. Took off one star because they're a bit too sweet for
+                my liking, but kids will probably love that.
+              </p>
+              <div class="verified-purchase">✓ Verified Purchase</div>
+            </div>
+
+            <div class="review">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">Jessica A.</span>
+                  <span class="review-date">March 2, 2025</span>
+                </div>
+                <div class="review-rating">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star-half"></i>
+                </div>
+              </div>
+              <h4>School lunch savior</h4>
+              <p>
+                These are perfect for my daughter's lunch box. She gets excited
+                when I pack these, and I've noticed she has more energy
+                throughout the day.
+              </p>
+              <div class="verified-purchase">✓ Verified Purchase</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-<!-- Shopping Cart Sidebar -->
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
         <h3>Your Cart <span id="cartItemCount">(0)</span></h3>
-        <button class="close-cart" id="closeCart"><i class='bx bx-x'></i></button>
-    </div>
-    <div class="cart-items" id="cartItems">
+        <button class="close-cart" id="closeCart">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
         <!-- Cart items will be dynamically added here -->
         <div class="empty-cart-message" id="emptyCartMessage">
-            <i class='bx bx-cart-alt'></i>
-            <p>Your cart is empty</p>
-            <button class="start-shopping-btn" id="startShopping">Start Shopping</button>
+          <i class="bx bx-cart-alt"></i>
+          <p>Your cart is empty</p>
+          <button class="start-shopping-btn" id="startShopping">
+            Start Shopping
+          </button>
         </div>
-    </div>
-    <div class="cart-summary" id="cartSummary">
+      </div>
+      <div class="cart-summary" id="cartSummary">
         <div class="summary-row">
-            <span>Subtotal:</span>
-            <span id="cartSubtotal">$0.00</span>
+          <span>Subtotal:</span>
+          <span id="cartSubtotal">$0.00</span>
         </div>
         <div class="summary-row">
-            <span>Shipping:</span>
-            <span id="shippingCost">$0.00</span>
+          <span>Shipping:</span>
+          <span id="shippingCost">$0.00</span>
         </div>
         <div class="summary-row discount-row" id="discountRow">
-            <span>Discount:</span>
-            <span id="discountAmount">-$0.00</span>
+          <span>Discount:</span>
+          <span id="discountAmount">-$0.00</span>
         </div>
         <div class="summary-row total-row">
-            <span>Total:</span>
-            <span id="cartTotal">$0.00</span>
+          <span>Total:</span>
+          <span id="cartTotal">$0.00</span>
         </div>
         <div class="promo-code">
-            <input type="text" id="promoCodeInput" placeholder="Promo code">
-            <button id="applyPromo">Apply</button>
+          <input type="text" id="promoCodeInput" placeholder="Promo code" />
+          <button id="applyPromo">Apply</button>
         </div>
-        <button class="checkout-button" id="checkoutBtn">Proceed to Checkout</button>
+        <button class="checkout-button" id="checkoutBtn">
+          Proceed to Checkout
+        </button>
         <div class="payment-methods">
-            <p>We accept:</p>
-            <div class="payment-icons">
-                <i class='bx bxl-visa'></i>
-                <i class='bx bxl-mastercard'></i>
-                <i class='bx bxl-paypal'></i>
-                <i class='bx bxl-apple'></i>
-            </div>
+          <p>We accept:</p>
+          <div class="payment-icons">
+            <i class="bx bxl-visa"></i>
+            <i class="bx bxl-mastercard"></i>
+            <i class="bx bxl-paypal"></i>
+            <i class="bx bxl-apple"></i>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Checkout Modal -->
-<div class="checkout-modal" id="checkoutModal">
-    <div class="modal-content">
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+      <div class="modal-content">
         <span class="close-modal" id="closeCheckout">&times;</span>
         <h2>Checkout</h2>
         <div class="checkout-steps">
-            <div class="step active" data-step="1">1. Shipping</div>
-            <div class="step" data-step="2">2. Payment</div>
-            <div class="step" data-step="3">3. Review</div>
+          <div class="step active" data-step="1">1. Shipping</div>
+          <div class="step" data-step="2">2. Payment</div>
+          <div class="step" data-step="3">3. Review</div>
         </div>
-        
+
         <!-- Step 1: Shipping -->
         <div class="checkout-step-content" id="step1Content">
-            <h3>Shipping Information</h3>
-            <form id="shippingForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" id="address" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="state">State</label>
-                        <input type="text" id="state" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="zipCode">Zip Code</label>
-                        <input type="text" id="zipCode" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    <select id="country" required>
-                        <option value="">Select Country</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="AU">Australia</option>
-                    </select>
-                </div>
-                <div class="form-group shipping-method">
-                    <h4>Shipping Method</h4>
-                    <div class="shipping-options">
-                        <label class="shipping-option">
-                            <input type="radio" name="shipping" value="standard" checked>
-                            <div class="shipping-option-content">
-                                <div class="shipping-option-info">
-                                    <span class="shipping-name">Standard Shipping</span>
-                                    <span class="shipping-time">3-5 business days</span>
-                                </div>
-                                <span class="shipping-price">$5.99</span>
-                            </div>
-                        </label>
-                        <label class="shipping-option">
-                            <input type="radio" name="shipping" value="express">
-                            <div class="shipping-option-content">
-                                <div class="shipping-option-info">
-                                    <span class="shipping-name">Express Shipping</span>
-                                    <span class="shipping-time">1-2 business days</span>
-                                </div>
-                                <span class="shipping-price">$12.99</span>
-                            </div>
-                        </label>
-                        <label class="shipping-option">
-                            <input type="radio" name="shipping" value="nextday">
-                            <div class="shipping-option-content">
-                                <div class="shipping-option-info">
-                                    <span class="shipping-name">Next Day Delivery</span>
-                                    <span class="shipping-time">Next business day</span>
-                                </div>
-                                <span class="shipping-price">$19.99</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <div class="checkout-navigation">
-                    <button type="button" class="secondary-button" id="continueShopping">Back to Cart</button>
-                    <button type="button" class="primary-button" id="toPaymentBtn">Continue to Payment</button>
-                </div>
-            </form>
-        </div>
-        
-        <!-- Step 2: Payment -->
-        <div class="checkout-step-content hidden" id="step2Content">
-            <h3>Payment Information</h3>
-            <form id="paymentForm">
-                <div class="payment-methods-selection">
-                    <div class="payment-method active" data-method="card">
-                        <i class='bx bx-credit-card'></i> Credit Card
-                    </div>
-                    <div class="payment-method" data-method="paypal">
-                        <i class='bx bxl-paypal'></i> PayPal
-                    </div>
-                    <div class="payment-method" data-method="apple">
-                        <i class='bx bxl-apple'></i> Apple Pay
-                    </div>
-                </div>
-                
-                <div class="payment-form" id="cardPaymentForm">
-                    <div class="form-group">
-                        <label for="cardName">Name on Card</label>
-                        <input type="text" id="cardName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cardNumber">Card Number</label>
-                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="expiryDate">Expiry Date</label>
-                            <input type="text" id="expiryDate" placeholder="MM/YY" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" placeholder="123" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="payment-form hidden" id="paypalForm">
-                    <p>You will be redirected to PayPal to complete your payment.</p>
-                </div>
-
-                <div class="payment-form hidden" id="applePayForm">
-                    <p>Continue with Apple Pay to complete your payment.</p>
-                </div>
-
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" id="savePaymentInfo">
-                        Save payment information for future purchases
-                    </label>
-                </div>
-                
-                <div class="checkout-navigation">
-                    <button type="button" class="secondary-button" id="backToShipping">Back to Shipping</button>
-                    <button type="button" class="primary-button" id="toReviewBtn">Continue to Review</button>
-                </div>
-            </form>
-        </div>
-        
-        <!-- Step 3: Review -->
-        <div class="checkout-step-content hidden" id="step3Content">
-            <h3>Order Review</h3>
-            <div class="order-summary">
-                <div class="order-items">
-                    <h4>Order Items</h4>
-                    <div id="reviewOrderItems">
-                        <!-- Order items will be dynamically added here -->
-                    </div>
-                </div>
-                <div class="order-details">
-                    <div class="shipping-details">
-                        <h4>Shipping Details</h4>
-                        <div id="reviewShippingDetails">
-                            <!-- Shipping details will be added here -->
-                        </div>
-                    </div>
-                    <div class="payment-details">
-                        <h4>Payment Method</h4>
-                        <div id="reviewPaymentDetails">
-                            <!-- Payment details will be added here -->
-                        </div>
-                    </div>
-                </div>
-                <div class="order-totals">
-                    <div class="total-row">
-                        <span>Subtotal:</span>
-                        <span id="reviewSubtotal">$0.00</span>
-                    </div>
-                    <div class="total-row">
-                        <span>Shipping:</span>
-                        <span id="reviewShipping">$0.00</span>
-                    </div>
-                    <div class="total-row discount-row" id="reviewDiscountRow">
-                        <span>Discount:</span>
-                        <span id="reviewDiscount">-$0.00</span>
-                    </div>
-                    <div class="total-row tax-row">
-                        <span>Tax:</span>
-                        <span id="reviewTax">$0.00</span>
-                    </div>
-                    <div class="total-row final-total">
-                        <span>Total:</span>
-                        <span id="reviewTotal">$0.00</span>
-                    </div>
-                </div>
+          <h3>Shipping Information</h3>
+          <form id="shippingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required />
+              </div>
             </div>
-            <div class="terms-conditions">
-                <label>
-                    <input type="checkbox" id="termsAgree" required>
-                    I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" required />
+              </div>
+              <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" required />
+              </div>
+              <div class="form-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="text" id="zipCode" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AU">Australia</option>
+              </select>
+            </div>
+            <div class="form-group shipping-method">
+              <h4>Shipping Method</h4>
+              <div class="shipping-options">
+                <label class="shipping-option">
+                  <input
+                    type="radio"
+                    name="shipping"
+                    value="standard"
+                    checked
+                  />
+                  <div class="shipping-option-content">
+                    <div class="shipping-option-info">
+                      <span class="shipping-name">Standard Shipping</span>
+                      <span class="shipping-time">3-5 business days</span>
+                    </div>
+                    <span class="shipping-price">$5.99</span>
+                  </div>
                 </label>
+                <label class="shipping-option">
+                  <input type="radio" name="shipping" value="express" />
+                  <div class="shipping-option-content">
+                    <div class="shipping-option-info">
+                      <span class="shipping-name">Express Shipping</span>
+                      <span class="shipping-time">1-2 business days</span>
+                    </div>
+                    <span class="shipping-price">$12.99</span>
+                  </div>
+                </label>
+                <label class="shipping-option">
+                  <input type="radio" name="shipping" value="nextday" />
+                  <div class="shipping-option-content">
+                    <div class="shipping-option-info">
+                      <span class="shipping-name">Next Day Delivery</span>
+                      <span class="shipping-time">Next business day</span>
+                    </div>
+                    <span class="shipping-price">$19.99</span>
+                  </div>
+                </label>
+              </div>
             </div>
             <div class="checkout-navigation">
-                <button type="button" class="secondary-button" id="backToPayment">Edit Payment</button>
-                <button type="button" class="primary-button" id="placeOrderBtn">Place Order</button>
+              <button
+                type="button"
+                class="secondary-button"
+                id="continueShopping"
+              >
+                Back to Cart
+              </button>
+              <button type="button" class="primary-button" id="toPaymentBtn">
+                Continue to Payment
+              </button>
             </div>
+          </form>
         </div>
-    </div>
-</div>
 
-<!-- Order Confirmation Modal -->
-<div class="confirmation-modal" id="confirmationModal">
-    <div class="modal-content">
+        <!-- Step 2: Payment -->
+        <div class="checkout-step-content hidden" id="step2Content">
+          <h3>Payment Information</h3>
+          <form id="paymentForm">
+            <div class="payment-methods-selection">
+              <div class="payment-method active" data-method="card">
+                <i class="bx bx-credit-card"></i> Credit Card
+              </div>
+              <div class="payment-method" data-method="paypal">
+                <i class="bx bxl-paypal"></i> PayPal
+              </div>
+              <div class="payment-method" data-method="apple">
+                <i class="bx bxl-apple"></i> Apple Pay
+              </div>
+            </div>
+
+            <div class="payment-form" id="cardPaymentForm">
+              <div class="form-group">
+                <label for="cardName">Name on Card</label>
+                <input type="text" id="cardName" required />
+              </div>
+              <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiryDate">Expiry Date</label>
+                  <input
+                    type="text"
+                    id="expiryDate"
+                    placeholder="MM/YY"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" placeholder="123" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-form hidden" id="paypalForm">
+              <p>You will be redirected to PayPal to complete your payment.</p>
+            </div>
+
+            <div class="payment-form hidden" id="applePayForm">
+              <p>Continue with Apple Pay to complete your payment.</p>
+            </div>
+
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="savePaymentInfo" />
+                Save payment information for future purchases
+              </label>
+            </div>
+
+            <div class="checkout-navigation">
+              <button
+                type="button"
+                class="secondary-button"
+                id="backToShipping"
+              >
+                Back to Shipping
+              </button>
+              <button type="button" class="primary-button" id="toReviewBtn">
+                Continue to Review
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 3: Review -->
+        <div class="checkout-step-content hidden" id="step3Content">
+          <h3>Order Review</h3>
+          <div class="order-summary">
+            <div class="order-items">
+              <h4>Order Items</h4>
+              <div id="reviewOrderItems">
+                <!-- Order items will be dynamically added here -->
+              </div>
+            </div>
+            <div class="order-details">
+              <div class="shipping-details">
+                <h4>Shipping Details</h4>
+                <div id="reviewShippingDetails">
+                  <!-- Shipping details will be added here -->
+                </div>
+              </div>
+              <div class="payment-details">
+                <h4>Payment Method</h4>
+                <div id="reviewPaymentDetails">
+                  <!-- Payment details will be added here -->
+                </div>
+              </div>
+            </div>
+            <div class="order-totals">
+              <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="reviewSubtotal">$0.00</span>
+              </div>
+              <div class="total-row">
+                <span>Shipping:</span>
+                <span id="reviewShipping">$0.00</span>
+              </div>
+              <div class="total-row discount-row" id="reviewDiscountRow">
+                <span>Discount:</span>
+                <span id="reviewDiscount">-$0.00</span>
+              </div>
+              <div class="total-row tax-row">
+                <span>Tax:</span>
+                <span id="reviewTax">$0.00</span>
+              </div>
+              <div class="total-row final-total">
+                <span>Total:</span>
+                <span id="reviewTotal">$0.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="terms-conditions">
+            <label>
+              <input type="checkbox" id="termsAgree" required />
+              I agree to the <a href="#">Terms and Conditions</a> and
+              <a href="#">Privacy Policy</a>
+            </label>
+          </div>
+          <div class="checkout-navigation">
+            <button type="button" class="secondary-button" id="backToPayment">
+              Edit Payment
+            </button>
+            <button type="button" class="primary-button" id="placeOrderBtn">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="confirmation-modal" id="confirmationModal">
+      <div class="modal-content">
         <div class="confirmation-header">
-            <i class='bx bx-check-circle'></i>
-            <h2>Order Confirmed!</h2>
+          <i class="bx bx-check-circle"></i>
+          <h2>Order Confirmed!</h2>
         </div>
-        <p>Thank you for your purchase. Your order <span id="orderNumber">#12345</span> has been confirmed.</p>
+        <p>
+          Thank you for your purchase. Your order
+          <span id="orderNumber">#12345</span> has been confirmed.
+        </p>
         <div class="order-details">
-            <h3>Order Details</h3>
-            <div class="confirmation-details" id="confirmationDetails">
-                <!-- Order details will be added here -->
-            </div>
+          <h3>Order Details</h3>
+          <div class="confirmation-details" id="confirmationDetails">
+            <!-- Order details will be added here -->
+          </div>
         </div>
-        <p>A confirmation email has been sent to <span id="confirmationEmail">example@email.com</span>.</p>
+        <p>
+          A confirmation email has been sent to
+          <span id="confirmationEmail">example@email.com</span>.
+        </p>
         <div class="confirmation-actions">
-            <button class="secondary-button" id="viewOrderBtn">View Order</button>
-            <button class="primary-button" id="continueBrowsingBtn">Continue Shopping</button>
+          <button class="secondary-button" id="viewOrderBtn">View Order</button>
+          <button class="primary-button" id="continueBrowsingBtn">
+            Continue Shopping
+          </button>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Recently Viewed Products -->
-<section class="recently-viewed">
-    <div class="container">
-        <h2 class="section-title">Recently Viewed</h2>
-        <div class="product-slider" id="recentlyViewedSlider">
-            <!-- Recently viewed products will be dynamically added here -->
-        </div>
-    </div>
-</section>
-
-<!-- Recommended Products -->
-<section class="recommended-products">
-    <div class="container">
-        <h2 class="section-title">You May Also Like</h2>
-        <div class="product-slider" id="recommendedProductsSlider">
-            <!-- Recommended products will be dynamically added here -->
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
         <div class="footer-content">
-            <div class="footer-logo">
-                <div class="logo"><span>H</span>ope <span>B</span>ites</div>
-                <p>Nutritious snacks for growing kids</p>
+          <div class="footer-logo">
+            <div class="logo"><span>H</span>ope <span>B</span>ites</div>
+            <p>Nutritious snacks for growing kids</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Shop</h3>
+              <ul>
+                <li><a href="#fruit-section">Fruit Snacks</a></li>
+                <li><a href="#protein-section">Protein Bars</a></li>
+                <li><a href="#vitamin-section">Vitamin Gummies</a></li>
+                <li><a href="#organic-section">Organic Line</a></li>
+              </ul>
             </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h3>Shop</h3>
-                    <ul>
-                        <li><a href="#fruit-section">Fruit Snacks</a></li>
-                        <li><a href="#protein-section">Protein Bars</a></li>
-                        <li><a href="#vitamin-section">Vitamin Gummies</a></li>
-                        <li><a href="#organic-section">Organic Line</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="mission.html">Our Mission</a></li>
-                        <li><a href="sustainability.html">Sustainability</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="shipping.html">Shipping Policy</a></li>
-                        <li><a href="returns.html">Returns & Refunds</a></li>
-                    </ul>
-                </div>
+            <div class="footer-column">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
             </div>
-            <div class="footer-newsletter">
-                <h3>Stay Connected</h3>
-                <p>Subscribe to our newsletter for updates, recipes, and special offers.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit">Subscribe</button>
-                </form>
-                <div class="social-links">
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
-                    <a href="#"><i class='bx bxl-pinterest'></i></a>
-                </div>
+          </div>
+          <div class="footer-newsletter">
+            <h3>Stay Connected</h3>
+            <p>
+              Subscribe to our newsletter for updates, recipes, and special
+              offers.
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" />
+              <button type="submit">Subscribe</button>
+            </form>
+            <div class="social-links">
+              <a href="#"><i class="bx bxl-facebook"></i></a>
+              <a href="#"><i class="bx bxl-instagram"></i></a>
+              <a href="#"><i class="bx bxl-twitter"></i></a>
             </div>
+          </div>
         </div>
         <div class="footer-bottom">
-            <div class="copyright">
-                &copy; 2025 Hope Bites. All rights reserved.
-            </div>
-            <div class="footer-legal">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="accessibility.html">Accessibility</a>
-            </div>
+          <div class="copyright">
+            &copy; 2025 Hope Bites. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tweakpane/4.0.4/tweakpane.min.js"></script>
-<script src="shopping.js"></script>
-<script>
-            const storageKey = 'theme-preference';
-
-const onClick = () => {
-    // flip current value
-    theme.value = theme.value === 'light'
-        ? 'dark'
-        : 'light';
-
-    setPreference();
-};
-
-const getColorPreference = () => {
-    if (localStorage.getItem(storageKey))
-        return localStorage.getItem(storageKey);
-    else
-        return window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light';
-};
-
-const setPreference = () => {
-    localStorage.setItem(storageKey, theme.value);
-    reflectPreference();
-};
-
-const reflectPreference = () => {
-    document.firstElementChild
-        .setAttribute('data-theme', theme.value);
-
-    document
-        .querySelector('#theme-toggle')
-        ?.setAttribute('aria-label', theme.value);
-        
-    // Toggle dark-mode class on body for compatibility with existing styles
-    if (theme.value === 'dark') {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-    }
-};
-
-const theme = {
-    value: getColorPreference(),
-};
-
-// set early so no page flashes / CSS is made aware
-reflectPreference();
-
-window.onload = () => {
-    // set on load so screen readers can see latest value on the button
-    reflectPreference();
-
-    // now this script can find and listen for clicks on the control
-    document
-        .querySelector('#theme-toggle')
-        .addEventListener('click', onClick);
-        
-    // Mobile menu toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        
-        // Change the icon based on menu state
-        const icon = mobileToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('bx-menu');
-            icon.classList.add('bx-x');
-        } else {
-            icon.classList.remove('bx-x');
-            icon.classList.add('bx-menu');
-        }
-    });
-};
-
-// sync with system changes
-window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', ({matches:isDark}) => {
-        theme.value = isDark ? 'dark' : 'light';
-        setPreference();
-    });
-</script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tweakpane/4.0.4/tweakpane.min.js"></script>
+    <script src="shopping.js"></script>
+  </body>
 </html>
