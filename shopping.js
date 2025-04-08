@@ -108,9 +108,234 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
+            id: 'fruit3',
+            name: 'Tropical Fruit Medley',
+            shortDesc: 'Exotic fruit blend with added fiber',
+            fullDesc: 'Crunchy, delicious apple slices with just a touch of cinnamon. These crisps are baked, not fried, making them a healthier alternative to traditional chips. Perfect for satisfying those crunchy cravings!',
+            price: 10.99,
+            originalPrice: 10.99,
+            category: 'fruit',
+            age: 'toddler',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                'Made with real apples',
+                'Good source of fiber',
+                'No added sugar',
+                'Satisfying crunch kids love'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '70', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '0.5g', dailyValue: '1%' },
+                { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
+                { nutrient: 'Vitamin A', amount: '80IU', dailyValue: '2%' }
+            ]
+        },
+        {
             id: 'protein1',
             name: 'Chocolate Chip Protein Bar',
             shortDesc: 'Delicious protein bar with chocolate chips',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'protein2',
+            name: 'Peanut Butter Blast Bar',
+            shortDesc: 'Rich peanut butter protein bar',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'protein3',
+            name: 'Berry Yogurt Protein Bar',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'vitamin1',
+            name: 'Multi-Vitamin Fruit Gummies',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'vitamin2',
+            name: 'Berry Yogurt Protein Bar',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'vitamin3',
+            name: 'Berry Yogurt Protein Bar',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'organic1',
+            name: 'Berry Yogurt Protein Bar',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'organic2',
+            name: 'Berry Yogurt Protein Bar',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
+            fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
+            price: 14.99,
+            originalPrice: 17.99,
+            category: 'protein',
+            age: 'kids',
+            image: 'assets/img-1.jpg',
+            isNew: false,
+            isBestseller: false,
+            benefits: [
+                '8g of protein per bar',
+                'Made with real chocolate chips',
+                'No artificial sweeteners',
+                'Supports muscle development'
+            ],
+            nutrition: [
+                { nutrient: 'Calories', amount: '150', dailyValue: '-' },
+                { nutrient: 'Protein', amount: '8g', dailyValue: '16%' },
+                { nutrient: 'Carbs', amount: '15g', dailyValue: '5%' },
+                { nutrient: 'Calcium', amount: '100mg', dailyValue: '10%' }
+            ]
+        },
+        {
+            id: 'organic3',
+            name: 'Berry Yogurt Protein Bar',
+            shortDesc: 'Creamy yogurt coating with berry pieces',
             fullDesc: 'Our Chocolate Chip Protein Bars are a delicious way to give your kids the protein they need for growth and development. Each bar contains 8g of protein and is made with real chocolate chips for a treat they\'ll love.',
             price: 14.99,
             originalPrice: 17.99,

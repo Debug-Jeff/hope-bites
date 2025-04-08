@@ -478,7 +478,7 @@ body {
 /* Extras */
 .extra {
     padding: 60px 0;
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
 }
 
@@ -702,7 +702,7 @@ footer {
 
 /* Hero Banner */
 .about-hero {
-    background: linear-gradient(rgba(46, 83, 57, 0.8), rgba(46, 83, 57, 0.9)), url('../assets/about-banner.jpg');
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     background-size: cover;
     background-position: center;
     color: white;
@@ -764,6 +764,7 @@ footer {
     align-items: center;
     gap: 40px;
     margin-top: 40px;
+    border-radius: 10px;
 }
 
 .story-image {
@@ -776,15 +777,11 @@ footer {
     height: auto;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
-}
-
-.story-image img:hover {
-    transform: scale(1.02);
 }
 
 .story-text {
-    flex: 1;
+    max-width: 50%;
+    padding-right: 20px;
 }
 
 .story-text p {
@@ -972,6 +969,11 @@ footer {
     transition: all 0.3s ease;
 }
 
+.member-social a {
+    list-style: none;
+    text-decoration: none;
+}
+
 .member-social a:hover {
     background-color: var(--secondary-color);
     transform: translateY(-3px);
@@ -1043,7 +1045,7 @@ footer {
 
 /* CTA Section */
 .about-cta {
-    background: linear-gradient(rgba(46, 83, 57, 0.9), rgba(46, 83, 57, 0.95)), url('../assets/cta-bg.jpg');
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     background-size: cover;
     background-position: center;
     padding: 80px 20px;
@@ -1054,6 +1056,7 @@ footer {
 .about-cta h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: var(--text-color);
 }
 
 .about-cta p {
@@ -1178,14 +1181,12 @@ footer {
 }
 
 [data-theme="dark"] .about-hero {
-    background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.9)), url('../assets/about-banner.jpg');
-    background-size: cover;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);    background-size: cover;
     background-position: center;
 }
 
 [data-theme="dark"] .about-cta {
-    background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.95)), url('../assets/cta-bg.jpg');
-    background-size: cover;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);    background-size: cover;
     background-position: center;
 }
 
