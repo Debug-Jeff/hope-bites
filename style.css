@@ -6,7 +6,7 @@
     --secondary-color: #dd300a; 
     --background-color: #D4F5F5;
     --flash-color: #fff700; 
-    --flash-color2: #bf00ff;
+    --flash-color2: #fff700;
     --text-color: #000000;
     --font-family: 'Poppins', sans-serif;
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -19,8 +19,8 @@
     --primary-color: #2E7D32;
     --secondary-color: #ff5722;
     --background-color: #263238;
-    --flash-color: #FFD600;
-    --flash-color2: #E040FB;
+    --flash-color: #fff700;
+    --flash-color2: #fff700;
     --text-color: #FFFFFF;
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     --icon-fill: #FFD600;
@@ -204,7 +204,23 @@ body {
 }
 
 .nav-bar .links a:hover {
-    color: var(--flash-color2);
+    color: var(--secondary-color);
+}
+
+.nav-bar .links a.active {
+    color: var(--secondary-color); /* Change this to your preferred highlight color */
+    font-weight: 600; /* Optional: make active links bold */
+    position: relative;
+}
+
+.nav-bar .links a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color); 
+    bottom: -5px;
+    left: 0;
 }
 
 /* Removing underline animation for regular links only */
@@ -215,7 +231,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--flash-color2);
+    background-color: var(--secondary-color);
     transition: width 0.3s ease;
 }
 
@@ -248,9 +264,13 @@ body {
     color: var(--primary-color);
 }
 
+.nav-bar .contact-btn a {
+    color: var(--primary-color);
+}
+
 .contact-btn a {
     background-color: var(--flash-color2);
-    color: white !important;
+    color: var(--primary-color);
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: 600;
@@ -261,7 +281,7 @@ body {
 }
 
 .contact-btn a:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -477,6 +497,7 @@ body {
 }
 
 .hm-text h2 {
+    color: white;
     font-size: 36px;
     margin-bottom: 15px;
 }
@@ -522,11 +543,13 @@ footer {
 .ft-name {
     display: flex;
     align-items: center;
-    gap: 15px;
     margin-bottom: 30px;
 }
 
 .ft-name .logo img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     width: auto;
 }
@@ -960,7 +983,7 @@ footer {
 }
 
 .partners-container {
-    overflow: hidden;
+    overflow: none;
     position: relative;
     padding: 20px 0;
 }

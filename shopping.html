@@ -105,6 +105,14 @@
               <a href="#vitamin-section" class="btn">Shop Now</a>
             </div>
           </div>
+          <div class="carousel-slide">
+            <img src="assets/img-7.jpg" alt="Hope Bites Organic Snacks" />
+            <div class="slide-content">
+              <h2>Organic Line</h2>
+              <p>100% organic snacks with no artificial ingredients</p>
+              <a href="#organic-section" class="btn">Shop Now</a>
+            </div>
+          </div>
         </div>
         <button class="carousel-btn prev-btn" id="prevBtn">
           <i class="bx bx-chevron-left"></i>
@@ -185,7 +193,7 @@
                 Mixed fruit snack with added vitamins
               </p>
               <div class="product-price">
-                <span class="price">$12.99</span>
+                <span class="price">345</span>
                 <span class="price-per">(3-pack)</span>
               </div>
               <div class="product-actions">
@@ -214,7 +222,8 @@
                 Crispy apple snacks with a hint of cinnamon
               </p>
               <div class="product-price">
-                <span class="price">$10.99</span>
+                <span class="price">Ksh. 30
+                </span>
                 <span class="price-per">(3-pack)</span>
               </div>
               <div class="product-actions">
@@ -243,7 +252,7 @@
                 Exotic fruit blend with added fiber
               </p>
               <div class="product-price">
-                <span class="price">$13.99</span>
+                <span class="price">120</span>
                 <span class="price-per">(3-pack)</span>
               </div>
               <div class="product-actions">
@@ -256,8 +265,8 @@
               </div>
             </div>
           </div>
+
         </div>
-      </section>
 
       <!-- Protein Bars Section -->
       <section class="product-section" id="protein-section">
@@ -510,6 +519,33 @@
               </div>
             </div>
           </div>
+
+          <div
+          class="product-card"
+          data-id="organic2"
+          data-category="organic"
+          data-age="kids"
+        >
+          <div class="product-image">
+            <img src="assets/img-1.jpg" alt="Organic Veggie Straws" />
+          </div>
+          <div class="product-info">
+            <h3>Organic Veggie Straws</h3>
+            <p class="product-short-desc">Crunchy organic vegetable snacks</p>
+            <div class="product-price">
+              <span class="price">$11.99</span>
+              <span class="price-per">(6 pouches)</span>
+            </div>
+            <div class="product-actions">
+              <button class="view-details-btn" data-product="organic2">
+                View Details
+              </button>
+              <button class="add-to-cart" data-product="organic2">
+                <i class="bx bx-cart-add"></i>
+              </button>
+            </div>
+          </div>
+        </div>
         </div>
       </section>
     </section>
@@ -843,6 +879,97 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Enhanced cart functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Update cart count
+        function updateCartCount() {
+          const count = cart.reduce((total, item) => total + item.quantity, 0);
+          document.getElementById('cartCount').textContent = count;
+        }
+        
+        // Add to cart function
+        function addToCart(productId) {
+          const existingItem = cart.find(item => item.id === productId);
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push({
+              id: productId,
+              quantity: 1,
+              name: document.querySelector(`[data-id="${productId}"] h3`).textContent,
+              price: parseFloat(document.querySelector(`[data-id="${productId}"] .price`).textContent.replace('$', ''))
+            });
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          renderCartItems();
+        }
+        
+        // Remove from cart function
+        function removeFromCart(productId) {
+          cart = cart.filter(item => item.id !== productId);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          renderCartItems();
+        }
+        
+        // Render cart items
+        function renderCartItems() {
+          const cartItemsContainer = document.getElementById('cartItems');
+          if (cart.length === 0) {
+            cartItemsContainer.innerHTML = `
+              <div class="empty-cart-message" id="emptyCartMessage">
+                <i class="bx bx-cart-alt"></i>
+                <p>Your cart is empty</p>
+                <button class="start-shopping-btn" id="startShopping">
+                  Start Shopping
+                </button>
+              </div>
+            `;
+          } else {
+            cartItemsContainer.innerHTML = cart.map(item => `
+              <div class="cart-item" data-id="${item.id}">
+                <div class="item-info">
+                  <h4>${item.name}</h4>
+                  <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
+                </div>
+                <button class="remove-item" data-id="${item.id}">
+                  <i class="bx bx-trash"></i>
+                </button>
+              </div>
+            `).join('');
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-item').forEach(button => {
+              button.addEventListener('click', (e) => {
+                removeFromCart(e.target.closest('button').dataset.id);
+              });
+            });
+          }
+          
+          // Update cart totals
+          const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+          document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+          document.getElementById('cartTotal').textContent = `$${(subtotal + 5.99).toFixed(2)}`; // Add shipping
+        }
+        
+        // Add event listeners to add-to-cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+          button.addEventListener('click', (e) => {
+            addToCart(e.target.closest('button').dataset.product);
+          });
+        });
+        
+        // Initialize cart
+        updateCartCount();
+        renderCartItems();
+      });
+    </script>
 
     <!-- Checkout Modal -->
     <div class="checkout-modal" id="checkoutModal">

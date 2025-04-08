@@ -918,8 +918,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
 // Part 2 -- Checkout system
 document.addEventListener('DOMContentLoaded', function() {
     // Cart and Product Data (Sample data - would normally come from your database)
