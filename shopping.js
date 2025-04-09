@@ -1207,7 +1207,6 @@ function showToast(message, type = 'success') {
 
 // Initialize everything
 init();
-});
 
 
 
