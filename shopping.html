@@ -1,278 +1,225 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hope Bites - Shop</title>
-    <link rel="shortcut icon" href="assets/HB-logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="shopping.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Nav bar -->
-    <div class="nav-bar">
-      <div class="logo"><span>H</span>ope <span>B</span>ites</div>
-      <div class="links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="product.html">Products</a>
-        <a href="support.html">Support</a>
-        <div class="shopping active">
-          <a href="shopping.html"
-            ><i class="bx bxs-shopping-bag"></i
-            ><span class="cart-count" id="cartCount">0</span></a
-          >
-        </div>
-        <div class="contact-btn">
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="dark-mode-container">
-          <button
-            class="theme-toggle"
-            id="theme-toggle"
-            title="Toggles light & dark"
-            aria-label="auto"
-            aria-live="polite"
-          >
-            <svg
-              class="sun-and-moon"
-              aria-hidden="true"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <mask class="moon" id="moon-mask">
-                <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                <circle cx="24" cy="10" r="6" fill="black" />
-              </mask>
-              <circle
-                class="sun"
-                cx="12"
-                cy="12"
-                r="6"
-                mask="url(#moon-mask)"
-                fill="currentColor"
-              />
-              <g class="sun-beams" stroke="currentColor">
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </g>
-            </svg>
-          </button>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hope Bites - Shop</title>
+  <link rel="shortcut icon" href="assets/HB-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="shopping.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <div class="nav-bar">
+    <div class="logo"><span>H</span>ope <span>B</span>ites</div>
+    <div class="links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="product.html">Products</a>
+      <a href="support.html">Support</a>
+      <div class="shopping active">
+        <a href="shopping.html"><i class="bx bxs-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></a>
       </div>
-      <div class="mobile-toggle" id="mobileToggle">
-        <i class="bx bx-menu"></i>
+      <div class="contact-btn">
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="dark-mode-container">
+        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto"
+          aria-live="polite">
+          <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+            <mask class="moon" id="moon-mask">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" />
+              <circle cx="24" cy="10" r="6" fill="black" />
+            </mask>
+            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+            <g class="sun-beams" stroke="currentColor">
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        </button>
       </div>
     </div>
+    <div class="mobile-toggle" id="mobileToggle">
+      <i class="bx bx-menu"></i>
+    </div>
+  </div>
 
-    <!-- Hero Carousel Section -->
-    <section class="product-carousel">
-      <h1 class="section-title">Featured Products</h1>
-      <div class="carousel-container">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
-            <img src="assets/img-9.jpg" alt="Hope Bites Fruit Mix" />
-            <div class="slide-content">
-              <h2>Fruit Mix</h2>
-              <p>
-                Delicious fruit-based nutritional snacks for growing children
-              </p>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/fruit-mix.jpg" alt="Hope Bites Fruit Mix" />
-            <div class="slide-content">
-              <h2>Fruit Mix</h2>
-              <p>
-                Delicious fruit-based nutritional snacks for growing children
-              </p>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/fruit-mix.jpg" alt="Hope Bites Fruit Mix" />
-            <div class="slide-content">
-              <h2>Fruit Mix</h2>
-              <p>
-                Delicious fruit-based nutritional snacks for growing children
-              </p>
-            </div>
-          </div>
-          
-        </div>
-        <button class="carousel-btn prev-btn" id="prevBtn">
-          <i class="bx bx-chevron-left"></i>
-        </button>
-        <button class="carousel-btn next-btn" id="nextBtn">
-          <i class="bx bx-chevron-right"></i>
-        </button>
-        <div class="carousel-indicators" id="carouselIndicators"></div>
-      </div>
-    </section>
-
-    <!-- Product Filter Bar -->
-    <section class="filter-bar">
-      <div class="container">
-        <div class="filters">
-          <div class="filter-group">
-            <label for="categoryFilter">Category:</label>
-            <select id="categoryFilter" class="filter-select">
-              <option value="all">All Categories</option>
-              <option value="fruit">Fruit Snacks</option>
-              <option value="protein">Protein Bars</option>
-              <option value="vitamin">Vitamin Gummies</option>
-              <option value="organic">Organic Line</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label for="ageFilter">Age Group:</label>
-            <select id="ageFilter" class="filter-select">
-              <option value="all">All Ages</option>
-              <option value="toddler">2-4 years</option>
-              <option value="kids">5-8 years</option>
-              <option value="preteen">9-12 years</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label for="sortBy">Sort By:</label>
-            <select id="sortBy" class="filter-select">
-              <option value="popular">Most Popular</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="newest">Newest First</option>
-            </select>
+  <!-- Hero Carousel Section -->
+  <section class="product-carousel">
+    <h1 class="section-title">Featured Products</h1>
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img src="assets/img-9.jpg" alt="Hope Bites Fruit Mix" />
+          <div class="slide-content">
+            <h2>Fruit Mix</h2>
+            <p>Delicious fruit-based nutritional snacks for growing children</p>
           </div>
         </div>
-        <div class="search-container">
-          <input
-            type="text"
-            id="productSearch"
-            placeholder="Search products..."
-          />
-          <button id="searchBtn"><i class="bx bx-search"></i></button>
+        <div class="carousel-slide">
+          <img src="assets/fruit-mix.jpg" alt="Hope Bites Vitamin Gummies" />
+          <div class="slide-content">
+            <h2>Vitamin Gummies</h2>
+            <p>Complete daily vitamins in delicious gummy form</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/img-3.jpg" alt="Hope Bites Protein Bars" />
+          <div class="slide-content">
+            <h2>Protein Bars</h2>
+            <p>Nutritious protein-packed bars for active kids</p>
+          </div>
         </div>
       </div>
-    </section>
+      <button class="carousel-btn prev-btn" id="prevBtn">
+        <i class="bx bx-chevron-left"></i>
+      </button>
+      <button class="carousel-btn next-btn" id="nextBtn">
+        <i class="bx bx-chevron-right"></i>
+      </button>
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+  </section>
 
-    <!-- Product Display -->
-    <section class="products-container" id="product-container">
-      <!-- Fruit Snacks Section -->
-      <section class="product-section" id="fruit-section">
-        <h2 class="section-title">Fruit Snacks</h2>
-        <div class="product-grid">
-          <div
-            class="product-card"
-            data-id="fruit1"
-            data-category="fruit"
-            data-age="kids"
-          >
-            <div class="product-image">
-              <img src="assets/img-1.jpg" alt="Mixed Berry Bites" />
-              <div class="product-badges">
-                <span class="badge new">New</span>
-                <span class="badge bestseller">Bestseller</span>
-              </div>
-            </div>
-            <div class="product-info">
-              <h3>Mixed Berry Bites</h3>
-              <p class="product-short-desc">
-                Mixed fruit snack with added vitamins
-              </p>
-              <div class="product-price">
-                <span class="price">345</span>
-                <span class="price-per">(3-pack)</span>
-              </div>
-              <div class="product-actions">
-                <button class="view-details-btn" data-product="fruit1">
-                  View Details
-                </button>
-                <button class="add-to-cart" data-product="fruit1">
-                  <i class="bx bx-cart-add"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="product-card"
-            data-id="fruit2"
-            data-category="fruit"
-            data-age="toddler"
-          >
-            <div class="product-image">
-              <img src="assets/img-1.jpg" alt="Apple Cinnamon Crisps" />
-            </div>
-            <div class="product-info">
-              <h3>Apple Cinnamon Crisps</h3>
-              <p class="product-short-desc">
-                Crispy apple snacks with a hint of cinnamon
-              </p>
-              <div class="product-price">
-                <span class="price">Ksh. 30
-                </span>
-                <span class="price-per">(3-pack)</span>
-              </div>
-              <div class="product-actions">
-                <button class="view-details-btn" data-product="fruit2">
-                  View Details
-                </button>
-                <button class="add-to-cart" data-product="fruit2">
-                  <i class="bx bx-cart-add"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="product-card"
-            data-id="fruit3"
-            data-category="fruit"
-            data-age="preteen"
-          >
-            <div class="product-image">
-              <img src="assets/img-1.jpg" alt="Tropical Fruit Medley" />
-            </div>
-            <div class="product-info">
-              <h3>Tropical Fruit Medley</h3>
-              <p class="product-short-desc">
-                Exotic fruit blend with added fiber
-              </p>
-              <div class="product-price">
-                <span class="price">120</span>
-                <span class="price-per">(3-pack)</span>
-              </div>
-              <div class="product-actions">
-                <button class="view-details-btn" data-product="fruit3">
-                  View Details
-                </button>
-                <button class="add-to-cart" data-product="fruit3">
-                  <i class="bx bx-cart-add"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
+  <!-- Product Filter Bar -->
+  <section class="filter-bar">
+    <div class="container">
+      <div class="filters">
+        <div class="filter-group">
+          <label for="categoryFilter">Category:</label>
+          <select id="categoryFilter" class="filter-select">
+            <option value="all">All Categories</option>
+            <option value="fruit">Fruit Snacks</option>
+            <option value="protein">Protein Bars</option>
+            <option value="vitamin">Vitamin Gummies</option>
+            <option value="organic">Organic Line</option>
+          </select>
         </div>
+        <div class="filter-group">
+          <label for="ageFilter">Age Group:</label>
+          <select id="ageFilter" class="filter-select">
+            <option value="all">All Ages</option>
+            <option value="toddler">2-4 years</option>
+            <option value="kids">5-8 years</option>
+            <option value="preteen">9-12 years</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sortBy">Sort By:</label>
+          <select id="sortBy" class="filter-select">
+            <option value="popular">Most Popular</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+      </div>
+      <div class="search-container">
+        <input type="text" id="productSearch" placeholder="Search products..." />
+        <button id="searchBtn"><i class="bx bx-search"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Display -->
+  <section class="products-container" id="product-container">
+    <!-- Fruit Snacks Section -->
+    <section class="product-section" id="fruit-section">
+      <h2 class="section-title">Fruit Snacks</h2>
+      <div class="product-grid">
+        <div class="product-card" data-id="fruit1" data-category="fruit" data-age="kids">
+          <div class="product-image">
+            <img src="assets/img-1.jpg" alt="Mixed Berry Bites" />
+            <div class="product-badges">
+              <span class="badge new">New</span>
+              <span class="badge bestseller">Bestseller</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Mixed Berry Bites</h3>
+            <p class="product-short-desc">
+              Mixed fruit snack with added vitamins
+            </p>
+            <div class="product-price">
+              <span class="price">Ksh. 45</span>
+              <span class="price-per">(3-pack)</span>
+            </div>
+            <div class="product-actions">
+              <button class="view-details-btn" data-product="fruit1">
+                View Details
+              </button>
+              <button class="add-to-cart" data-product="fruit1">
+                <i class="bx bx-cart-add"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-id="fruit2" data-category="fruit" data-age="toddler">
+          <div class="product-image">
+            <img src="assets/img-1.jpg" alt="Apple Cinnamon Crisps" />
+          </div>
+          <div class="product-info">
+            <h3>Apple Cinnamon Crisps</h3>
+            <p class="product-short-desc">
+              Crispy apple snacks with a hint of cinnamon
+            </p>
+            <div class="product-price">
+              <span class="price">Ksh. 30
+              </span>
+              <span class="price-per">(3-pack)</span>
+            </div>
+            <div class="product-actions">
+              <button class="view-details-btn" data-product="fruit2">
+                View Details
+              </button>
+              <button class="add-to-cart" data-product="fruit2">
+                <i class="bx bx-cart-add"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-id="fruit3" data-category="fruit" data-age="preteen">
+          <div class="product-image">
+            <img src="assets/img-1.jpg" alt="Tropical Fruit Medley" />
+          </div>
+          <div class="product-info">
+            <h3>Tropical Fruit Medley</h3>
+            <p class="product-short-desc">
+              Exotic fruit blend with added fiber
+            </p>
+            <div class="product-price">
+              <span class="price">Ksh. 120</span>
+              <span class="price-per">(3-pack)</span>
+            </div>
+            <div class="product-actions">
+              <button class="view-details-btn" data-product="fruit3">
+                View Details
+              </button>
+              <button class="add-to-cart" data-product="fruit3">
+                <i class="bx bx-cart-add"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
       <!-- Protein Bars Section -->
       <section class="product-section" id="protein-section">
         <h2 class="section-title">Protein Bars</h2>
         <div class="product-grid">
-          <div
-            class="product-card"
-            data-id="protein1"
-            data-category="protein"
-            data-age="kids"
-          >
+          <div class="product-card" data-id="protein1" data-category="protein" data-age="kids">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Chocolate Chip Protein Bar" />
             </div>
@@ -296,12 +243,7 @@
             </div>
           </div>
 
-          <div
-            class="product-card"
-            data-id="protein2"
-            data-category="protein"
-            data-age="preteen"
-          >
+          <div class="product-card" data-id="protein2" data-category="protein" data-age="preteen">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Peanut Butter Blast Bar" />
               <div class="product-badges">
@@ -326,12 +268,7 @@
             </div>
           </div>
 
-          <div
-            class="product-card"
-            data-id="protein3"
-            data-category="protein"
-            data-age="kids"
-          >
+          <div class="product-card" data-id="protein3" data-category="protein" data-age="kids">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Berry Yogurt Protein Bar" />
             </div>
@@ -361,12 +298,7 @@
       <section class="product-section" id="vitamin-section">
         <h2 class="section-title">Vitamin Gummies</h2>
         <div class="product-grid">
-          <div
-            class="product-card"
-            data-id="vitamin1"
-            data-category="vitamin"
-            data-age="toddler"
-          >
+          <div class="product-card" data-id="vitamin1" data-category="vitamin" data-age="toddler">
             <div class="product-image">
               <img src="/assets/img-1.jpg" alt="Multi-Vitamin Fruit Gummies" />
               <div class="product-badges">
@@ -393,12 +325,7 @@
             </div>
           </div>
 
-          <div
-            class="product-card"
-            data-id="vitamin2"
-            data-category="vitamin"
-            data-age="kids"
-          >
+          <div class="product-card" data-id="vitamin2" data-category="vitamin" data-age="kids">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Immune Boost Gummies" />
             </div>
@@ -422,12 +349,7 @@
             </div>
           </div>
 
-          <div
-            class="product-card"
-            data-id="vitamin3"
-            data-category="vitamin"
-            data-age="preteen"
-          >
+          <div class="product-card" data-id="vitamin3" data-category="vitamin" data-age="preteen">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Brain Boost Omega Gummies" />
               <div class="product-badges">
@@ -458,12 +380,7 @@
       <section class="product-section" id="organic-section">
         <h2 class="section-title">Organic Line</h2>
         <div class="product-grid">
-          <div
-            class="product-card"
-            data-id="organic1"
-            data-category="organic"
-            data-age="toddler"
-          >
+          <div class="product-card" data-id="organic1" data-category="organic" data-age="toddler">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Organic Apple Puffs" />
               <div class="product-badges">
@@ -488,12 +405,7 @@
             </div>
           </div>
 
-          <div
-            class="product-card"
-            data-id="organic2"
-            data-category="organic"
-            data-age="kids"
-          >
+          <div class="product-card" data-id="organic2" data-category="organic" data-age="kids">
             <div class="product-image">
               <img src="assets/img-1.jpg" alt="Organic Veggie Straws" />
             </div>
@@ -515,32 +427,27 @@
             </div>
           </div>
 
-          <div
-          class="product-card"
-          data-id="organic3"
-          data-category="organic"
-          data-age="kids"
-        >
-          <div class="product-image">
-            <img src="assets/img-1.jpg" alt="Organic Veggie Straws" />
-          </div>
-          <div class="product-info">
-            <h3>Organic Fruit & Grain Bars</h3>
-            <p class="product-short-desc">Soft-baked organic fruit and ancient grain bars</p>
-            <div class="product-price">
-              <span class="price">$13.99</span>
-              <span class="price-per">(6 pouches)</span>
+          <div class="product-card" data-id="organic3" data-category="organic" data-age="kids">
+            <div class="product-image">
+              <img src="assets/img-1.jpg" alt="Organic Veggie Straws" />
             </div>
-            <div class="product-actions">
-              <button class="view-details-btn" data-product="organic2">
-                View Details
-              </button>
-              <button class="add-to-cart" data-product="organic2">
-                <i class="bx bx-cart-add"></i>
-              </button>
+            <div class="product-info">
+              <h3>Organic Fruit & Grain Bars</h3>
+              <p class="product-short-desc">Soft-baked organic fruit and ancient grain bars</p>
+              <div class="product-price">
+                <span class="price">$13.99</span>
+                <span class="price-per">(6 pouches)</span>
+              </div>
+              <div class="product-actions">
+                <button class="view-details-btn" data-product="organic2">
+                  View Details
+                </button>
+                <button class="add-to-cart" data-product="organic2">
+                  <i class="bx bx-cart-add"></i>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
     </section>
@@ -552,31 +459,13 @@
         <div class="product-detail-container">
           <div class="product-gallery">
             <div class="main-image">
-              <img
-                id="modalMainImage"
-                src="assets/img-1.jpg"
-                alt="Product Image"
-              />
+              <img id="modalMainImage" src="assets/img-1.jpg" alt="Product Image" />
             </div>
             <div class="thumbnail-container">
-              <img
-                class="thumbnail active"
-                src="assets/img-1.jpg"
-                alt="Thumbnail 1"
-                data-src="/api/placeholder/500/500"
-              />
-              <img
-                class="thumbnail"
-                src="assets/img-1.jpg"
-                alt="Thumbnail 2"
-                data-src="/api/placeholder/500/500?v=2"
-              />
-              <img
-                class="thumbnail"
-                src="assets/img-1.jpg"
-                alt="Thumbnail 3"
-                data-src="/api/placeholder/500/500?v=3"
-              />
+              <img class="thumbnail active" src="assets/img-1.jpg" alt="Thumbnail 1"
+                data-src="/api/placeholder/500/500" />
+              <img class="thumbnail" src="assets/img-1.jpg" alt="Thumbnail 2" data-src="/api/placeholder/500/500?v=2" />
+              <img class="thumbnail" src="assets/img-1.jpg" alt="Thumbnail 3" data-src="/api/placeholder/500/500?v=3" />
             </div>
           </div>
           <div class="product-details">
@@ -647,30 +536,16 @@
             <div class="purchase-options">
               <div class="quantity-selector">
                 <button class="quantity-btn minus" id="quantityMinus">-</button>
-                <input
-                  type="number"
-                  id="productQuantity"
-                  value="1"
-                  min="1"
-                  max="10"
-                />
+                <input type="number" id="productQuantity" value="1" min="1" max="10" />
                 <button class="quantity-btn plus" id="quantityPlus">+</button>
               </div>
               <div class="size-options">
                 <h4>Pack Size:</h4>
                 <div class="size-selector">
-                  <button
-                    class="size-btn active"
-                    data-size="small"
-                    data-price="12.99"
-                  >
+                  <button class="size-btn active" data-size="small" data-price="12.99">
                     Small (3-pack)
                   </button>
-                  <button
-                    class="size-btn"
-                    data-size="medium"
-                    data-price="22.99"
-                  >
+                  <button class="size-btn" data-size="medium" data-price="22.99">
                     Medium (6-pack)
                   </button>
                   <button class="size-btn" data-size="large" data-price="32.99">
@@ -682,9 +557,7 @@
                 <label>
                   <input type="checkbox" id="subscribeOption" /> Subscribe &
                   Save 10%
-                  <span class="tooltip"
-                    >Get regular deliveries and save 10% on each order!</span
-                  >
+                  <span class="tooltip">Get regular deliveries and save 10% on each order!</span>
                 </label>
               </div>
               <button class="add-to-cart-btn" id="modalAddToCart">
@@ -877,16 +750,16 @@
 
     <script>
       // Enhanced cart functionality
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         // Initialize cart
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
+
         // Update cart count
         function updateCartCount() {
           const count = cart.reduce((total, item) => total + item.quantity, 0);
           document.getElementById('cartCount').textContent = count;
         }
-        
+
         // Add to cart function
         function addToCart(productId) {
           const existingItem = cart.find(item => item.id === productId);
@@ -904,7 +777,7 @@
           updateCartCount();
           renderCartItems();
         }
-        
+
         // Remove from cart function
         function removeFromCart(productId) {
           cart = cart.filter(item => item.id !== productId);
@@ -912,7 +785,7 @@
           updateCartCount();
           renderCartItems();
         }
-        
+
         // Render cart items
         function renderCartItems() {
           const cartItemsContainer = document.getElementById('cartItems');
@@ -938,7 +811,7 @@
                 </button>
               </div>
             `).join('');
-            
+
             // Add event listeners to remove buttons
             document.querySelectorAll('.remove-item').forEach(button => {
               button.addEventListener('click', (e) => {
@@ -946,20 +819,20 @@
               });
             });
           }
-          
+
           // Update cart totals
           const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
           document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
           document.getElementById('cartTotal').textContent = `$${(subtotal + 5.99).toFixed(2)}`; // Add shipping
         }
-        
+
         // Add event listeners to add-to-cart buttons
         document.querySelectorAll('.add-to-cart').forEach(button => {
           button.addEventListener('click', (e) => {
             addToCart(e.target.closest('button').dataset.product);
           });
         });
-        
+
         // Initialize cart
         updateCartCount();
         renderCartItems();
@@ -1023,212 +896,212 @@
                 <option value="">Select Country</option>
               </select>
             </div>
-            
+
             <script>
               const countryList = [
-                {code: "AF", name: "Afghanistan"},
-                {code: "AL", name: "Albania"},
-                {code: "DZ", name: "Algeria"},
-                {code: "AD", name: "Andorra"},
-                {code: "AO", name: "Angola"},
-                {code: "AG", name: "Antigua and Barbuda"},
-                {code: "AR", name: "Argentina"},
-                {code: "AM", name: "Armenia"},
-                {code: "AU", name: "Australia"},
-                {code: "AT", name: "Austria"},
-                {code: "AZ", name: "Azerbaijan"},
-                {code: "BS", name: "Bahamas"},
-                {code: "BH", name: "Bahrain"},
-                {code: "BD", name: "Bangladesh"},
-                {code: "BB", name: "Barbados"},
-                {code: "BY", name: "Belarus"},
-                {code: "BE", name: "Belgium"},
-                {code: "BZ", name: "Belize"},
-                {code: "BJ", name: "Benin"},
-                {code: "BT", name: "Bhutan"},
-                {code: "BO", name: "Bolivia"},
-                {code: "BA", name: "Bosnia and Herzegovina"},
-                {code: "BW", name: "Botswana"},
-                {code: "BR", name: "Brazil"},
-                {code: "BN", name: "Brunei"},
-                {code: "BG", name: "Bulgaria"},
-                {code: "BF", name: "Burkina Faso"},
-                {code: "BI", name: "Burundi"},
-                {code: "CV", name: "Cabo Verde"},
-                {code: "KH", name: "Cambodia"},
-                {code: "CM", name: "Cameroon"},
-                {code: "CA", name: "Canada"},
-                {code: "CF", name: "Central African Republic"},
-                {code: "TD", name: "Chad"},
-                {code: "CL", name: "Chile"},
-                {code: "CN", name: "China"},
-                {code: "CO", name: "Colombia"},
-                {code: "KM", name: "Comoros"},
-                {code: "CG", name: "Congo"},
-                {code: "CD", name: "Congo (Democratic Republic)"},
-                {code: "CR", name: "Costa Rica"},
-                {code: "CI", name: "Côte d'Ivoire"},
-                {code: "HR", name: "Croatia"},
-                {code: "CU", name: "Cuba"},
-                {code: "CY", name: "Cyprus"},
-                {code: "CZ", name: "Czech Republic"},
-                {code: "DK", name: "Denmark"},
-                {code: "DJ", name: "Djibouti"},
-                {code: "DM", name: "Dominica"},
-                {code: "DO", name: "Dominican Republic"},
-                {code: "EC", name: "Ecuador"},
-                {code: "EG", name: "Egypt"},
-                {code: "SV", name: "El Salvador"},
-                {code: "GQ", name: "Equatorial Guinea"},
-                {code: "ER", name: "Eritrea"},
-                {code: "EE", name: "Estonia"},
-                {code: "SZ", name: "Eswatini"},
-                {code: "ET", name: "Ethiopia"},
-                {code: "FJ", name: "Fiji"},
-                {code: "FI", name: "Finland"},
-                {code: "FR", name: "France"},
-                {code: "GA", name: "Gabon"},
-                {code: "GM", name: "Gambia"},
-                {code: "GE", name: "Georgia"},
-                {code: "DE", name: "Germany"},
-                {code: "GH", name: "Ghana"},
-                {code: "GR", name: "Greece"},
-                {code: "GD", name: "Grenada"},
-                {code: "GT", name: "Guatemala"},
-                {code: "GN", name: "Guinea"},
-                {code: "GW", name: "Guinea-Bissau"},
-                {code: "GY", name: "Guyana"},
-                {code: "HT", name: "Haiti"},
-                {code: "HN", name: "Honduras"},
-                {code: "HU", name: "Hungary"},
-                {code: "IS", name: "Iceland"},
-                {code: "IN", name: "India"},
-                {code: "ID", name: "Indonesia"},
-                {code: "IR", name: "Iran"},
-                {code: "IQ", name: "Iraq"},
-                {code: "IE", name: "Ireland"},
-                {code: "IL", name: "Israel"},
-                {code: "IT", name: "Italy"},
-                {code: "JM", name: "Jamaica"},
-                {code: "JP", name: "Japan"},
-                {code: "JO", name: "Jordan"},
-                {code: "KZ", name: "Kazakhstan"},
-                {code: "KE", name: "Kenya"},
-                {code: "KI", name: "Kiribati"},
-                {code: "KP", name: "Korea (North)"},
-                {code: "KR", name: "Korea (South)"},
-                {code: "KW", name: "Kuwait"},
-                {code: "KG", name: "Kyrgyzstan"},
-                {code: "LA", name: "Laos"},
-                {code: "LV", name: "Latvia"},
-                {code: "LB", name: "Lebanon"},
-                {code: "LS", name: "Lesotho"},
-                {code: "LR", name: "Liberia"},
-                {code: "LY", name: "Libya"},
-                {code: "LI", name: "Liechtenstein"},
-                {code: "LT", name: "Lithuania"},
-                {code: "LU", name: "Luxembourg"},
-                {code: "MG", name: "Madagascar"},
-                {code: "MW", name: "Malawi"},
-                {code: "MY", name: "Malaysia"},
-                {code: "MV", name: "Maldives"},
-                {code: "ML", name: "Mali"},
-                {code: "MT", name: "Malta"},
-                {code: "MH", name: "Marshall Islands"},
-                {code: "MR", name: "Mauritania"},
-                {code: "MU", name: "Mauritius"},
-                {code: "MX", name: "Mexico"},
-                {code: "FM", name: "Micronesia"},
-                {code: "MD", name: "Moldova"},
-                {code: "MC", name: "Monaco"},
-                {code: "MN", name: "Mongolia"},
-                {code: "ME", name: "Montenegro"},
-                {code: "MA", name: "Morocco"},
-                {code: "MZ", name: "Mozambique"},
-                {code: "MM", name: "Myanmar"},
-                {code: "NA", name: "Namibia"},
-                {code: "NR", name: "Nauru"},
-                {code: "NP", name: "Nepal"},
-                {code: "NL", name: "Netherlands"},
-                {code: "NZ", name: "New Zealand"},
-                {code: "NI", name: "Nicaragua"},
-                {code: "NE", name: "Niger"},
-                {code: "NG", name: "Nigeria"},
-                {code: "MK", name: "North Macedonia"},
-                {code: "NO", name: "Norway"},
-                {code: "OM", name: "Oman"},
-                {code: "PK", name: "Pakistan"},
-                {code: "PW", name: "Palau"},
-                {code: "PS", name: "Palestine"},
-                {code: "PA", name: "Panama"},
-                {code: "PG", name: "Papua New Guinea"},
-                {code: "PY", name: "Paraguay"},
-                {code: "PE", name: "Peru"},
-                {code: "PH", name: "Philippines"},
-                {code: "PL", name: "Poland"},
-                {code: "PT", name: "Portugal"},
-                {code: "QA", name: "Qatar"},
-                {code: "RO", name: "Romania"},
-                {code: "RU", name: "Russia"},
-                {code: "RW", name: "Rwanda"},
-                {code: "KN", name: "Saint Kitts and Nevis"},
-                {code: "LC", name: "Saint Lucia"},
-                {code: "VC", name: "Saint Vincent and the Grenadines"},
-                {code: "WS", name: "Samoa"},
-                {code: "SM", name: "San Marino"},
-                {code: "ST", name: "Sao Tome and Principe"},
-                {code: "SA", name: "Saudi Arabia"},
-                {code: "SN", name: "Senegal"},
-                {code: "RS", name: "Serbia"},
-                {code: "SC", name: "Seychelles"},
-                {code: "SL", name: "Sierra Leone"},
-                {code: "SG", name: "Singapore"},
-                {code: "SK", name: "Slovakia"},
-                {code: "SI", name: "Slovenia"},
-                {code: "SB", name: "Solomon Islands"},
-                {code: "SO", name: "Somalia"},
-                {code: "ZA", name: "South Africa"},
-                {code: "SS", name: "South Sudan"},
-                {code: "ES", name: "Spain"},
-                {code: "LK", name: "Sri Lanka"},
-                {code: "SD", name: "Sudan"},
-                {code: "SR", name: "Suriname"},
-                {code: "SE", name: "Sweden"},
-                {code: "CH", name: "Switzerland"},
-                {code: "SY", name: "Syria"},
-                {code: "TW", name: "Taiwan"},
-                {code: "TJ", name: "Tajikistan"},
-                {code: "TZ", name: "Tanzania"},
-                {code: "TH", name: "Thailand"},
-                {code: "TL", name: "Timor-Leste"},
-                {code: "TG", name: "Togo"},
-                {code: "TO", name: "Tonga"},
-                {code: "TT", name: "Trinidad and Tobago"},
-                {code: "TN", name: "Tunisia"},
-                {code: "TR", name: "Turkey"},
-                {code: "TM", name: "Turkmenistan"},
-                {code: "TV", name: "Tuvalu"},
-                {code: "UG", name: "Uganda"},
-                {code: "UA", name: "Ukraine"},
-                {code: "AE", name: "United Arab Emirates"},
-                {code: "GB", name: "United Kingdom"},
-                {code: "US", name: "United States"},
-                {code: "UY", name: "Uruguay"},
-                {code: "UZ", name: "Uzbekistan"},
-                {code: "VU", name: "Vanuatu"},
-                {code: "VA", name: "Vatican City"},
-                {code: "VE", name: "Venezuela"},
-                {code: "VN", name: "Vietnam"},
-                {code: "YE", name: "Yemen"},
-                {code: "ZM", name: "Zambia"},
-                {code: "ZW", name: "Zimbabwe"}
+                { code: "AF", name: "Afghanistan" },
+                { code: "AL", name: "Albania" },
+                { code: "DZ", name: "Algeria" },
+                { code: "AD", name: "Andorra" },
+                { code: "AO", name: "Angola" },
+                { code: "AG", name: "Antigua and Barbuda" },
+                { code: "AR", name: "Argentina" },
+                { code: "AM", name: "Armenia" },
+                { code: "AU", name: "Australia" },
+                { code: "AT", name: "Austria" },
+                { code: "AZ", name: "Azerbaijan" },
+                { code: "BS", name: "Bahamas" },
+                { code: "BH", name: "Bahrain" },
+                { code: "BD", name: "Bangladesh" },
+                { code: "BB", name: "Barbados" },
+                { code: "BY", name: "Belarus" },
+                { code: "BE", name: "Belgium" },
+                { code: "BZ", name: "Belize" },
+                { code: "BJ", name: "Benin" },
+                { code: "BT", name: "Bhutan" },
+                { code: "BO", name: "Bolivia" },
+                { code: "BA", name: "Bosnia and Herzegovina" },
+                { code: "BW", name: "Botswana" },
+                { code: "BR", name: "Brazil" },
+                { code: "BN", name: "Brunei" },
+                { code: "BG", name: "Bulgaria" },
+                { code: "BF", name: "Burkina Faso" },
+                { code: "BI", name: "Burundi" },
+                { code: "CV", name: "Cabo Verde" },
+                { code: "KH", name: "Cambodia" },
+                { code: "CM", name: "Cameroon" },
+                { code: "CA", name: "Canada" },
+                { code: "CF", name: "Central African Republic" },
+                { code: "TD", name: "Chad" },
+                { code: "CL", name: "Chile" },
+                { code: "CN", name: "China" },
+                { code: "CO", name: "Colombia" },
+                { code: "KM", name: "Comoros" },
+                { code: "CG", name: "Congo" },
+                { code: "CD", name: "Congo (Democratic Republic)" },
+                { code: "CR", name: "Costa Rica" },
+                { code: "CI", name: "Côte d'Ivoire" },
+                { code: "HR", name: "Croatia" },
+                { code: "CU", name: "Cuba" },
+                { code: "CY", name: "Cyprus" },
+                { code: "CZ", name: "Czech Republic" },
+                { code: "DK", name: "Denmark" },
+                { code: "DJ", name: "Djibouti" },
+                { code: "DM", name: "Dominica" },
+                { code: "DO", name: "Dominican Republic" },
+                { code: "EC", name: "Ecuador" },
+                { code: "EG", name: "Egypt" },
+                { code: "SV", name: "El Salvador" },
+                { code: "GQ", name: "Equatorial Guinea" },
+                { code: "ER", name: "Eritrea" },
+                { code: "EE", name: "Estonia" },
+                { code: "SZ", name: "Eswatini" },
+                { code: "ET", name: "Ethiopia" },
+                { code: "FJ", name: "Fiji" },
+                { code: "FI", name: "Finland" },
+                { code: "FR", name: "France" },
+                { code: "GA", name: "Gabon" },
+                { code: "GM", name: "Gambia" },
+                { code: "GE", name: "Georgia" },
+                { code: "DE", name: "Germany" },
+                { code: "GH", name: "Ghana" },
+                { code: "GR", name: "Greece" },
+                { code: "GD", name: "Grenada" },
+                { code: "GT", name: "Guatemala" },
+                { code: "GN", name: "Guinea" },
+                { code: "GW", name: "Guinea-Bissau" },
+                { code: "GY", name: "Guyana" },
+                { code: "HT", name: "Haiti" },
+                { code: "HN", name: "Honduras" },
+                { code: "HU", name: "Hungary" },
+                { code: "IS", name: "Iceland" },
+                { code: "IN", name: "India" },
+                { code: "ID", name: "Indonesia" },
+                { code: "IR", name: "Iran" },
+                { code: "IQ", name: "Iraq" },
+                { code: "IE", name: "Ireland" },
+                { code: "IL", name: "Israel" },
+                { code: "IT", name: "Italy" },
+                { code: "JM", name: "Jamaica" },
+                { code: "JP", name: "Japan" },
+                { code: "JO", name: "Jordan" },
+                { code: "KZ", name: "Kazakhstan" },
+                { code: "KE", name: "Kenya" },
+                { code: "KI", name: "Kiribati" },
+                { code: "KP", name: "Korea (North)" },
+                { code: "KR", name: "Korea (South)" },
+                { code: "KW", name: "Kuwait" },
+                { code: "KG", name: "Kyrgyzstan" },
+                { code: "LA", name: "Laos" },
+                { code: "LV", name: "Latvia" },
+                { code: "LB", name: "Lebanon" },
+                { code: "LS", name: "Lesotho" },
+                { code: "LR", name: "Liberia" },
+                { code: "LY", name: "Libya" },
+                { code: "LI", name: "Liechtenstein" },
+                { code: "LT", name: "Lithuania" },
+                { code: "LU", name: "Luxembourg" },
+                { code: "MG", name: "Madagascar" },
+                { code: "MW", name: "Malawi" },
+                { code: "MY", name: "Malaysia" },
+                { code: "MV", name: "Maldives" },
+                { code: "ML", name: "Mali" },
+                { code: "MT", name: "Malta" },
+                { code: "MH", name: "Marshall Islands" },
+                { code: "MR", name: "Mauritania" },
+                { code: "MU", name: "Mauritius" },
+                { code: "MX", name: "Mexico" },
+                { code: "FM", name: "Micronesia" },
+                { code: "MD", name: "Moldova" },
+                { code: "MC", name: "Monaco" },
+                { code: "MN", name: "Mongolia" },
+                { code: "ME", name: "Montenegro" },
+                { code: "MA", name: "Morocco" },
+                { code: "MZ", name: "Mozambique" },
+                { code: "MM", name: "Myanmar" },
+                { code: "NA", name: "Namibia" },
+                { code: "NR", name: "Nauru" },
+                { code: "NP", name: "Nepal" },
+                { code: "NL", name: "Netherlands" },
+                { code: "NZ", name: "New Zealand" },
+                { code: "NI", name: "Nicaragua" },
+                { code: "NE", name: "Niger" },
+                { code: "NG", name: "Nigeria" },
+                { code: "MK", name: "North Macedonia" },
+                { code: "NO", name: "Norway" },
+                { code: "OM", name: "Oman" },
+                { code: "PK", name: "Pakistan" },
+                { code: "PW", name: "Palau" },
+                { code: "PS", name: "Palestine" },
+                { code: "PA", name: "Panama" },
+                { code: "PG", name: "Papua New Guinea" },
+                { code: "PY", name: "Paraguay" },
+                { code: "PE", name: "Peru" },
+                { code: "PH", name: "Philippines" },
+                { code: "PL", name: "Poland" },
+                { code: "PT", name: "Portugal" },
+                { code: "QA", name: "Qatar" },
+                { code: "RO", name: "Romania" },
+                { code: "RU", name: "Russia" },
+                { code: "RW", name: "Rwanda" },
+                { code: "KN", name: "Saint Kitts and Nevis" },
+                { code: "LC", name: "Saint Lucia" },
+                { code: "VC", name: "Saint Vincent and the Grenadines" },
+                { code: "WS", name: "Samoa" },
+                { code: "SM", name: "San Marino" },
+                { code: "ST", name: "Sao Tome and Principe" },
+                { code: "SA", name: "Saudi Arabia" },
+                { code: "SN", name: "Senegal" },
+                { code: "RS", name: "Serbia" },
+                { code: "SC", name: "Seychelles" },
+                { code: "SL", name: "Sierra Leone" },
+                { code: "SG", name: "Singapore" },
+                { code: "SK", name: "Slovakia" },
+                { code: "SI", name: "Slovenia" },
+                { code: "SB", name: "Solomon Islands" },
+                { code: "SO", name: "Somalia" },
+                { code: "ZA", name: "South Africa" },
+                { code: "SS", name: "South Sudan" },
+                { code: "ES", name: "Spain" },
+                { code: "LK", name: "Sri Lanka" },
+                { code: "SD", name: "Sudan" },
+                { code: "SR", name: "Suriname" },
+                { code: "SE", name: "Sweden" },
+                { code: "CH", name: "Switzerland" },
+                { code: "SY", name: "Syria" },
+                { code: "TW", name: "Taiwan" },
+                { code: "TJ", name: "Tajikistan" },
+                { code: "TZ", name: "Tanzania" },
+                { code: "TH", name: "Thailand" },
+                { code: "TL", name: "Timor-Leste" },
+                { code: "TG", name: "Togo" },
+                { code: "TO", name: "Tonga" },
+                { code: "TT", name: "Trinidad and Tobago" },
+                { code: "TN", name: "Tunisia" },
+                { code: "TR", name: "Turkey" },
+                { code: "TM", name: "Turkmenistan" },
+                { code: "TV", name: "Tuvalu" },
+                { code: "UG", name: "Uganda" },
+                { code: "UA", name: "Ukraine" },
+                { code: "AE", name: "United Arab Emirates" },
+                { code: "GB", name: "United Kingdom" },
+                { code: "US", name: "United States" },
+                { code: "UY", name: "Uruguay" },
+                { code: "UZ", name: "Uzbekistan" },
+                { code: "VU", name: "Vanuatu" },
+                { code: "VA", name: "Vatican City" },
+                { code: "VE", name: "Venezuela" },
+                { code: "VN", name: "Vietnam" },
+                { code: "YE", name: "Yemen" },
+                { code: "ZM", name: "Zambia" },
+                { code: "ZW", name: "Zimbabwe" }
               ];
-            
+
               const countrySelect = document.getElementById('country');
-              
+
               // Sort countries alphabetically by name
               countryList.sort((a, b) => a.name.localeCompare(b.name));
-              
+
               // Populate dropdown with countries
               countryList.forEach(country => {
                 const option = document.createElement('option');
@@ -1241,12 +1114,7 @@
               <h4>Delivery Method</h4>
               <div class="shipping-options">
                 <label class="shipping-option">
-                  <input
-                    type="radio"
-                    name="shipping"
-                    value="standard"
-                    checked
-                  />
+                  <input type="radio" name="shipping" value="standard" checked />
                   <div class="shipping-option-content">
                     <div class="shipping-option-info">
                       <span class="shipping-name">Standard Delivery</span>
@@ -1278,11 +1146,7 @@
               </div>
             </div>
             <div class="checkout-navigation">
-              <button
-                type="button"
-                class="secondary-button"
-                id="continueShopping"
-              >
+              <button type="button" class="secondary-button" id="continueShopping">
                 Back to Cart
               </button>
               <button type="button" class="primary-button" id="toPaymentBtn">
@@ -1315,22 +1179,12 @@
               </div>
               <div class="form-group">
                 <label for="cardNumber">Card Number</label>
-                <input
-                  type="text"
-                  id="cardNumber"
-                  placeholder="1234 5678 9012 3456"
-                  required
-                />
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required />
               </div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="expiryDate">Expiry Date</label>
-                  <input
-                    type="text"
-                    id="expiryDate"
-                    placeholder="MM/YY"
-                    required
-                  />
+                  <input type="text" id="expiryDate" placeholder="MM/YY" required />
                 </div>
                 <div class="form-group">
                   <label for="cvv">CVV</label>
@@ -1355,11 +1209,7 @@
             </div>
 
             <div class="checkout-navigation">
-              <button
-                type="button"
-                class="secondary-button"
-                id="backToShipping"
-              >
+              <button type="button" class="secondary-button" id="backToShipping">
                 Back to Delivery
               </button>
               <button type="button" class="primary-button" id="toReviewBtn">
@@ -1523,5 +1373,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tweakpane/4.0.4/tweakpane.min.js"></script>
     <script src="shopping.js"></script>
-  </body>
+</body>
+
 </html>
