@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'fruit1',
             name: 'Mixed Berry Bites',
             shortDesc: 'Mixed fruit snack with added vitamins',
-            image: 'assets/img-1.jpg',
             fullDesc: 'Our Mixed Berry Bites are packed with real fruit and fortified with essential vitamins and minerals to support your child\'s growth and development. Made with organic berries and no artificial preservatives, these chewy bites are both nutritious and delicious.',
             price: 12.99,
             originalPrice: 15.99,
             category: 'fruit',
             age: 'kids',
+            image: 'assets/mixed-berry-bites.jpg',
             isNew: true,
             isBestseller: true,
             benefits: [
@@ -86,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'fruit3',
             name: 'Tropical Fruit Medley',
             shortDesc: 'Real fruit strips with mango and pineapple',
-            image: 'assets/img-3.jpg',
             fullDesc: 'Our Tropical Fruit Strips bring the taste of the tropics to your child\'s snack time. Made with real mango and pineapple, these fruit strips provide natural energy and essential nutrients in a convenient, portable format that\'s perfect for busy families.',
             price: 10.99,
             originalPrice: 13.99,
             category: 'fruit',
             age: 'preteen',
+            image: 'assets/tropical-fruit-medley.jpg',
             isNew: false,
             isBestseller: false,
             benefits: [
@@ -112,12 +112,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'fruit2',
             name: 'Apple Cinnamon Crisps',
             shortDesc: 'Crunchy apple slices with a hint of cinnamon',
-            image: 'assets/img-2.jpg',
             fullDesc: 'Our Apple Cinnamon Fruit Crisps transform fresh, organic apples into light, crunchy snacks with just a touch of cinnamon. These fruit crisps are gently dehydrated to preserve nutrients while creating a satisfying crunch that toddlers and young children love.',
             price: 8.99,
             originalPrice: 11.99,
             category: 'fruit',
             age: 'toddler',
+            image: 'assets/apple-cinnamon-crisps.jpg',
             isNew: false,
             isBestseller: true,
             benefits: [
@@ -138,12 +138,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'protein1',
             name: 'Chocolate Chip Protein Bar',
             shortDesc: 'Delicious protein bar with chocolate chips',
-            image: 'assets/img-4.jpg',
             fullDesc: 'Our Chocolate Chip Protein Bar combines great taste with essential nutrition for growing kids. Made with high-quality protein and real chocolate chips for a delicious snack that supports muscle development and provides lasting energy.',
             price: 14.99,
             originalPrice: 17.99,
             category: 'protein',
             age: 'kids',
+            image: 'assets/img-1.jpg',
             isNew: false,
             isBestseller: false,
             benefits: [
@@ -164,12 +164,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'protein2',
             name: 'Peanut Butter Blast Bar',
             shortDesc: 'Rich peanut butter protein bar',
-            image: 'assets/img-5.jpg',
             fullDesc: 'The Peanut Butter Blast Bar delivers creamy peanut butter flavor in a protein-packed bar that kids and preteens love. Our bestselling protein bar helps support growing bodies with essential nutrients while satisfying cravings with delicious taste.',
             price: 15.99,
             originalPrice: 18.99,
             category: 'protein',
             age: 'preteen',
+            image: 'assets/img-1.jpg',
             isNew: false,
             isBestseller: true,
             benefits: [
@@ -190,12 +190,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'protein3',
             name: 'Berry Yogurt Protein Bar',
             shortDesc: 'Creamy yogurt coating with berry pieces',
-            image: 'assets/img-6.jpg',
             fullDesc: 'Our Berry Yogurt Protein Bar features a creamy yogurt coating packed with real berry pieces for a delightful taste experience. Each bar provides essential protein and nutrients to support your child\'s active lifestyle and healthy development.',
             price: 16.99,
             originalPrice: 19.99,
             category: 'protein',
             age: 'kids',
+            image: 'assets/img-1.jpg',
             isNew: false,
             isBestseller: false,
             benefits: [
@@ -216,9 +216,12 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'vitamin1',
             name: 'Multi-Vitamin Fruit Gummies',
             shortDesc: 'Complete daily vitamins in tasty gummies',
-            image: 'assets/img-7.jpg',
             fullDesc: 'Our Multi-Vitamin Fruit Gummies provide essential daily nutrients in a delicious, easy-to-eat form perfect for toddlers. Each serving contains a complete blend of vitamins and minerals to support overall health, immunity, and development.',
             price: 19.99,
+            originalPrice: 22.99,
+            category: 'vitamin',
+            age: 'toddler',
+            image: 'assets/img-1.jpg',
             isNew: true,
             isBestseller: false,
             benefits: [
@@ -239,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'vitamin2',
             name: 'Immune Boost Gummies',
             shortDesc: 'Vitamin C & zinc for immune support',
-            image: 'assets/img-8.jpg',
             fullDesc: 'Help strengthen your child\'s immune system with our Immune Boost Gummies. Each serving contains vitamin C, zinc, and elderberry to support natural defenses and promote overall health, especially during cold and flu season.',
             price: 21.99,
             originalPrice: 24.99,
@@ -266,7 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'vitamin3',
             name: 'Brain Boost Omega Gummies',
             shortDesc: 'Omega-3 for brain development',
-            image: 'assets/img-9.jpg',
             fullDesc: 'Our Brain Boost Omega Gummies provide essential omega-3 fatty acids in a delicious gummy form that preteens enjoy. Each serving supports cognitive function, focus, and overall brain development during critical growth years.',
             price: 24.99,
             originalPrice: 27.99,
@@ -293,7 +294,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'organic1',
             name: 'Organic Apple Puffs',
             shortDesc: '100% organic apple snack puffs',
-            image: 'assets/img-10.jpg',
             fullDesc: 'Our Organic Apple Puffs are made from 100% organic apples and whole grains, perfect for little fingers and developing palates. These melt-in-your-mouth puffs are gently baked to preserve nutrients while providing a satisfying crunch toddlers love.',
             price: 9.99,
             originalPrice: 12.99,
@@ -320,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'organic2',
             name: 'Organic Veggie Straws',
             shortDesc: 'Crunchy organic vegetable snacks',
-            image: 'assets/img-11.jpg',
             fullDesc: 'Our Organic Veggie Straws combine organic vegetables and whole grains into crunchy, fun-to-eat straws that kids love. Each serving provides essential nutrients from real vegetables in a delicious snack that\'s perfect for lunchboxes or after-school munching.',
             price: 11.99,
             originalPrice: 14.99,
@@ -347,7 +346,6 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'organic3',
             name: 'Organic Fruit & Grain Bars',
             shortDesc: 'Soft-baked organic fruit and ancient grain bars',
-            image: 'assets/img-12.jpg',
             fullDesc: 'Our Organic Fruit & Grain Bars combine real organic fruits with nutritious ancient grains like quinoa and amaranth in a soft-baked bar that\'s perfect for growing bodies. Each bar provides essential fiber, vitamins, and minerals in a convenient, mess-free format that\'s ideal for school lunches or on-the-go snacking.',
             price: 13.99,
             originalPrice: 16.99,
@@ -687,8 +685,6 @@ function setupProductFilters() {
         applyFilters();
     }
 }
-
-setupProductFilters();
 
 // 4. PRODUCT MODAL
 function setupProductModal() {
@@ -1744,6 +1740,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Save preference to localStorage
         localStorage.setItem('theme', newTheme);
+    });
+
+    // Listen for system preference changes
+    prefersDarkScheme.addEventListener('change', (event) => {
+        // Only automatically switch if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+            const newTheme = event.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+    });
+
+    // Newsletter Form Submission (prevent default behavior for demo)
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+
+            // Simple validation
+            if (emailInput.value.trim() !== '' && emailInput.value.includes('@')) {
+                // Here you would typically send this to your backend
+                alert('Thank you for subscribing!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    }
+
+    // Smooth scrolling for footer navigation links
+    const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100, // Offset for fixed header if you have one
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});     localStorage.setItem('theme', newTheme);
     });
 
     // Listen for system preference changes
