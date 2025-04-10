@@ -1,22 +1,22 @@
 // Part 1 -- Product Display and Interaction
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements - Navigation
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
-
+    
     // DOM Elements - Carousel
     const carouselTrack = document.getElementById('carouselTrack');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const carouselIndicators = document.getElementById('carouselIndicators');
-
+    
     // DOM Elements - Filtering
     const categoryFilter = document.getElementById('categoryFilter');
     const ageFilter = document.getElementById('ageFilter');
     const sortBy = document.getElementById('sortBy');
     const productSearch = document.getElementById('productSearch');
     const searchBtn = document.getElementById('searchBtn');
-
+    
     // DOM Elements - Product Modal
     const productModal = document.getElementById('productModal');
     const closeModal = document.querySelector('.close-modal');
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sizeBtns = document.querySelectorAll('.size-btn');
     const subscribeOption = document.getElementById('subscribeOption');
     const modalAddToCart = document.getElementById('modalAddToCart');
-
+    
     // DOM Elements - Cart
     const cartCount = document.getElementById('cartCount');
     const cartItemCount = document.getElementById('cartItemCount');
@@ -54,293 +54,216 @@ document.addEventListener('DOMContentLoaded', function () {
     const startShopping = document.getElementById('startShopping');
     const addToCartBtns = document.querySelectorAll('.add-to-cart');
     const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
-
+    
     // Product Data (Sample data - would normally come from your database)
     const products = [
         {
-            id: 'fruit1',
-            name: 'Mixed Berry Bites',
-            shortDesc: 'Mixed fruit snack with added vitamins',
-            fullDesc: 'Our Mixed Berry Bites are packed with real fruit and fortified with essential vitamins and minerals to support your child\'s growth and development. Made with organic berries and no artificial preservatives, these chewy bites are both nutritious and delicious.',
-            price: 12.99,
-            originalPrice: 15.99,
-            category: 'fruit',
-            age: 'kids',
-            image: 'assets/img-1.jpg',
-            isNew: true,
-            isBestseller: true,
-            benefits: [
-                'Rich in Vitamin C and antioxidants',
-                'No artificial colors or flavors',
-                'Supports immune system health',
-                'Great for lunchboxes and on-the-go snacking'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '80', dailyValue: '-' },
-                { nutrient: 'Protein', amount: '1g', dailyValue: '2%' },
-                { nutrient: 'Vitamin C', amount: '45mg', dailyValue: '50%' },
-                { nutrient: 'Fiber', amount: '3g', dailyValue: '12%' }
-            ]
+          id: 'protein1',
+          name: 'Chocolate Chip Protein Bar',
+          shortDesc: 'Delicious protein bar with chocolate chips',
+          fullDesc: 'Our Chocolate Chip Protein Bar combines great taste with essential nutrition for growing kids. Made with high-quality protein and real chocolate chips for a delicious snack that supports muscle development and provides lasting energy.',
+          price: 14.99,
+          originalPrice: 17.99,
+          category: 'protein',
+          age: 'kids',
+          image: 'assets/img-1.jpg',
+          isNew: false,
+          isBestseller: false,
+          benefits: [
+            'High-quality protein for muscle development',
+            'Great chocolate chip taste kids love',
+            'No artificial sweeteners or preservatives',
+            'Perfect for active children and after-school snacking'
+          ],
+          nutrition: [
+            { nutrient: 'Calories', amount: '180', dailyValue: '-' },
+            { nutrient: 'Protein', amount: '12g', dailyValue: '24%' },
+            { nutrient: 'Carbohydrates', amount: '22g', dailyValue: '7%' },
+            { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
+            { nutrient: 'Sugar', amount: '8g', dailyValue: '16%' }
+          ]
         },
         {
-            id: 'fruit3',
-            name: 'Tropical Fruit Medley',
-            shortDesc: 'Real fruit strips with mango and pineapple',
-            fullDesc: 'Our Tropical Fruit Strips bring the taste of the tropics to your child\'s snack time. Made with real mango and pineapple, these fruit strips provide natural energy and essential nutrients in a convenient, portable format that\'s perfect for busy families.',
-            price: 10.99,
-            originalPrice: 13.99,
-            category: 'fruit',
-            age: 'preteen',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: false,
-            benefits: [
-                'Made with 100% real tropical fruits',
-                'Source of natural energy',
-                'No added refined sugars',
-                'Perfect for active preteens'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '70', dailyValue: '-' },
-                { nutrient: 'Carbohydrates', amount: '16g', dailyValue: '5%' },
-                { nutrient: 'Vitamin A', amount: '90mcg', dailyValue: '10%' },
-                { nutrient: 'Vitamin C', amount: '30mg', dailyValue: '33%' },
-                { nutrient: 'Potassium', amount: '120mg', dailyValue: '3%' }
-            ]
+          id: 'protein2',
+          name: 'Peanut Butter Blast Bar',
+          shortDesc: 'Rich peanut butter protein bar',
+          fullDesc: 'The Peanut Butter Blast Bar delivers creamy peanut butter flavor in a protein-packed bar that kids and preteens love. Our bestselling protein bar helps support growing bodies with essential nutrients while satisfying cravings with delicious taste.',
+          price: 15.99,
+          originalPrice: 18.99,
+          category: 'protein',
+          age: 'preteen',
+          image: 'assets/img-1.jpg',
+          isNew: false,
+          isBestseller: true,
+          benefits: [
+            'Packed with plant-based protein',
+            'Real peanut butter for authentic taste',
+            'Contains essential amino acids for growth',
+            'Perfect for active preteens'
+          ],
+          nutrition: [
+            { nutrient: 'Calories', amount: '200', dailyValue: '-' },
+            { nutrient: 'Protein', amount: '15g', dailyValue: '30%' },
+            { nutrient: 'Carbohydrates', amount: '18g', dailyValue: '6%' },
+            { nutrient: 'Fiber', amount: '3g', dailyValue: '12%' },
+            { nutrient: 'Healthy Fats', amount: '9g', dailyValue: '14%' }
+          ]
         },
         {
-            id: 'fruit2',
-            name: 'Apple Cinnamon Crisps',
-            shortDesc: 'Crunchy apple slices with a hint of cinnamon',
-            fullDesc: 'Our Apple Cinnamon Fruit Crisps transform fresh, organic apples into light, crunchy snacks with just a touch of cinnamon. These fruit crisps are gently dehydrated to preserve nutrients while creating a satisfying crunch that toddlers and young children love.',
-            price: 8.99,
-            originalPrice: 11.99,
-            category: 'fruit',
-            age: 'toddler',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: true,
-            benefits: [
-                'Made from whole organic apples',
-                'Light, crispy texture for developing palates',
-                'Just two ingredients: apples and cinnamon',
-                'Excellent source of dietary fiber'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '45', dailyValue: '-' },
-                { nutrient: 'Fiber', amount: '2g', dailyValue: '8%' },
-                { nutrient: 'Sugar', amount: '9g', dailyValue: '18%' },
-                { nutrient: 'Vitamin C', amount: '8mg', dailyValue: '9%' },
-                { nutrient: 'Potassium', amount: '80mg', dailyValue: '2%' }
-            ]
+          id: 'protein3',
+          name: 'Berry Yogurt Protein Bar',
+          shortDesc: 'Creamy yogurt coating with berry pieces',
+          fullDesc: 'Our Berry Yogurt Protein Bar features a creamy yogurt coating packed with real berry pieces for a delightful taste experience. Each bar provides essential protein and nutrients to support your child\'s active lifestyle and healthy development.',
+          price: 16.99,
+          originalPrice: 19.99,
+          category: 'protein',
+          age: 'kids',
+          image: 'assets/img-1.jpg',
+          isNew: false,
+          isBestseller: false,
+          benefits: [
+            'Creamy yogurt coating kids love',
+            'Contains real berry pieces',
+            'Good source of calcium and protein',
+            'Supports bone development and growth'
+          ],
+          nutrition: [
+            { nutrient: 'Calories', amount: '170', dailyValue: '-' },
+            { nutrient: 'Protein', amount: '10g', dailyValue: '20%' },
+            { nutrient: 'Calcium', amount: '200mg', dailyValue: '20%' },
+            { nutrient: 'Sugar', amount: '9g', dailyValue: '18%' },
+            { nutrient: 'Vitamin D', amount: '2mcg', dailyValue: '10%' }
+          ]
         },
         {
-            id: 'protein1',
-            name: 'Chocolate Chip Protein Bar',
-            shortDesc: 'Delicious protein bar with chocolate chips',
-            fullDesc: 'Our Chocolate Chip Protein Bar combines great taste with essential nutrition for growing kids. Made with high-quality protein and real chocolate chips for a delicious snack that supports muscle development and provides lasting energy.',
-            price: 14.99,
-            originalPrice: 17.99,
-            category: 'protein',
-            age: 'kids',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: false,
-            benefits: [
-                'High-quality protein for muscle development',
-                'Great chocolate chip taste kids love',
-                'No artificial sweeteners or preservatives',
-                'Perfect for active children and after-school snacking'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '180', dailyValue: '-' },
-                { nutrient: 'Protein', amount: '12g', dailyValue: '24%' },
-                { nutrient: 'Carbohydrates', amount: '22g', dailyValue: '7%' },
-                { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
-                { nutrient: 'Sugar', amount: '8g', dailyValue: '16%' }
-            ]
+          id: 'vitamin1',
+          name: 'Multi-Vitamin Fruit Gummies',
+          shortDesc: 'Complete daily vitamins in tasty gummies',
+          fullDesc: 'Our Multi-Vitamin Fruit Gummies provide essential daily nutrients in a delicious, easy-to-eat form perfect for toddlers. Each serving contains a complete blend of vitamins and minerals to support overall health, immunity, and development.',
+          price: 19.99,
+          originalPrice: 22.99,
+          category: 'vitamin',
+          age: 'toddler',
+          image: 'assets/img-1.jpg',
+          isNew: true,
+          isBestseller: false,
+          benefits: [
+            'Complete daily vitamin and mineral blend',
+            'Delicious fruit flavors toddlers love',
+            'Easy to chew and digest',
+            'Supports overall growth and development'
+          ],
+          nutrition: [
+            { nutrient: 'Vitamin A', amount: '300 IU', dailyValue: '6%' },
+            { nutrient: 'Vitamin C', amount: '60mg', dailyValue: '100%' },
+            { nutrient: 'Vitamin D', amount: '400 IU', dailyValue: '100%' },
+            { nutrient: 'Zinc', amount: '2mg', dailyValue: '18%' },
+            { nutrient: 'Vitamin B12', amount: '6mcg', dailyValue: '100%' }
+          ]
         },
         {
-            id: 'protein2',
-            name: 'Peanut Butter Blast Bar',
-            shortDesc: 'Rich peanut butter protein bar',
-            fullDesc: 'The Peanut Butter Blast Bar delivers creamy peanut butter flavor in a protein-packed bar that kids and preteens love. Our bestselling protein bar helps support growing bodies with essential nutrients while satisfying cravings with delicious taste.',
-            price: 15.99,
-            originalPrice: 18.99,
-            category: 'protein',
-            age: 'preteen',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: true,
-            benefits: [
-                'Packed with plant-based protein',
-                'Real peanut butter for authentic taste',
-                'Contains essential amino acids for growth',
-                'Perfect for active preteens'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '200', dailyValue: '-' },
-                { nutrient: 'Protein', amount: '15g', dailyValue: '30%' },
-                { nutrient: 'Carbohydrates', amount: '18g', dailyValue: '6%' },
-                { nutrient: 'Fiber', amount: '3g', dailyValue: '12%' },
-                { nutrient: 'Healthy Fats', amount: '9g', dailyValue: '14%' }
-            ]
+          id: 'vitamin2',
+          name: 'Immune Boost Gummies',
+          shortDesc: 'Vitamin C & zinc for immune support',
+          fullDesc: 'Help strengthen your child\'s immune system with our Immune Boost Gummies. Each serving contains vitamin C, zinc, and elderberry to support natural defenses and promote overall health, especially during cold and flu season.',
+          price: 21.99,
+          originalPrice: 24.99,
+          category: 'vitamin',
+          age: 'kids',
+          image: 'assets/img-1.jpg',
+          isNew: false,
+          isBestseller: false,
+          benefits: [
+            'Targeted immune system support',
+            'Contains vitamin C, zinc and elderberry',
+            'Great-tasting formula kids will take daily',
+            'Perfect for cold and flu season'
+          ],
+          nutrition: [
+            { nutrient: 'Vitamin C', amount: '250mg', dailyValue: '417%' },
+            { nutrient: 'Zinc', amount: '5mg', dailyValue: '45%' },
+            { nutrient: 'Elderberry Extract', amount: '50mg', dailyValue: '-' },
+            { nutrient: 'Vitamin D', amount: '400 IU', dailyValue: '100%' },
+            { nutrient: 'Vitamin E', amount: '15 IU', dailyValue: '50%' }
+          ]
         },
         {
-            id: 'protein3',
-            name: 'Berry Yogurt Protein Bar',
-            shortDesc: 'Creamy yogurt coating with berry pieces',
-            fullDesc: 'Our Berry Yogurt Protein Bar features a creamy yogurt coating packed with real berry pieces for a delightful taste experience. Each bar provides essential protein and nutrients to support your child\'s active lifestyle and healthy development.',
-            price: 16.99,
-            originalPrice: 19.99,
-            category: 'protein',
-            age: 'kids',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: false,
-            benefits: [
-                'Creamy yogurt coating kids love',
-                'Contains real berry pieces',
-                'Good source of calcium and protein',
-                'Supports bone development and growth'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '170', dailyValue: '-' },
-                { nutrient: 'Protein', amount: '10g', dailyValue: '20%' },
-                { nutrient: 'Calcium', amount: '200mg', dailyValue: '20%' },
-                { nutrient: 'Sugar', amount: '9g', dailyValue: '18%' },
-                { nutrient: 'Vitamin D', amount: '2mcg', dailyValue: '10%' }
-            ]
+          id: 'vitamin3',
+          name: 'Brain Boost Omega Gummies',
+          shortDesc: 'Omega-3 for brain development',
+          fullDesc: 'Our Brain Boost Omega Gummies provide essential omega-3 fatty acids in a delicious gummy form that preteens enjoy. Each serving supports cognitive function, focus, and overall brain development during critical growth years.',
+          price: 24.99,
+          originalPrice: 27.99,
+          category: 'vitamin',
+          age: 'preteen',
+          image: 'assets/img-1.jpg',
+          isNew: false,
+          isBestseller: true,
+          benefits: [
+            'Supports brain development and cognitive function',
+            'Contains DHA and EPA omega-3 fatty acids',
+            'No fishy taste or aftertaste',
+            'Helps with focus and concentration'
+          ],
+          nutrition: [
+            { nutrient: 'Omega-3 (DHA)', amount: '100mg', dailyValue: '-' },
+            { nutrient: 'Omega-3 (EPA)', amount: '20mg', dailyValue: '-' },
+            { nutrient: 'Vitamin E', amount: '30 IU', dailyValue: '100%' },
+            { nutrient: 'Vitamin B6', amount: '1.7mg', dailyValue: '100%' },
+            { nutrient: 'Vitamin B12', amount: '6mcg', dailyValue: '100%' }
+          ]
         },
         {
-            id: 'vitamin1',
-            name: 'Multi-Vitamin Fruit Gummies',
-            shortDesc: 'Complete daily vitamins in tasty gummies',
-            fullDesc: 'Our Multi-Vitamin Fruit Gummies provide essential daily nutrients in a delicious, easy-to-eat form perfect for toddlers. Each serving contains a complete blend of vitamins and minerals to support overall health, immunity, and development.',
-            price: 19.99,
-            originalPrice: 22.99,
-            category: 'vitamin',
-            age: 'toddler',
-            image: 'assets/img-1.jpg',
-            isNew: true,
-            isBestseller: false,
-            benefits: [
-                'Complete daily vitamin and mineral blend',
-                'Delicious fruit flavors toddlers love',
-                'Easy to chew and digest',
-                'Supports overall growth and development'
-            ],
-            nutrition: [
-                { nutrient: 'Vitamin A', amount: '300 IU', dailyValue: '6%' },
-                { nutrient: 'Vitamin C', amount: '60mg', dailyValue: '100%' },
-                { nutrient: 'Vitamin D', amount: '400 IU', dailyValue: '100%' },
-                { nutrient: 'Zinc', amount: '2mg', dailyValue: '18%' },
-                { nutrient: 'Vitamin B12', amount: '6mcg', dailyValue: '100%' }
-            ]
+          id: 'organic1',
+          name: 'Organic Apple Puffs',
+          shortDesc: '100% organic apple snack puffs',
+          fullDesc: 'Our Organic Apple Puffs are made from 100% organic apples and whole grains, perfect for little fingers and developing palates. These melt-in-your-mouth puffs are gently baked to preserve nutrients while providing a satisfying crunch toddlers love.',
+          price: 9.99,
+          originalPrice: 12.99,
+          category: 'organic',
+          age: 'toddler',
+          image: 'assets/img-1.jpg',
+          isNew: true,
+          isBestseller: false,
+          benefits: [
+            '100% certified organic ingredients',
+            'Perfect size for little fingers',
+            'Dissolves easily for safe consumption',
+            'No added sugar or artificial ingredients'
+          ],
+          nutrition: [
+            { nutrient: 'Calories', amount: '25', dailyValue: '-' },
+            { nutrient: 'Carbohydrates', amount: '5g', dailyValue: '2%' },
+            { nutrient: 'Fiber', amount: '1g', dailyValue: '4%' },
+            { nutrient: 'Sugar', amount: '1g', dailyValue: '2%' },
+            { nutrient: 'Vitamin C', amount: '2mg', dailyValue: '2%' }
+          ]
         },
         {
-            id: 'vitamin2',
-            name: 'Immune Boost Gummies',
-            shortDesc: 'Vitamin C & zinc for immune support',
-            fullDesc: 'Help strengthen your child\'s immune system with our Immune Boost Gummies. Each serving contains vitamin C, zinc, and elderberry to support natural defenses and promote overall health, especially during cold and flu season.',
-            price: 21.99,
-            originalPrice: 24.99,
-            category: 'vitamin',
-            age: 'kids',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: false,
-            benefits: [
-                'Targeted immune system support',
-                'Contains vitamin C, zinc and elderberry',
-                'Great-tasting formula kids will take daily',
-                'Perfect for cold and flu season'
-            ],
-            nutrition: [
-                { nutrient: 'Vitamin C', amount: '250mg', dailyValue: '417%' },
-                { nutrient: 'Zinc', amount: '5mg', dailyValue: '45%' },
-                { nutrient: 'Elderberry Extract', amount: '50mg', dailyValue: '-' },
-                { nutrient: 'Vitamin D', amount: '400 IU', dailyValue: '100%' },
-                { nutrient: 'Vitamin E', amount: '15 IU', dailyValue: '50%' }
-            ]
-        },
-        {
-            id: 'vitamin3',
-            name: 'Brain Boost Omega Gummies',
-            shortDesc: 'Omega-3 for brain development',
-            fullDesc: 'Our Brain Boost Omega Gummies provide essential omega-3 fatty acids in a delicious gummy form that preteens enjoy. Each serving supports cognitive function, focus, and overall brain development during critical growth years.',
-            price: 24.99,
-            originalPrice: 27.99,
-            category: 'vitamin',
-            age: 'preteen',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: true,
-            benefits: [
-                'Supports brain development and cognitive function',
-                'Contains DHA and EPA omega-3 fatty acids',
-                'No fishy taste or aftertaste',
-                'Helps with focus and concentration'
-            ],
-            nutrition: [
-                { nutrient: 'Omega-3 (DHA)', amount: '100mg', dailyValue: '-' },
-                { nutrient: 'Omega-3 (EPA)', amount: '20mg', dailyValue: '-' },
-                { nutrient: 'Vitamin E', amount: '30 IU', dailyValue: '100%' },
-                { nutrient: 'Vitamin B6', amount: '1.7mg', dailyValue: '100%' },
-                { nutrient: 'Vitamin B12', amount: '6mcg', dailyValue: '100%' }
-            ]
-        },
-        {
-            id: 'organic1',
-            name: 'Organic Apple Puffs',
-            shortDesc: '100% organic apple snack puffs',
-            fullDesc: 'Our Organic Apple Puffs are made from 100% organic apples and whole grains, perfect for little fingers and developing palates. These melt-in-your-mouth puffs are gently baked to preserve nutrients while providing a satisfying crunch toddlers love.',
-            price: 9.99,
-            originalPrice: 12.99,
-            category: 'organic',
-            age: 'toddler',
-            image: 'assets/img-1.jpg',
-            isNew: true,
-            isBestseller: false,
-            benefits: [
-                '100% certified organic ingredients',
-                'Perfect size for little fingers',
-                'Dissolves easily for safe consumption',
-                'No added sugar or artificial ingredients'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '25', dailyValue: '-' },
-                { nutrient: 'Carbohydrates', amount: '5g', dailyValue: '2%' },
-                { nutrient: 'Fiber', amount: '1g', dailyValue: '4%' },
-                { nutrient: 'Sugar', amount: '1g', dailyValue: '2%' },
-                { nutrient: 'Vitamin C', amount: '2mg', dailyValue: '2%' }
-            ]
-        },
-        {
-            id: 'organic2',
-            name: 'Organic Veggie Straws',
-            shortDesc: 'Crunchy organic vegetable snacks',
-            fullDesc: 'Our Organic Veggie Straws combine organic vegetables and whole grains into crunchy, fun-to-eat straws that kids love. Each serving provides essential nutrients from real vegetables in a delicious snack that\'s perfect for lunchboxes or after-school munching.',
-            price: 11.99,
-            originalPrice: 14.99,
-            category: 'organic',
-            age: 'kids',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: false,
-            benefits: [
-                'Made with real organic vegetables',
-                'Crunchy texture kids love',
-                'Source of plant-based nutrients',
-                'Perfect alternative to potato chips'
-            ],
-            nutrition: [
-                { nutrient: 'Calories', amount: '130', dailyValue: '-' },
-                { nutrient: 'Fat', amount: '6g', dailyValue: '9%' },
-                { nutrient: 'Sodium', amount: '90mg', dailyValue: '4%' },
-                { nutrient: 'Carbohydrates', amount: '18g', dailyValue: '6%' },
-                { nutrient: 'Vitamin A', amount: '100 IU', dailyValue: '2%' }
-            ]
+          id: 'organic2',
+          name: 'Organic Veggie Straws',
+          shortDesc: 'Crunchy organic vegetable snacks',
+          fullDesc: 'Our Organic Veggie Straws combine organic vegetables and whole grains into crunchy, fun-to-eat straws that kids love. Each serving provides essential nutrients from real vegetables in a delicious snack that\'s perfect for lunchboxes or after-school munching.',
+          price: 11.99,
+          originalPrice: 14.99,
+          category: 'organic',
+          age: 'kids',
+          image: 'assets/img-1.jpg',
+          isNew: false,
+          isBestseller: false,
+          benefits: [
+            'Made with real organic vegetables',
+            'Crunchy texture kids love',
+            'Source of plant-based nutrients',
+            'Perfect alternative to potato chips'
+          ],
+          nutrition: [
+            { nutrient: 'Calories', amount: '130', dailyValue: '-' },
+            { nutrient: 'Fat', amount: '6g', dailyValue: '9%' },
+            { nutrient: 'Sodium', amount: '90mg', dailyValue: '4%' },
+            { nutrient: 'Carbohydrates', amount: '18g', dailyValue: '6%' },
+            { nutrient: 'Vitamin A', amount: '100 IU', dailyValue: '2%' }
+          ]
         },
         {
             id: 'organic3',
@@ -355,27 +278,27 @@ document.addEventListener('DOMContentLoaded', function () {
             isNew: false,
             isBestseller: true,
             benefits: [
-                'Made with organic fruits and ancient grains',
-                'Good source of fiber and complex carbohydrates',
-                'No artificial preservatives or high-fructose corn syrup',
-                'Individually wrapped for freshness and convenience'
+              'Made with organic fruits and ancient grains',
+              'Good source of fiber and complex carbohydrates',
+              'No artificial preservatives or high-fructose corn syrup',
+              'Individually wrapped for freshness and convenience'
             ],
             nutrition: [
-                { nutrient: 'Calories', amount: '140', dailyValue: '-' },
-                { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
-                { nutrient: 'Protein', amount: '3g', dailyValue: '6%' },
-                { nutrient: 'Iron', amount: '1.8mg', dailyValue: '10%' },
-                { nutrient: 'Magnesium', amount: '40mg', dailyValue: '10%' }
+              { nutrient: 'Calories', amount: '140', dailyValue: '-' },
+              { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
+              { nutrient: 'Protein', amount: '3g', dailyValue: '6%' },
+              { nutrient: 'Iron', amount: '1.8mg', dailyValue: '10%' },
+              { nutrient: 'Magnesium', amount: '40mg', dailyValue: '10%' }
             ]
-        }
-    ]
-
+          }
+      ]
+    
     // Cart Data
     let cart = [];
     let currentDiscount = 0;
     let selectedSize = 'small';
     let currentProduct = null;
-
+    
     // Initialize the page
     function init() {
         setupCarousel();
@@ -386,21 +309,21 @@ document.addEventListener('DOMContentLoaded', function () {
         loadCartFromStorage();
         updateCartDisplay();
     }
-
+    
     // 1. CAROUSEL FUNCTIONALITY
     function setupCarousel() {
         if (!carouselTrack) return;
-
+        
         const slides = document.querySelectorAll('.carousel-slide');
         const slideWidth = slides[0].getBoundingClientRect().width;
         let currentSlide = 0;
         let autoSlideInterval;
-
+        
         // Position slides next to each other
         slides.forEach((slide, index) => {
             slide.style.left = slideWidth * index + 'px';
         });
-
+        
         // Create indicators
         slides.forEach((_, index) => {
             const indicator = document.createElement('div');
@@ -412,22 +335,22 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             carouselIndicators.appendChild(indicator);
         });
-
+        
         // Function to move to a specific slide
         function goToSlide(slideIndex) {
             if (slideIndex < 0) slideIndex = slides.length - 1;
             if (slideIndex >= slides.length) slideIndex = 0;
-
+            
             carouselTrack.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
-
+            
             // Update indicators
             document.querySelectorAll('.indicator').forEach((indicator, index) => {
                 indicator.classList.toggle('active', index === slideIndex);
             });
-
+            
             currentSlide = slideIndex;
         }
-
+        
         // Event listeners for prev/next buttons
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
@@ -435,37 +358,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 resetAutoSlide();
             });
         }
-
+        
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 goToSlide(currentSlide + 1);
                 resetAutoSlide();
             });
         }
-
+        
         // Auto slide functionality
         function startAutoSlide() {
             autoSlideInterval = setInterval(() => {
                 goToSlide(currentSlide + 1);
             }, 10000); // Change slide every 10 seconds
         }
-
+        
         function resetAutoSlide() {
             clearInterval(autoSlideInterval);
             startAutoSlide();
         }
-
+        
         // Start auto sliding
         startAutoSlide();
     }
-
+    
     // 2. MOBILE NAVIGATION
     function setupMobileNav() {
         if (!mobileToggle || !navLinks) return;
-
+        
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-
+            
             // Change icon based on menu state
             const icon = mobileToggle.querySelector('i');
             if (navLinks.classList.contains('active')) {
@@ -476,11 +399,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 icon.classList.add('bx-menu');
             }
         });
-
+        
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') &&
-                !navLinks.contains(e.target) &&
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
                 e.target !== mobileToggle) {
                 navLinks.classList.remove('active');
                 const icon = mobileToggle.querySelector('i');
@@ -489,28 +412,28 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
+    
     // 3. PRODUCT FILTERING
     function setupProductFilters() {
         // Get all product cards
         const productCards = document.querySelectorAll('.product-card');
         if (!productCards.length) return;
-
+        
         // Filter by category
         if (categoryFilter) {
             categoryFilter.addEventListener('change', applyFilters);
         }
-
+        
         // Filter by age group
         if (ageFilter) {
             ageFilter.addEventListener('change', applyFilters);
         }
-
+        
         // Sort products
         if (sortBy) {
             sortBy.addEventListener('change', applyFilters);
         }
-
+        
         // Search products
         if (searchBtn && productSearch) {
             searchBtn.addEventListener('click', applyFilters);
@@ -520,27 +443,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
+        
         function applyFilters() {
             const selectedCategory = categoryFilter ? categoryFilter.value : 'all';
             const selectedAge = ageFilter ? ageFilter.value : 'all';
             const selectedSort = sortBy ? sortBy.value : 'popular';
             const searchQuery = productSearch ? productSearch.value.toLowerCase() : '';
-
+            
             // Filter and sort products
             productCards.forEach(card => {
                 const category = card.dataset.category;
                 const age = card.dataset.age;
                 const name = card.querySelector('h3').textContent.toLowerCase();
                 const desc = card.querySelector('.product-short-desc').textContent.toLowerCase();
-
+                
                 // Check if card matches all filters
                 const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
                 const matchesAge = selectedAge === 'all' || age === selectedAge;
-                const matchesSearch = searchQuery === '' ||
-                    name.includes(searchQuery) ||
-                    desc.includes(searchQuery);
-
+                const matchesSearch = searchQuery === '' || 
+                                     name.includes(searchQuery) || 
+                                     desc.includes(searchQuery);
+                
                 // Show or hide based on filters
                 if (matchesCategory && matchesAge && matchesSearch) {
                     card.style.display = 'block';
@@ -548,13 +471,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     card.style.display = 'none';
                 }
             });
-
+            
             // Apply sorting
             const productGrid = document.querySelector('.product-grid');
             if (!productGrid) return;
-
+            
             const sortedCards = Array.from(productCards).filter(card => card.style.display !== 'none');
-
+            
             switch (selectedSort) {
                 case 'price-low':
                     sortedCards.sort((a, b) => {
@@ -586,16 +509,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                     break;
             }
-
+            
             // Reorder the cards in the DOM
             sortedCards.forEach(card => {
                 card.parentNode.appendChild(card);
             });
-
+            
             // Check if any products are visible
             const visibleProducts = document.querySelectorAll('.product-card[style="display: block;"]');
             const productContainer = document.getElementById('product-container');
-
+            
             if (visibleProducts.length === 0 && productContainer) {
                 // No products match filters
                 if (!document.getElementById('no-products-message')) {
@@ -607,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <button id="resetFilters" class="btn">Reset Filters</button>
                     `;
                     productContainer.appendChild(noProductsMessage);
-
+                    
                     document.getElementById('resetFilters').addEventListener('click', resetFilters);
                 }
             } else {
@@ -618,53 +541,53 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         }
-
+        
         function resetFilters() {
             if (categoryFilter) categoryFilter.value = 'all';
             if (ageFilter) ageFilter.value = 'all';
             if (sortBy) sortBy.value = 'popular';
             if (productSearch) productSearch.value = '';
-
+            
             applyFilters();
         }
     }
-
+    
     // 4. PRODUCT MODAL
     function setupProductModal() {
         if (!productModal) return;
-
+        
         // Open modal when View Details is clicked
         viewDetailsBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function() {
                 const productId = this.dataset.product;
                 openProductModal(productId);
             });
         });
-
+        
         // Close modal when X is clicked
         if (closeModal) {
             closeModal.addEventListener('click', closeProductModal);
         }
-
+        
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             if (e.target === productModal) {
                 closeProductModal();
             }
         });
-
+        
         // Thumbnail gallery
         thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function () {
+            thumbnail.addEventListener('click', function() {
                 // Update main image
                 modalMainImage.src = this.getAttribute('data-src') || this.src;
-
+                
                 // Update active thumbnail
                 thumbnails.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
             });
         });
-
+        
         // Quantity controls
         if (quantityMinus && quantityPlus && productQuantity) {
             quantityMinus.addEventListener('click', () => {
@@ -673,14 +596,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     productQuantity.value = quantity - 1;
                 }
             });
-
+            
             quantityPlus.addEventListener('click', () => {
                 let quantity = parseInt(productQuantity.value);
                 if (quantity < 10) {
                     productQuantity.value = quantity + 1;
                 }
             });
-
+            
             productQuantity.addEventListener('change', () => {
                 let quantity = parseInt(productQuantity.value);
                 if (isNaN(quantity) || quantity < 1) {
@@ -690,14 +613,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
+        
         // Size selection
         sizeBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function() {
                 // Update active size
                 sizeBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-
+                
                 // Update price based on selected size
                 selectedSize = this.dataset.size;
                 if (currentProduct) {
@@ -707,22 +630,22 @@ document.addEventListener('DOMContentLoaded', function () {
                         case 'large': priceMultiplier = 2.5; break;
                         default: priceMultiplier = 1;
                     }
-
+                    
                     const price = currentProduct.price * priceMultiplier;
                     modalProductPrice.textContent = `$${price.toFixed(2)}`;
                 }
             });
         });
-
+        
         // Add to cart from modal
         if (modalAddToCart) {
             modalAddToCart.addEventListener('click', () => {
                 if (!currentProduct) return;
-
+                
                 const quantity = parseInt(productQuantity.value);
                 const size = selectedSize;
                 const isSubscription = subscribeOption.checked;
-
+                
                 // Calculate price based on size
                 let priceMultiplier = 1;
                 switch (size) {
@@ -730,14 +653,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     case 'large': priceMultiplier = 2.5; break;
                     default: priceMultiplier = 1;
                 }
-
+                
                 let price = currentProduct.price * priceMultiplier;
-
+                
                 // Apply subscription discount if selected
                 if (isSubscription) {
                     price = price * 0.9; // 10% discount
                 }
-
+                
                 addToCart({
                     id: currentProduct.id,
                     name: currentProduct.name,
@@ -747,24 +670,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     size: size,
                     isSubscription: isSubscription
                 });
-
+                
                 closeProductModal();
                 openCart();
             });
         }
     }
-
+    
     function openProductModal(productId) {
         // Find product data
         const product = products.find(p => p.id === productId);
         if (!product) return;
-
+        
         currentProduct = product;
-
+        
         // Populate modal with product data
         modalProductTitle.textContent = product.name;
         modalProductPrice.textContent = `$${product.price.toFixed(2)}`;
-
+        
         // Set original price or hide if no discount
         if (product.originalPrice > product.price) {
             modalOriginalPrice.textContent = `$${product.originalPrice.toFixed(2)}`;
@@ -774,16 +697,16 @@ document.addEventListener('DOMContentLoaded', function () {
             modalOriginalPrice.style.display = 'none';
             document.querySelector('.discount-badge').style.display = 'none';
         }
-
+        
         modalProductDesc.textContent = product.fullDesc;
         modalMainImage.src = product.image;
-
+        
         // Reset thumbnails (would normally load product-specific thumbnails)
         thumbnails.forEach((thumbnail, index) => {
             thumbnail.src = product.image;
             thumbnail.classList.toggle('active', index === 0);
         });
-
+        
         // Populate benefits list
         modalProductBenefits.innerHTML = '';
         product.benefits.forEach(benefit => {
@@ -791,7 +714,7 @@ document.addEventListener('DOMContentLoaded', function () {
             li.textContent = benefit;
             modalProductBenefits.appendChild(li);
         });
-
+        
         // Populate nutrition table
         const tableBody = modalNutritionTable.querySelector('tbody') || modalNutritionTable;
         tableBody.innerHTML = `
@@ -801,7 +724,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <th>% Daily Value</th>
             </tr>
         `;
-
+        
         product.nutrition.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -811,36 +734,36 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             tableBody.appendChild(row);
         });
-
+        
         // Reset form elements
         productQuantity.value = 1;
         subscribeOption.checked = false;
-
+        
         // Reset size selection
         selectedSize = 'small';
         sizeBtns.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.size === 'small');
         });
-
+        
         // Show modal
         productModal.style.display = 'block';
         document.body.style.overflow = 'hidden'; // Prevent scrolling
     }
-
+    
     function closeProductModal() {
         productModal.style.display = 'none';
         document.body.style.overflow = ''; // Restore scrolling
         currentProduct = null;
     }
-
+    
     // 5. SHOPPING CART
     function setupCart() {
         // Quick add to cart buttons
         addToCartBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function() {
                 const productId = this.dataset.product;
                 const product = products.find(p => p.id === productId);
-
+                
                 if (product) {
                     addToCart({
                         id: product.id,
@@ -851,37 +774,37 @@ document.addEventListener('DOMContentLoaded', function () {
                         size: 'small',
                         isSubscription: false
                     });
-
+                    
                     // Show cart after adding
                     openCart();
                 }
             });
         });
-
+        
         // Open cart
         const cartIcon = document.querySelector('.shopping a');
         if (cartIcon) {
-            cartIcon.addEventListener('click', function (e) {
+            cartIcon.addEventListener('click', function(e) {
                 e.preventDefault();
                 openCart();
             });
         }
-
+        
         // Close cart
         if (closeCart) {
             closeCart.addEventListener('click', closeCartSidebar);
         }
-
+        
         // Start shopping button
         if (startShopping) {
             startShopping.addEventListener('click', closeCartSidebar);
         }
-
+        
         // Apply promo code
         if (applyPromo && promoCodeInput) {
             applyPromo.addEventListener('click', applyPromoCode);
         }
-
+        
         // Checkout button
         if (checkoutBtn) {
             checkoutBtn.addEventListener('click', () => {
@@ -891,36 +814,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
+        
         // Close cart when clicking outside
         document.addEventListener('click', (e) => {
-            if (cartSidebar &&
-                cartSidebar.classList.contains('open') &&
-                !cartSidebar.contains(e.target) &&
+            if (cartSidebar && 
+                cartSidebar.classList.contains('open') && 
+                !cartSidebar.contains(e.target) && 
                 !e.target.closest('.shopping')) {
                 closeCartSidebar();
             }
         });
     }
-
+    
     function openCart() {
         if (!cartSidebar) return;
         cartSidebar.classList.add('open');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
     }
-
+    
     function closeCartSidebar() {
         if (!cartSidebar) return;
         cartSidebar.classList.remove('open');
         document.body.style.overflow = ''; // Restore scrolling
     }
-
+    
     function addToCart(item) {
         // Check if item already exists in cart
-        const existingItemIndex = cart.findIndex(i =>
+        const existingItemIndex = cart.findIndex(i => 
             i.id === item.id && i.size === item.size && i.isSubscription === item.isSubscription
         );
-
+        
         if (existingItemIndex !== -1) {
             // Update quantity if item exists
             cart[existingItemIndex].quantity += item.quantity;
@@ -928,36 +851,36 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add new item
             cart.push(item);
         }
-
+        
         // Update cart display
         updateCartDisplay();
         saveCartToStorage();
-
+        
         // Show confirmation message
         showToast(`${item.name} added to cart!`);
     }
-
+    
     function removeFromCart(index) {
         cart.splice(index, 1);
         updateCartDisplay();
         saveCartToStorage();
     }
-
+    
     function updateCartQuantity(index, newQuantity) {
         if (newQuantity < 1) newQuantity = 1;
         if (newQuantity > 10) newQuantity = 10;
-
+        
         cart[index].quantity = newQuantity;
         updateCartDisplay();
         saveCartToStorage();
     }
-
+    
     function updateCartDisplay() {
         // Update cart count
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
         if (cartCount) cartCount.textContent = totalItems;
         if (cartItemCount) cartItemCount.textContent = `(${totalItems})`;
-
+        
         // Show/hide empty cart message
         if (emptyCartMessage && cartItems && cartSummary) {
             if (cart.length === 0) {
@@ -968,12 +891,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 cartSummary.style.display = 'block';
             }
         }
-
+        
         // Populate cart items
         if (cartItems) {
             // Clear current items
             cartItems.innerHTML = '';
-
+            
             if (cart.length === 0) {
                 cartItems.appendChild(emptyCartMessage);
             } else {
@@ -981,14 +904,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 cart.forEach((item, index) => {
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
-
+                    
                     let sizeText = '';
                     switch (item.size) {
                         case 'small': sizeText = 'Small (3-pack)'; break;
                         case 'medium': sizeText = 'Medium (6-pack)'; break;
                         case 'large': sizeText = 'Large (12-pack)'; break;
                     }
-
+                    
                     cartItem.innerHTML = `
                         <div class="cart-item-image">
                             <img src="${item.image}" alt="${item.name}">
@@ -1008,49 +931,49 @@ document.addEventListener('DOMContentLoaded', function () {
                             <i class="bx bx-trash"></i>
                         </button>
                     `;
-
+                    
                     cartItems.appendChild(cartItem);
                 });
-
+                
                 // Add event listeners to new cart items
                 document.querySelectorAll('.cart-quantity-btn.minus').forEach(btn => {
-                    btn.addEventListener('click', function () {
+                    btn.addEventListener('click', function() {
                         const index = parseInt(this.dataset.index);
                         updateCartQuantity(index, cart[index].quantity - 1);
                     });
                 });
-
+                
                 document.querySelectorAll('.cart-quantity-btn.plus').forEach(btn => {
-                    btn.addEventListener('click', function () {
+                    btn.addEventListener('click', function() {
                         const index = parseInt(this.dataset.index);
                         updateCartQuantity(index, cart[index].quantity + 1);
                     });
                 });
-
+                
                 document.querySelectorAll('.remove-item').forEach(btn => {
-                    btn.addEventListener('click', function () {
+                    btn.addEventListener('click', function() {
                         const index = parseInt(this.dataset.index);
                         removeFromCart(index);
                     });
                 });
             }
         }
-
+        
         // Update cart totals
         updateCartTotals();
     }
-
+    
     function updateCartTotals() {
         if (!cartSubtotal || !shippingCost || !cartTotal) return;
-
+        
         // Calculate subtotal
         const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
         cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-
+        
         // Set shipping cost (free over $50)
         const shipping = subtotal > 50 ? 0 : 5.99;
         shippingCost.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-
+        
         // Apply discount if any
         if (currentDiscount > 0) {
             discountRow.style.display = 'flex';
@@ -1059,22 +982,22 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             discountRow.style.display = 'none';
         }
-
+        
         // Calculate total
         const total = subtotal + shipping - (subtotal * (currentDiscount / 100));
         cartTotal.textContent = `$${total.toFixed(2)}`;
     }
-
+    
     function applyPromoCode() {
         const promoCode = promoCodeInput.value.trim().toUpperCase();
-
+        
         // Sample promo codes
         const promoCodes = {
             'WELCOME10': 10,
             'SUMMER20': 20,
             'FREESHIP': 5
         };
-
+        
         if (promoCodes[promoCode]) {
             currentDiscount = promoCodes[promoCode];
             updateCartTotals();
@@ -1084,26 +1007,26 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast('Invalid promo code', 'error');
         }
     }
-
+    
     // 6. STORAGE FUNCTIONS
     function saveCartToStorage() {
         localStorage.setItem('hopebitesCart', JSON.stringify(cart));
         localStorage.setItem('hopebitesDiscount', currentDiscount.toString());
     }
-
+    
     function loadCartFromStorage() {
         const savedCart = localStorage.getItem('hopebitesCart');
         const savedDiscount = localStorage.getItem('hopebitesDiscount');
-
+        
         if (savedCart) {
             cart = JSON.parse(savedCart);
         }
-
+        
         if (savedDiscount) {
             currentDiscount = parseFloat(savedDiscount);
         }
     }
-
+    
     // 7. UTILITY FUNCTIONS
     function showToast(message, type = 'success') {
         // Create toast element if it doesn't exist
@@ -1112,7 +1035,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toast = document.createElement('div');
             toast.id = 'toast-notification';
             document.body.appendChild(toast);
-
+            
             // Add styles
             toast.style.position = 'fixed';
             toast.style.bottom = '20px';
@@ -1127,19 +1050,19 @@ document.addEventListener('DOMContentLoaded', function () {
             toast.style.opacity = '0';
             toast.style.transform = 'translateX(-50%) translateY(20px)';
         }
-
+        
         // Set toast type
         if (type === 'success') {
             toast.style.backgroundColor = 'var(--primary-color, #2E5339)';
         } else if (type === 'error') {
             toast.style.backgroundColor = 'var(--secondary-color, #dd300a)';
         }
-
+        
         // Set message and show toast
         toast.textContent = message;
         toast.style.opacity = '1';
         toast.style.transform = 'translateX(-50%) translateY(0)';
-
+        
         // Hide toast after 3 seconds
         clearTimeout(toast.timeout);
         toast.timeout = setTimeout(() => {
@@ -1147,7 +1070,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toast.style.transform = 'translateX(-50%) translateY(20px)';
         }, 3000);
     }
-
+    
     // Initialize everything
     init();
 });
@@ -1155,31 +1078,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Part 2 -- Checkout system
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     // Cart and Product Data (Sample data - would normally come from your database)
     const cartItems = [
         { id: 1, name: "Eco-Friendly Water Bottle", price: 24.99, quantity: 2, image: "/api/placeholder/60/60" },
         { id: 2, name: "Organic Cotton T-Shirt", price: 32.50, quantity: 1, image: "/api/placeholder/60/60" }
     ];
-
+    
     // Initialize variables
     let currentStep = 1;
     let selectedPaymentMethod = 'card';
     let selectedShippingMethod = 'standard';
     let shippingCost = 5.99;
     let orderTotal = 0;
-
+    
     // DOM Elements - Modals
     const checkoutModal = document.getElementById('checkoutModal');
     const confirmationModal = document.getElementById('confirmationModal');
     const closeCheckoutBtn = document.getElementById('closeCheckout');
-
+    
     // DOM Elements - Step Navigation
     const stepIndicators = document.querySelectorAll('.step');
     const step1Content = document.getElementById('step1Content');
     const step2Content = document.getElementById('step2Content');
     const step3Content = document.getElementById('step3Content');
-
+    
     // DOM Elements - Navigation Buttons
     const continueShopping = document.getElementById('continueShopping');
     const toPaymentBtn = document.getElementById('toPaymentBtn');
@@ -1189,21 +1112,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const placeOrderBtn = document.getElementById('placeOrderBtn');
     const viewOrderBtn = document.getElementById('viewOrderBtn');
     const continueBrowsingBtn = document.getElementById('continueBrowsingBtn');
-
+    
     // DOM Elements - Payment Methods
     const paymentMethods = document.querySelectorAll('.payment-method');
     const cardPaymentForm = document.getElementById('cardPaymentForm');
     const paypalForm = document.getElementById('paypalForm');
     const applePayForm = document.getElementById('applePayForm');
-
+    
     // DOM Elements - Shipping Options
     const shippingOptions = document.querySelectorAll('input[name="shipping"]');
-
+    
     // DOM Elements - Form Elements
     const shippingForm = document.getElementById('shippingForm');
     const paymentForm = document.getElementById('paymentForm');
     const termsAgree = document.getElementById('termsAgree');
-
+    
     // DOM Elements - Review Order Elements
     const reviewOrderItems = document.getElementById('reviewOrderItems');
     const reviewShippingDetails = document.getElementById('reviewShippingDetails');
@@ -1214,45 +1137,45 @@ document.addEventListener('DOMContentLoaded', function () {
     const reviewDiscountRow = document.getElementById('reviewDiscountRow');
     const reviewTax = document.getElementById('reviewTax');
     const reviewTotal = document.getElementById('reviewTotal');
-
+    
     // DOM Elements - Confirmation Elements
     const orderNumber = document.getElementById('orderNumber');
     const confirmationEmail = document.getElementById('confirmationEmail');
     const confirmationDetails = document.getElementById('confirmationDetails');
-
+    
     // Function to show checkout modal
-    window.showCheckout = function () {
+    window.showCheckout = function() {
         calculateCart();
         checkoutModal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling on background
     };
-
+    
     // Function to close checkout modal
     function closeCheckout() {
         checkoutModal.classList.remove('active');
         document.body.style.overflow = '';
     }
-
+    
     // Function to show confirmation modal
     function showConfirmation() {
         checkoutModal.classList.remove('active');
         confirmationModal.classList.add('active');
     }
-
+    
     // Function to close confirmation modal
     function closeConfirmation() {
         confirmationModal.classList.remove('active');
         document.body.style.overflow = '';
         resetCheckout();
     }
-
+    
     // Calculate cart totals
     function calculateCart() {
         let subtotal = 0;
         cartItems.forEach(item => {
             subtotal += item.price * item.quantity;
         });
-
+        
         // Apply shipping cost based on selected method
         switch (selectedShippingMethod) {
             case 'express':
@@ -1264,14 +1187,14 @@ document.addEventListener('DOMContentLoaded', function () {
             default:
                 shippingCost = 5.99;
         }
-
+        
         // Calculate tax (example: 8.25%)
         const taxRate = 0.0825;
         const tax = subtotal * taxRate;
-
+        
         // Calculate total
         orderTotal = subtotal + shippingCost + tax;
-
+        
         // Update review page
         if (reviewSubtotal) {
             reviewSubtotal.textContent = `$${subtotal.toFixed(2)}`;
@@ -1280,54 +1203,54 @@ document.addEventListener('DOMContentLoaded', function () {
             reviewTotal.textContent = `$${orderTotal.toFixed(2)}`;
         }
     }
-
+    
     // Show step by number
     function showStep(stepNumber) {
         // Hide all steps
         step1Content.classList.add('hidden');
         step2Content.classList.add('hidden');
         step3Content.classList.add('hidden');
-
+        
         // Remove active class from all step indicators
         stepIndicators.forEach(step => {
             step.classList.remove('active');
         });
-
+        
         // Show the requested step
         document.getElementById(`step${stepNumber}Content`).classList.remove('hidden');
-
+        
         // Set the active step indicator
         document.querySelector(`.step[data-step="${stepNumber}"]`).classList.add('active');
-
+        
         // Update current step
         currentStep = stepNumber;
-
+        
         // If going to review step, update review information
         if (stepNumber === 3) {
             updateReviewPage();
         }
     }
-
+    
     // Update payment form based on selected method
     function updatePaymentForm(method) {
         // Hide all payment forms
         cardPaymentForm.classList.add('hidden');
         paypalForm.classList.add('hidden');
         applePayForm.classList.add('hidden');
-
+        
         // Show selected payment form
         document.getElementById(`${method}PaymentForm`).classList.remove('hidden');
-
+        
         // Update selected payment method
         selectedPaymentMethod = method;
     }
-
+    
     // Update shipping method
     function updateShippingMethod(method) {
         selectedShippingMethod = method;
         calculateCart();
     }
-
+    
     // Populate review page with data from previous steps
     function updateReviewPage() {
         // Populate order items
@@ -1345,7 +1268,7 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             reviewOrderItems.appendChild(itemElement);
         });
-
+        
         // Populate shipping details
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
@@ -1354,14 +1277,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const state = document.getElementById('state').value;
         const zipCode = document.getElementById('zipCode').value;
         const country = document.getElementById('country').value;
-
+        
         let shippingMethodName = "Standard Shipping";
         if (selectedShippingMethod === 'express') {
             shippingMethodName = "Express Shipping";
         } else if (selectedShippingMethod === 'nextday') {
             shippingMethodName = "Next Day Delivery";
         }
-
+        
         reviewShippingDetails.innerHTML = `
             <p>${firstName} ${lastName}</p>
             <p>${address}</p>
@@ -1369,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <p>${country}</p>
             <p><strong>Method:</strong> ${shippingMethodName} ($${shippingCost.toFixed(2)})</p>
         `;
-
+        
         // Populate payment details
         let paymentMethodName = "";
         switch (selectedPaymentMethod) {
@@ -1385,12 +1308,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 paymentMethodName = "Apple Pay";
                 break;
         }
-
+        
         reviewPaymentDetails.innerHTML = `<p>${paymentMethodName}</p>`;
-
+        
         // Update totals
         calculateCart();
-
+        
         // Check if discount is applied (example)
         const hasDiscount = false; // Set to true to show discount
         if (hasDiscount) {
@@ -1402,31 +1325,31 @@ document.addEventListener('DOMContentLoaded', function () {
             reviewDiscountRow.style.display = 'none';
         }
     }
-
+    
     // Place Order function
     function placeOrder() {
         if (!termsAgree.checked) {
             alert("Please agree to the Terms and Conditions to place your order.");
             return;
         }
-
+        
         // Show loading indicator
         const loadingOverlay = document.createElement('div');
         loadingOverlay.className = 'loading-overlay';
         loadingOverlay.innerHTML = '<div class="loading-spinner"></div>';
         step3Content.appendChild(loadingOverlay);
-
+        
         // Simulate order processing (would be an API call in a real system)
         setTimeout(() => {
             step3Content.removeChild(loadingOverlay);
-
+            
             // Generate order number
             const randomOrderNum = Math.floor(100000 + Math.random() * 900000);
             orderNumber.textContent = `#${randomOrderNum}`;
-
+            
             // Set confirmation email
             confirmationEmail.textContent = document.getElementById('email').value;
-
+            
             // Populate confirmation details
             confirmationDetails.innerHTML = `
                 <div class="confirmation-item">
@@ -1435,21 +1358,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p><strong>Total:</strong> ${reviewTotal.textContent}</p>
                 </div>
             `;
-
+            
             // Show confirmation modal
             showConfirmation();
         }, 1500);
     }
-
+    
     // Reset checkout to initial state
     function resetCheckout() {
         // Reset step
         showStep(1);
-
+        
         // Reset forms
         shippingForm.reset();
         paymentForm.reset();
-
+        
         // Reset payment method
         updatePaymentForm('card');
         paymentMethods.forEach(method => {
@@ -1459,19 +1382,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 method.classList.remove('active');
             }
         });
-
+        
         // Reset shipping method
         selectedShippingMethod = 'standard';
         document.querySelector('input[value="standard"]').checked = true;
     }
-
+    
     // Validate shipping form
     function validateShippingForm() {
         const requiredFields = [
             'firstName', 'lastName', 'email', 'phone',
             'address', 'city', 'state', 'zipCode', 'country'
         ];
-
+        
         for (const field of requiredFields) {
             const element = document.getElementById(field);
             if (!element.value.trim()) {
@@ -1480,7 +1403,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return false;
             }
         }
-
+        
         // Validate email format
         const email = document.getElementById('email').value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1489,15 +1412,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('email').focus();
             return false;
         }
-
+        
         return true;
     }
-
+    
     // Validate payment form
     function validatePaymentForm() {
         if (selectedPaymentMethod === 'card') {
             const requiredFields = ['cardName', 'cardNumber', 'expiryDate', 'cvv'];
-
+            
             for (const field of requiredFields) {
                 const element = document.getElementById(field);
                 if (!element.value.trim()) {
@@ -1506,7 +1429,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return false;
                 }
             }
-
+            
             // Validate card number format (basic validation)
             const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
             if (!/^\d{16}$/.test(cardNumber)) {
@@ -1514,7 +1437,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('cardNumber').focus();
                 return false;
             }
-
+            
             // Validate expiry date format
             const expiryDate = document.getElementById('expiryDate').value;
             if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
@@ -1522,7 +1445,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('expiryDate').focus();
                 return false;
             }
-
+            
             // Validate CVV format
             const cvv = document.getElementById('cvv').value;
             if (!/^\d{3,4}$/.test(cvv)) {
@@ -1531,115 +1454,115 @@ document.addEventListener('DOMContentLoaded', function () {
                 return false;
             }
         }
-
+        
         return true;
     }
-
+    
     // Event Listeners - Modal Controls
     closeCheckoutBtn.addEventListener('click', closeCheckout);
     continueShopping.addEventListener('click', closeCheckout);
-
+    
     // Event Listeners - Step Navigation
     toPaymentBtn.addEventListener('click', () => {
         if (validateShippingForm()) {
             showStep(2);
         }
     });
-
+    
     backToShipping.addEventListener('click', () => {
         showStep(1);
     });
-
+    
     toReviewBtn.addEventListener('click', () => {
         if (validatePaymentForm()) {
             showStep(3);
         }
     });
-
+    
     backToPayment.addEventListener('click', () => {
         showStep(2);
     });
-
+    
     placeOrderBtn.addEventListener('click', placeOrder);
-
+    
     // Event Listeners - Payment Methods
     paymentMethods.forEach(method => {
-        method.addEventListener('click', function () {
+        method.addEventListener('click', function() {
             // Remove active class from all methods
             paymentMethods.forEach(m => m.classList.remove('active'));
-
+            
             // Add active class to clicked method
             this.classList.add('active');
-
+            
             // Update payment form
             updatePaymentForm(this.getAttribute('data-method'));
         });
     });
-
+    
     // Event Listeners - Shipping Options
     shippingOptions.forEach(option => {
-        option.addEventListener('change', function () {
+        option.addEventListener('change', function() {
             updateShippingMethod(this.value);
         });
     });
-
+    
     // Event Listeners - Confirmation Modal
     viewOrderBtn.addEventListener('click', () => {
         // This would typically go to an order details page
         alert("View Order functionality would go to order details page.");
         closeConfirmation();
     });
-
+    
     continueBrowsingBtn.addEventListener('click', closeConfirmation);
-
+    
     // Card Format Helper Functions
     const cardNumberInput = document.getElementById('cardNumber');
     if (cardNumberInput) {
-        cardNumberInput.addEventListener('input', function (e) {
+        cardNumberInput.addEventListener('input', function(e) {
             // Remove all non-digits
             let value = this.value.replace(/\D/g, '');
-
+            
             // Add space after every 4 digits
             value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-
+            
             // Limit to 19 characters (16 digits + 3 spaces)
             value = value.substring(0, 19);
-
+            
             // Update input value
             this.value = value;
         });
     }
-
+    
     const expiryDateInput = document.getElementById('expiryDate');
     if (expiryDateInput) {
-        expiryDateInput.addEventListener('input', function (e) {
+        expiryDateInput.addEventListener('input', function(e) {
             // Remove all non-digits
             let value = this.value.replace(/\D/g, '');
-
+            
             // Add slash after first 2 digits
             if (value.length > 2) {
                 value = value.substring(0, 2) + '/' + value.substring(2);
             }
-
+            
             // Limit to 5 characters (MM/YY)
             value = value.substring(0, 5);
-
+            
             // Update input value
             this.value = value;
         });
     }
-
+    
     // Initialize checkout - showing first step
     resetCheckout();
-
+    
     // For demo purposes - add a method to show the checkout modal from outside this script
-    window.addEventListener('keydown', function (e) {
+    window.addEventListener('keydown', function(e) {
         // Pressing 'C' will open the checkout for demo purposes
         if (e.key.toLowerCase() === 'c') {
             showCheckout();
         }
     });
-
+    
     // Optional: Add a button to your page to open the checkout
     const demoCheckoutButton = document.createElement('button');
     demoCheckoutButton.textContent = "Open Checkout";
@@ -1661,31 +1584,31 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', () => {
     // Select the theme toggle button
     const themeToggle = document.querySelector('.theme-toggle');
-
+    
     // Check for saved theme preference or use system preference
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     const currentTheme = localStorage.getItem('theme');
-
+    
     // Set initial theme
     if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
         document.documentElement.setAttribute('data-theme', 'dark');
     } else {
         document.documentElement.setAttribute('data-theme', 'light');
     }
-
+    
     // Toggle theme when button is clicked
     themeToggle.addEventListener('click', () => {
         // If current mode is dark, switch to light, and vice versa
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
+        
         // Set the new theme
         document.documentElement.setAttribute('data-theme', newTheme);
-
+        
         // Save preference to localStorage
         localStorage.setItem('theme', newTheme);
     });
-
+    
     // Listen for system preference changes
     prefersDarkScheme.addEventListener('change', (event) => {
         // Only automatically switch if user hasn't manually set a preference
@@ -1694,14 +1617,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.setAttribute('data-theme', newTheme);
         }
     });
-
+    
     // Newsletter Form Submission (prevent default behavior for demo)
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = newsletterForm.querySelector('input[type="email"]');
-
+            
             // Simple validation
             if (emailInput.value.trim() !== '' && emailInput.value.includes('@')) {
                 // Here you would typically send this to your backend
@@ -1712,14 +1635,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    
     // Smooth scrolling for footer navigation links
     const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
     footerLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-
+            
             if (targetElement) {
                 e.preventDefault();
                 window.scrollTo({
