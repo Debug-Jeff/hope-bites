@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             originalPrice: 15.99,
             category: 'fruit',
             age: 'kids',
-            image: 'assets/mixed-berry-bites.jpg',
+            image: 'assets/img-1.jpg',
             isNew: true,
             isBestseller: true,
             benefits: [
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
             originalPrice: 13.99,
             category: 'fruit',
             age: 'preteen',
-            image: 'assets/tropical-fruit-medley.jpg',
+            image: 'assets/img-1.jpg',
             isNew: false,
             isBestseller: false,
             benefits: [
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
             originalPrice: 11.99,
             category: 'fruit',
             age: 'toddler',
-            image: 'assets/apple-cinnamon-crisps.jpg',
+            image: 'assets/img-1.jpg',
             isNew: false,
             isBestseller: true,
             benefits: [
@@ -1786,7 +1786,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });     localStorage.setItem('theme', newTheme);
-    });
+
 
     // Listen for system preference changes
     prefersDarkScheme.addEventListener('change', (event) => {
@@ -1831,4 +1831,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
