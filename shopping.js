@@ -688,6 +688,8 @@ function setupProductFilters() {
     }
 }
 
+setupProductFilters();
+
 // 4. PRODUCT MODAL
 function setupProductModal() {
     if (!productModal) return;
