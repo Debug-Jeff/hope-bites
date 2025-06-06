@@ -53,3 +53,6 @@ debug.log
 
 # Local Netlify folder
 .netlify
+
+# Local Markdown files
+.md
