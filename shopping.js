@@ -1,1700 +1,1337 @@
-// Part 1 -- Product Display and Interaction
-document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements - Navigation
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    // DOM Elements - Carousel
-    const carouselTrack = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const carouselIndicators = document.getElementById('carouselIndicators');
-    
-    // DOM Elements - Filtering
-    const categoryFilter = document.getElementById('categoryFilter');
-    const ageFilter = document.getElementById('ageFilter');
-    const sortBy = document.getElementById('sortBy');
-    const productSearch = document.getElementById('productSearch');
-    const searchBtn = document.getElementById('searchBtn');
-    
-    // DOM Elements - Product Modal
-    const productModal = document.getElementById('productModal');
-    const closeModal = document.querySelector('.close-modal');
-    const modalMainImage = document.getElementById('modalMainImage');
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const modalProductTitle = document.getElementById('modalProductTitle');
-    const modalProductPrice = document.getElementById('modalProductPrice');
-    const modalOriginalPrice = document.getElementById('modalOriginalPrice');
-    const modalProductDesc = document.getElementById('modalProductDesc');
-    const modalProductBenefits = document.getElementById('modalProductBenefits');
-    const modalNutritionTable = document.getElementById('modalNutritionTable');
-    const quantityMinus = document.getElementById('quantityMinus');
-    const quantityPlus = document.getElementById('quantityPlus');
-    const productQuantity = document.getElementById('productQuantity');
-    const sizeBtns = document.querySelectorAll('.size-btn');
-    const subscribeOption = document.getElementById('subscribeOption');
-    const modalAddToCart = document.getElementById('modalAddToCart');
-    
-    // DOM Elements - Cart
-    const cartCount = document.getElementById('cartCount');
-    const cartItemCount = document.getElementById('cartItemCount');
-    const cartSidebar = document.getElementById('cartSidebar');
-    const closeCart = document.getElementById('closeCart');
-    const cartItems = document.getElementById('cartItems');
-    const emptyCartMessage = document.getElementById('emptyCartMessage');
-    const cartSummary = document.getElementById('cartSummary');
-    const cartSubtotal = document.getElementById('cartSubtotal');
-    const shippingCost = document.getElementById('shippingCost');
-    const discountRow = document.getElementById('discountRow');
-    const discountAmount = document.getElementById('discountAmount');
-    const cartTotal = document.getElementById('cartTotal');
-    const promoCodeInput = document.getElementById('promoCodeInput');
-    const applyPromo = document.getElementById('applyPromo');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    const startShopping = document.getElementById('startShopping');
-    const addToCartBtns = document.querySelectorAll('.add-to-cart');
-    const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
-    
-    // Product Data (Sample data - would normally come from your database)
-    const products = [
-        {
-          id: 'protein1',
-          name: 'Chocolate Chip Protein Bar',
-          shortDesc: 'Delicious protein bar with chocolate chips',
-          fullDesc: 'Our Chocolate Chip Protein Bar combines great taste with essential nutrition for growing kids. Made with high-quality protein and real chocolate chips for a delicious snack that supports muscle development and provides lasting energy.',
-          price: 14.99,
-          originalPrice: 17.99,
-          category: 'protein',
-          age: 'kids',
-          image: 'assets/img-1.jpg',
-          isNew: false,
-          isBestseller: false,
-          benefits: [
-            'High-quality protein for muscle development',
-            'Great chocolate chip taste kids love',
-            'No artificial sweeteners or preservatives',
-            'Perfect for active children and after-school snacking'
-          ],
-          nutrition: [
-            { nutrient: 'Calories', amount: '180', dailyValue: '-' },
-            { nutrient: 'Protein', amount: '12g', dailyValue: '24%' },
-            { nutrient: 'Carbohydrates', amount: '22g', dailyValue: '7%' },
-            { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
-            { nutrient: 'Sugar', amount: '8g', dailyValue: '16%' }
-          ]
-        },
-        {
-          id: 'protein2',
-          name: 'Peanut Butter Blast Bar',
-          shortDesc: 'Rich peanut butter protein bar',
-          fullDesc: 'The Peanut Butter Blast Bar delivers creamy peanut butter flavor in a protein-packed bar that kids and preteens love. Our bestselling protein bar helps support growing bodies with essential nutrients while satisfying cravings with delicious taste.',
-          price: 15.99,
-          originalPrice: 18.99,
-          category: 'protein',
-          age: 'preteen',
-          image: 'assets/img-1.jpg',
-          isNew: false,
-          isBestseller: true,
-          benefits: [
-            'Packed with plant-based protein',
-            'Real peanut butter for authentic taste',
-            'Contains essential amino acids for growth',
-            'Perfect for active preteens'
-          ],
-          nutrition: [
-            { nutrient: 'Calories', amount: '200', dailyValue: '-' },
-            { nutrient: 'Protein', amount: '15g', dailyValue: '30%' },
-            { nutrient: 'Carbohydrates', amount: '18g', dailyValue: '6%' },
-            { nutrient: 'Fiber', amount: '3g', dailyValue: '12%' },
-            { nutrient: 'Healthy Fats', amount: '9g', dailyValue: '14%' }
-          ]
-        },
-        {
-          id: 'protein3',
-          name: 'Berry Yogurt Protein Bar',
-          shortDesc: 'Creamy yogurt coating with berry pieces',
-          fullDesc: 'Our Berry Yogurt Protein Bar features a creamy yogurt coating packed with real berry pieces for a delightful taste experience. Each bar provides essential protein and nutrients to support your child\'s active lifestyle and healthy development.',
-          price: 16.99,
-          originalPrice: 19.99,
-          category: 'protein',
-          age: 'kids',
-          image: 'assets/img-1.jpg',
-          isNew: false,
-          isBestseller: false,
-          benefits: [
-            'Creamy yogurt coating kids love',
-            'Contains real berry pieces',
-            'Good source of calcium and protein',
-            'Supports bone development and growth'
-          ],
-          nutrition: [
-            { nutrient: 'Calories', amount: '170', dailyValue: '-' },
-            { nutrient: 'Protein', amount: '10g', dailyValue: '20%' },
-            { nutrient: 'Calcium', amount: '200mg', dailyValue: '20%' },
-            { nutrient: 'Sugar', amount: '9g', dailyValue: '18%' },
-            { nutrient: 'Vitamin D', amount: '2mcg', dailyValue: '10%' }
-          ]
-        },
-        {
-          id: 'vitamin1',
-          name: 'Multi-Vitamin Fruit Gummies',
-          shortDesc: 'Complete daily vitamins in tasty gummies',
-          fullDesc: 'Our Multi-Vitamin Fruit Gummies provide essential daily nutrients in a delicious, easy-to-eat form perfect for toddlers. Each serving contains a complete blend of vitamins and minerals to support overall health, immunity, and development.',
-          price: 19.99,
-          originalPrice: 22.99,
-          category: 'vitamin',
-          age: 'toddler',
-          image: 'assets/img-1.jpg',
-          isNew: true,
-          isBestseller: false,
-          benefits: [
-            'Complete daily vitamin and mineral blend',
-            'Delicious fruit flavors toddlers love',
-            'Easy to chew and digest',
-            'Supports overall growth and development'
-          ],
-          nutrition: [
-            { nutrient: 'Vitamin A', amount: '300 IU', dailyValue: '6%' },
-            { nutrient: 'Vitamin C', amount: '60mg', dailyValue: '100%' },
-            { nutrient: 'Vitamin D', amount: '400 IU', dailyValue: '100%' },
-            { nutrient: 'Zinc', amount: '2mg', dailyValue: '18%' },
-            { nutrient: 'Vitamin B12', amount: '6mcg', dailyValue: '100%' }
-          ]
-        },
-        {
-          id: 'vitamin2',
-          name: 'Immune Boost Gummies',
-          shortDesc: 'Vitamin C & zinc for immune support',
-          fullDesc: 'Help strengthen your child\'s immune system with our Immune Boost Gummies. Each serving contains vitamin C, zinc, and elderberry to support natural defenses and promote overall health, especially during cold and flu season.',
-          price: 21.99,
-          originalPrice: 24.99,
-          category: 'vitamin',
-          age: 'kids',
-          image: 'assets/img-1.jpg',
-          isNew: false,
-          isBestseller: false,
-          benefits: [
-            'Targeted immune system support',
-            'Contains vitamin C, zinc and elderberry',
-            'Great-tasting formula kids will take daily',
-            'Perfect for cold and flu season'
-          ],
-          nutrition: [
-            { nutrient: 'Vitamin C', amount: '250mg', dailyValue: '417%' },
-            { nutrient: 'Zinc', amount: '5mg', dailyValue: '45%' },
-            { nutrient: 'Elderberry Extract', amount: '50mg', dailyValue: '-' },
-            { nutrient: 'Vitamin D', amount: '400 IU', dailyValue: '100%' },
-            { nutrient: 'Vitamin E', amount: '15 IU', dailyValue: '50%' }
-          ]
-        },
-        {
-          id: 'vitamin3',
-          name: 'Brain Boost Omega Gummies',
-          shortDesc: 'Omega-3 for brain development',
-          fullDesc: 'Our Brain Boost Omega Gummies provide essential omega-3 fatty acids in a delicious gummy form that preteens enjoy. Each serving supports cognitive function, focus, and overall brain development during critical growth years.',
-          price: 24.99,
-          originalPrice: 27.99,
-          category: 'vitamin',
-          age: 'preteen',
-          image: 'assets/img-1.jpg',
-          isNew: false,
-          isBestseller: true,
-          benefits: [
-            'Supports brain development and cognitive function',
-            'Contains DHA and EPA omega-3 fatty acids',
-            'No fishy taste or aftertaste',
-            'Helps with focus and concentration'
-          ],
-          nutrition: [
-            { nutrient: 'Omega-3 (DHA)', amount: '100mg', dailyValue: '-' },
-            { nutrient: 'Omega-3 (EPA)', amount: '20mg', dailyValue: '-' },
-            { nutrient: 'Vitamin E', amount: '30 IU', dailyValue: '100%' },
-            { nutrient: 'Vitamin B6', amount: '1.7mg', dailyValue: '100%' },
-            { nutrient: 'Vitamin B12', amount: '6mcg', dailyValue: '100%' }
-          ]
-        },
-        {
-          id: 'organic1',
-          name: 'Organic Apple Puffs',
-          shortDesc: '100% organic apple snack puffs',
-          fullDesc: 'Our Organic Apple Puffs are made from 100% organic apples and whole grains, perfect for little fingers and developing palates. These melt-in-your-mouth puffs are gently baked to preserve nutrients while providing a satisfying crunch toddlers love.',
-          price: 9.99,
-          originalPrice: 12.99,
-          category: 'organic',
-          age: 'toddler',
-          image: 'assets/img-1.jpg',
-          isNew: true,
-          isBestseller: false,
-          benefits: [
-            '100% certified organic ingredients',
-            'Perfect size for little fingers',
-            'Dissolves easily for safe consumption',
-            'No added sugar or artificial ingredients'
-          ],
-          nutrition: [
-            { nutrient: 'Calories', amount: '25', dailyValue: '-' },
-            { nutrient: 'Carbohydrates', amount: '5g', dailyValue: '2%' },
-            { nutrient: 'Fiber', amount: '1g', dailyValue: '4%' },
-            { nutrient: 'Sugar', amount: '1g', dailyValue: '2%' },
-            { nutrient: 'Vitamin C', amount: '2mg', dailyValue: '2%' }
-          ]
-        },
-        {
-          id: 'organic2',
-          name: 'Organic Veggie Straws',
-          shortDesc: 'Crunchy organic vegetable snacks',
-          fullDesc: 'Our Organic Veggie Straws combine organic vegetables and whole grains into crunchy, fun-to-eat straws that kids love. Each serving provides essential nutrients from real vegetables in a delicious snack that\'s perfect for lunchboxes or after-school munching.',
-          price: 11.99,
-          originalPrice: 14.99,
-          category: 'organic',
-          age: 'kids',
-          image: 'assets/img-1.jpg',
-          isNew: false,
-          isBestseller: false,
-          benefits: [
-            'Made with real organic vegetables',
-            'Crunchy texture kids love',
-            'Source of plant-based nutrients',
-            'Perfect alternative to potato chips'
-          ],
-          nutrition: [
-            { nutrient: 'Calories', amount: '130', dailyValue: '-' },
-            { nutrient: 'Fat', amount: '6g', dailyValue: '9%' },
-            { nutrient: 'Sodium', amount: '90mg', dailyValue: '4%' },
-            { nutrient: 'Carbohydrates', amount: '18g', dailyValue: '6%' },
-            { nutrient: 'Vitamin A', amount: '100 IU', dailyValue: '2%' }
-          ]
-        },
-        {
-            id: 'organic3',
-            name: 'Organic Fruit & Grain Bars',
-            shortDesc: 'Soft-baked organic fruit and ancient grain bars',
-            fullDesc: 'Our Organic Fruit & Grain Bars combine real organic fruits with nutritious ancient grains like quinoa and amaranth in a soft-baked bar that\'s perfect for growing bodies. Each bar provides essential fiber, vitamins, and minerals in a convenient, mess-free format that\'s ideal for school lunches or on-the-go snacking.',
-            price: 13.99,
-            originalPrice: 16.99,
-            category: 'organic',
-            age: 'preteen',
-            image: 'assets/img-1.jpg',
-            isNew: false,
-            isBestseller: true,
-            benefits: [
-              'Made with organic fruits and ancient grains',
-              'Good source of fiber and complex carbohydrates',
-              'No artificial preservatives or high-fructose corn syrup',
-              'Individually wrapped for freshness and convenience'
-            ],
-            nutrition: [
-              { nutrient: 'Calories', amount: '140', dailyValue: '-' },
-              { nutrient: 'Fiber', amount: '4g', dailyValue: '16%' },
-              { nutrient: 'Protein', amount: '3g', dailyValue: '6%' },
-              { nutrient: 'Iron', amount: '1.8mg', dailyValue: '10%' },
-              { nutrient: 'Magnesium', amount: '40mg', dailyValue: '10%' }
-            ]
-          }
-      ]
-    
-    // Cart Data
-    let cart = [];
-    let currentDiscount = 0;
-    let selectedSize = 'small';
-    let currentProduct = null;
-    
-    // Initialize the page
-    function init() {
-        setupCarousel();
-        setupMobileNav();
-        setupProductFilters();
-        setupProductModal();
-        setupCart();
-        loadCartFromStorage();
-        updateCartDisplay();
+// Shopping page functionality
+class ShoppingApp {
+    constructor() {
+        this.products = [];
+        this.cart = [];
+        this.currentProduct = null;
+        this.currentStep = 1;
+        this.stripe = null;
+        this.cardElement = null;
+        this.appliedPromo = null;
+        
+        this.init();
     }
-    
-    // 1. CAROUSEL FUNCTIONALITY
-    function setupCarousel() {
-        if (!carouselTrack) return;
-        
-        const slides = document.querySelectorAll('.carousel-slide');
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        let currentSlide = 0;
-        let autoSlideInterval;
-        
-        // Position slides next to each other
-        slides.forEach((slide, index) => {
-            slide.style.left = slideWidth * index + 'px';
-        });
-        
-        // Create indicators
-        slides.forEach((_, index) => {
-            const indicator = document.createElement('div');
-            indicator.classList.add('indicator');
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => {
-                goToSlide(index);
-                resetAutoSlide();
-            });
-            carouselIndicators.appendChild(indicator);
-        });
-        
-        // Function to move to a specific slide
-        function goToSlide(slideIndex) {
-            if (slideIndex < 0) slideIndex = slides.length - 1;
-            if (slideIndex >= slides.length) slideIndex = 0;
-            
-            carouselTrack.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
-            
-            // Update indicators
-            document.querySelectorAll('.indicator').forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === slideIndex);
-            });
-            
-            currentSlide = slideIndex;
-        }
-        
-        // Event listeners for prev/next buttons
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                goToSlide(currentSlide - 1);
-                resetAutoSlide();
-            });
-        }
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                goToSlide(currentSlide + 1);
-                resetAutoSlide();
-            });
-        }
-        
-        // Auto slide functionality
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                goToSlide(currentSlide + 1);
-            }, 10000); // Change slide every 10 seconds
-        }
-        
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-        
-        // Start auto sliding
-        startAutoSlide();
+
+    async init() {
+        await this.initializeStripe();
+        await this.loadProducts();
+        this.setupEventListeners();
+        this.setupCarousel();
+        await this.loadCart();
+        this.updateCartUI();
     }
-    
-    // 2. MOBILE NAVIGATION
-    function setupMobileNav() {
-        if (!mobileToggle || !navLinks) return;
-        
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+
+    async initializeStripe() {
+        try {
+            // Initialize Stripe (replace with your publishable key)
+            this.stripe = Stripe('pk_test_51234567890abcdef'); // Replace with actual key
             
-            // Change icon based on menu state
-            const icon = mobileToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('bx-menu');
-                icon.classList.add('bx-x');
+            // Create card element
+            const elements = this.stripe.elements();
+            this.cardElement = elements.create('card', {
+                style: {
+                    base: {
+                        fontSize: '16px',
+                        color: '#424770',
+                        '::placeholder': {
+                            color: '#aab7c4',
+                        },
+                    },
+                },
+            });
+        } catch (error) {
+            console.error('Stripe initialization error:', error);
+        }
+    }
+
+    async loadProducts() {
+        try {
+            this.showLoading(true);
+            
+            // Simulate API call - replace with actual API endpoint
+            const response = await fetch('/api/products');
+            if (response.ok) {
+                const data = await response.json();
+                this.products = data.data || [];
             } else {
-                icon.classList.remove('bx-x');
-                icon.classList.add('bx-menu');
-            }
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') && 
-                !navLinks.contains(e.target) && 
-                e.target !== mobileToggle) {
-                navLinks.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('bx-x');
-                icon.classList.add('bx-menu');
-            }
-        });
-    }
-    
-    // 3. PRODUCT FILTERING
-    function setupProductFilters() {
-        // Get all product cards
-        const productCards = document.querySelectorAll('.product-card');
-        if (!productCards.length) return;
-        
-        // Filter by category
-        if (categoryFilter) {
-            categoryFilter.addEventListener('change', applyFilters);
-        }
-        
-        // Filter by age group
-        if (ageFilter) {
-            ageFilter.addEventListener('change', applyFilters);
-        }
-        
-        // Sort products
-        if (sortBy) {
-            sortBy.addEventListener('change', applyFilters);
-        }
-        
-        // Search products
-        if (searchBtn && productSearch) {
-            searchBtn.addEventListener('click', applyFilters);
-            productSearch.addEventListener('keyup', (e) => {
-                if (e.key === 'Enter') {
-                    applyFilters();
-                }
-            });
-        }
-        
-        function applyFilters() {
-            const selectedCategory = categoryFilter ? categoryFilter.value : 'all';
-            const selectedAge = ageFilter ? ageFilter.value : 'all';
-            const selectedSort = sortBy ? sortBy.value : 'popular';
-            const searchQuery = productSearch ? productSearch.value.toLowerCase() : '';
-            
-            // Filter and sort products
-            productCards.forEach(card => {
-                const category = card.dataset.category;
-                const age = card.dataset.age;
-                const name = card.querySelector('h3').textContent.toLowerCase();
-                const desc = card.querySelector('.product-short-desc').textContent.toLowerCase();
-                
-                // Check if card matches all filters
-                const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
-                const matchesAge = selectedAge === 'all' || age === selectedAge;
-                const matchesSearch = searchQuery === '' || 
-                                     name.includes(searchQuery) || 
-                                     desc.includes(searchQuery);
-                
-                // Show or hide based on filters
-                if (matchesCategory && matchesAge && matchesSearch) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // Apply sorting
-            const productGrid = document.querySelector('.product-grid');
-            if (!productGrid) return;
-            
-            const sortedCards = Array.from(productCards).filter(card => card.style.display !== 'none');
-            
-            switch (selectedSort) {
-                case 'price-low':
-                    sortedCards.sort((a, b) => {
-                        const priceA = parseFloat(a.querySelector('.price').textContent.replace('$', ''));
-                        const priceB = parseFloat(b.querySelector('.price').textContent.replace('$', ''));
-                        return priceA - priceB;
-                    });
-                    break;
-                case 'price-high':
-                    sortedCards.sort((a, b) => {
-                        const priceA = parseFloat(a.querySelector('.price').textContent.replace('$', ''));
-                        const priceB = parseFloat(b.querySelector('.price').textContent.replace('$', ''));
-                        return priceB - priceA;
-                    });
-                    break;
-                case 'newest':
-                    sortedCards.sort((a, b) => {
-                        const isNewA = a.querySelector('.badge.new') !== null;
-                        const isNewB = b.querySelector('.badge.new') !== null;
-                        return isNewB - isNewA; // Show new items first
-                    });
-                    break;
-                case 'popular':
-                default:
-                    sortedCards.sort((a, b) => {
-                        const isBestsellerA = a.querySelector('.badge.bestseller') !== null;
-                        const isBestsellerB = b.querySelector('.badge.bestseller') !== null;
-                        return isBestsellerB - isBestsellerA; // Show bestsellers first
-                    });
-                    break;
+                // Fallback to sample data if API is not available
+                this.products = this.getSampleProducts();
             }
             
-            // Reorder the cards in the DOM
-            sortedCards.forEach(card => {
-                card.parentNode.appendChild(card);
-            });
-            
-            // Check if any products are visible
-            const visibleProducts = document.querySelectorAll('.product-card[style="display: block;"]');
-            const productContainer = document.getElementById('product-container');
-            
-            if (visibleProducts.length === 0 && productContainer) {
-                // No products match filters
-                if (!document.getElementById('no-products-message')) {
-                    const noProductsMessage = document.createElement('div');
-                    noProductsMessage.id = 'no-products-message';
-                    noProductsMessage.className = 'no-products-message';
-                    noProductsMessage.innerHTML = `
-                        <p>No products match your filters. Please try different criteria.</p>
-                        <button id="resetFilters" class="btn">Reset Filters</button>
-                    `;
-                    productContainer.appendChild(noProductsMessage);
-                    
-                    document.getElementById('resetFilters').addEventListener('click', resetFilters);
-                }
-            } else {
-                // Remove no products message if it exists
-                const noProductsMessage = document.getElementById('no-products-message');
-                if (noProductsMessage) {
-                    noProductsMessage.remove();
-                }
-            }
-        }
-        
-        function resetFilters() {
-            if (categoryFilter) categoryFilter.value = 'all';
-            if (ageFilter) ageFilter.value = 'all';
-            if (sortBy) sortBy.value = 'popular';
-            if (productSearch) productSearch.value = '';
-            
-            applyFilters();
+            this.displayProducts();
+            this.populateCarousel();
+            this.showLoading(false);
+        } catch (error) {
+            console.error('Error loading products:', error);
+            this.products = this.getSampleProducts();
+            this.displayProducts();
+            this.populateCarousel();
+            this.showLoading(false);
         }
     }
-    
-    // 4. PRODUCT MODAL
-    function setupProductModal() {
-        if (!productModal) return;
-        
-        // Open modal when View Details is clicked
-        viewDetailsBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = this.dataset.product;
-                openProductModal(productId);
-            });
-        });
-        
-        // Close modal when X is clicked
-        if (closeModal) {
-            closeModal.addEventListener('click', closeProductModal);
-        }
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === productModal) {
-                closeProductModal();
+
+    getSampleProducts() {
+        return [
+            {
+                _id: '1',
+                name: 'Growth Bites Original',
+                description: 'Complete nutrition for growing children with essential proteins and minerals.',
+                shortDescription: 'Essential nutrients for healthy growth',
+                price: 24.99,
+                originalPrice: 29.99,
+                category: 'Growth Support',
+                stock: 150,
+                images: [
+                    { url: '/assets/img-1.jpg', alt: 'Growth Bites', isPrimary: true },
+                    { url: '/assets/fortified-grains.jpg', alt: 'Ingredients' }
+                ],
+                sizes: [
+                    { name: 'Small (200g)', price: 24.99, stock: 50 },
+                    { name: 'Medium (400g)', price: 44.99, stock: 75 },
+                    { name: 'Large (800g)', price: 79.99, stock: 25 }
+                ],
+                rating: 4.8,
+                numReviews: 156,
+                featured: true,
+                benefits: ['Supports bone development', 'Enhances muscle growth', 'Boosts energy levels'],
+                nutritionFacts: {
+                    calories: 120,
+                    protein: '8g',
+                    carbohydrates: '15g',
+                    fat: '3g',
+                    fiber: '4g'
+                }
+            },
+            {
+                _id: '2',
+                name: 'Brain Boost Bites',
+                description: 'Omega-3 rich snacks formulated to support cognitive development.',
+                shortDescription: 'Cognitive support with omega-3',
+                price: 27.99,
+                originalPrice: 32.99,
+                category: 'Brain Boost',
+                stock: 120,
+                images: [
+                    { url: '/assets/brain-boost-ideas.jpg', alt: 'Brain Boost', isPrimary: true }
+                ],
+                sizes: [
+                    { name: 'Small (200g)', price: 27.99, stock: 40 },
+                    { name: 'Medium (400g)', price: 49.99, stock: 60 }
+                ],
+                rating: 4.7,
+                numReviews: 89,
+                featured: true,
+                benefits: ['Enhances memory', 'Improves focus', 'Supports brain development'],
+                nutritionFacts: {
+                    calories: 130,
+                    protein: '7g',
+                    carbohydrates: '16g',
+                    fat: '5g',
+                    fiber: '3g'
+                }
+            },
+            {
+                _id: '3',
+                name: 'Immune Support Bites',
+                description: 'Vitamin C, D, zinc and elderberry fortified snacks.',
+                shortDescription: 'Immune system support',
+                price: 26.99,
+                category: 'Immune Support',
+                stock: 100,
+                images: [
+                    { url: '/assets/immune-support-foods.jpg', alt: 'Immune Support', isPrimary: true }
+                ],
+                sizes: [
+                    { name: 'Small (200g)', price: 26.99, stock: 35 },
+                    { name: 'Medium (400g)', price: 47.99, stock: 45 }
+                ],
+                rating: 4.6,
+                numReviews: 134,
+                featured: false,
+                benefits: ['Boosts immunity', 'Fights infections', 'Supports recovery'],
+                nutritionFacts: {
+                    calories: 115,
+                    protein: '6g',
+                    carbohydrates: '18g',
+                    fat: '2g',
+                    fiber: '5g'
+                }
             }
-        });
-        
-        // Thumbnail gallery
-        thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
-                // Update main image
-                modalMainImage.src = this.getAttribute('data-src') || this.src;
-                
-                // Update active thumbnail
-                thumbnails.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-        
-        // Quantity controls
-        if (quantityMinus && quantityPlus && productQuantity) {
-            quantityMinus.addEventListener('click', () => {
-                let quantity = parseInt(productQuantity.value);
-                if (quantity > 1) {
-                    productQuantity.value = quantity - 1;
-                }
-            });
-            
-            quantityPlus.addEventListener('click', () => {
-                let quantity = parseInt(productQuantity.value);
-                if (quantity < 10) {
-                    productQuantity.value = quantity + 1;
-                }
-            });
-            
-            productQuantity.addEventListener('change', () => {
-                let quantity = parseInt(productQuantity.value);
-                if (isNaN(quantity) || quantity < 1) {
-                    productQuantity.value = 1;
-                } else if (quantity > 10) {
-                    productQuantity.value = 10;
-                }
-            });
-        }
-        
-        // Size selection
-        sizeBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active size
-                sizeBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Update price based on selected size
-                selectedSize = this.dataset.size;
-                if (currentProduct) {
-                    let priceMultiplier = 1;
-                    switch (selectedSize) {
-                        case 'medium': priceMultiplier = 1.8; break;
-                        case 'large': priceMultiplier = 2.5; break;
-                        default: priceMultiplier = 1;
-                    }
-                    
-                    const price = currentProduct.price * priceMultiplier;
-                    modalProductPrice.textContent = `$${price.toFixed(2)}`;
-                }
-            });
-        });
-        
-        // Add to cart from modal
-        if (modalAddToCart) {
-            modalAddToCart.addEventListener('click', () => {
-                if (!currentProduct) return;
-                
-                const quantity = parseInt(productQuantity.value);
-                const size = selectedSize;
-                const isSubscription = subscribeOption.checked;
-                
-                // Calculate price based on size
-                let priceMultiplier = 1;
-                switch (size) {
-                    case 'medium': priceMultiplier = 1.8; break;
-                    case 'large': priceMultiplier = 2.5; break;
-                    default: priceMultiplier = 1;
-                }
-                
-                let price = currentProduct.price * priceMultiplier;
-                
-                // Apply subscription discount if selected
-                if (isSubscription) {
-                    price = price * 0.9; // 10% discount
-                }
-                
-                addToCart({
-                    id: currentProduct.id,
-                    name: currentProduct.name,
-                    price: price,
-                    quantity: quantity,
-                    image: currentProduct.image,
-                    size: size,
-                    isSubscription: isSubscription
-                });
-                
-                closeProductModal();
-                openCart();
-            });
-        }
+        ];
     }
-    
-    function openProductModal(productId) {
-        // Find product data
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
+
+    displayProducts() {
+        const productGrid = document.getElementById('productGrid');
+        const noProducts = document.getElementById('noProducts');
         
-        currentProduct = product;
-        
-        // Populate modal with product data
-        modalProductTitle.textContent = product.name;
-        modalProductPrice.textContent = `$${product.price.toFixed(2)}`;
-        
-        // Set original price or hide if no discount
-        if (product.originalPrice > product.price) {
-            modalOriginalPrice.textContent = `$${product.originalPrice.toFixed(2)}`;
-            modalOriginalPrice.style.display = 'inline';
-            document.querySelector('.discount-badge').style.display = 'inline';
-        } else {
-            modalOriginalPrice.style.display = 'none';
-            document.querySelector('.discount-badge').style.display = 'none';
+        if (this.products.length === 0) {
+            productGrid.innerHTML = '';
+            noProducts.style.display = 'block';
+            return;
         }
         
-        modalProductDesc.textContent = product.fullDesc;
-        modalMainImage.src = product.image;
+        noProducts.style.display = 'none';
         
-        // Reset thumbnails (would normally load product-specific thumbnails)
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.src = product.image;
-            thumbnail.classList.toggle('active', index === 0);
-        });
-        
-        // Populate benefits list
-        modalProductBenefits.innerHTML = '';
-        product.benefits.forEach(benefit => {
-            const li = document.createElement('li');
-            li.textContent = benefit;
-            modalProductBenefits.appendChild(li);
-        });
-        
-        // Populate nutrition table
-        const tableBody = modalNutritionTable.querySelector('tbody') || modalNutritionTable;
-        tableBody.innerHTML = `
-            <tr>
-                <th>Nutrient</th>
-                <th>Amount per Serving</th>
-                <th>% Daily Value</th>
-            </tr>
-        `;
-        
-        product.nutrition.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.nutrient}</td>
-                <td>${item.amount}</td>
-                <td>${item.dailyValue}</td>
+        productGrid.innerHTML = this.products.map(product => {
+            const primaryImage = product.images?.find(img => img.isPrimary)?.url || 
+                                product.images?.[0]?.url || '/assets/img-1.jpg';
+            const discountPercentage = product.originalPrice ? 
+                Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+            
+            return `
+                <div class="product-card" data-product-id="${product._id}">
+                    <div class="product-image">
+                        <img src="${primaryImage}" alt="${product.name}" loading="lazy">
+                        <div class="product-badges">
+                            ${product.featured ? '<span class="badge bestseller">Best Seller</span>' : ''}
+                            ${discountPercentage > 0 ? '<span class="badge new">Sale</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="product-short-desc">${product.shortDescription || product.description.substring(0, 80) + '...'}</p>
+                        <div class="product-price">
+                            <span class="price">$${product.price}</span>
+                            ${product.originalPrice ? `<span class="price-per">was $${product.originalPrice}</span>` : ''}
+                        </div>
+                        <div class="product-actions">
+                            <button class="view-details-btn" onclick="shoppingApp.openProductModal('${product._id}')">
+                                View Details
+                            </button>
+                            <button class="add-to-cart" onclick="shoppingApp.quickAddToCart('${product._id}')" 
+                                    ${product.stock === 0 ? 'disabled' : ''}>
+                                <i class='bx bx-cart-add'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             `;
-            tableBody.appendChild(row);
+        }).join('');
+    }
+
+    populateCarousel() {
+        const featuredProducts = this.products.filter(p => p.featured).slice(0, 3);
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselIndicators = document.getElementById('carouselIndicators');
+        
+        if (featuredProducts.length === 0) return;
+        
+        carouselTrack.innerHTML = featuredProducts.map(product => {
+            const primaryImage = product.images?.find(img => img.isPrimary)?.url || 
+                                product.images?.[0]?.url || '/assets/img-1.jpg';
+            
+            return `
+                <div class="carousel-slide">
+                    <img src="${primaryImage}" alt="${product.name}">
+                    <div class="slide-content">
+                        <h2>${product.name}</h2>
+                        <p>${product.description}</p>
+                        <a href="#" class="btn" onclick="shoppingApp.openProductModal('${product._id}')">Shop Now</a>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        carouselIndicators.innerHTML = featuredProducts.map((_, index) => 
+            `<div class="indicator ${index === 0 ? 'active' : ''}" data-slide="${index}"></div>`
+        ).join('');
+    }
+
+    setupCarousel() {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const track = document.getElementById('carouselTrack');
+        
+        if (slides.length === 0) return;
+        
+        const updateCarousel = () => {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        };
+        
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
         });
         
-        // Reset form elements
-        productQuantity.value = 1;
-        subscribeOption.checked = false;
-        
-        // Reset size selection
-        selectedSize = 'small';
-        sizeBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.size === 'small');
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
         });
         
-        // Show modal
-        productModal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    }
-    
-    function closeProductModal() {
-        productModal.style.display = 'none';
-        document.body.style.overflow = ''; // Restore scrolling
-        currentProduct = null;
-    }
-    
-    // 5. SHOPPING CART
-    function setupCart() {
-        // Quick add to cart buttons
-        addToCartBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = this.dataset.product;
-                const product = products.find(p => p.id === productId);
-                
-                if (product) {
-                    addToCart({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        quantity: 1,
-                        image: product.image,
-                        size: 'small',
-                        isSubscription: false
-                    });
-                    
-                    // Show cart after adding
-                    openCart();
-                }
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
             });
         });
         
-        // Open cart
-        const cartIcon = document.querySelector('.shopping a');
-        if (cartIcon) {
-            cartIcon.addEventListener('click', function(e) {
-                e.preventDefault();
-                openCart();
-            });
-        }
-        
-        // Close cart
-        if (closeCart) {
-            closeCart.addEventListener('click', closeCartSidebar);
-        }
-        
-        // Start shopping button
-        if (startShopping) {
-            startShopping.addEventListener('click', closeCartSidebar);
-        }
-        
-        // Apply promo code
-        if (applyPromo && promoCodeInput) {
-            applyPromo.addEventListener('click', applyPromoCode);
-        }
-        
-        // Checkout button
-        if (checkoutBtn) {
-            checkoutBtn.addEventListener('click', () => {
-                closeCartSidebar();
-                if (typeof window.showCheckout === 'function') {
-                    window.showCheckout();
-                }
-            });
-        }
-        
-        // Close cart when clicking outside
-        document.addEventListener('click', (e) => {
-            if (cartSidebar && 
-                cartSidebar.classList.contains('open') && 
-                !cartSidebar.contains(e.target) && 
-                !e.target.closest('.shopping')) {
-                closeCartSidebar();
-            }
+        // Auto-advance carousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }, 5000);
+    }
+
+    setupEventListeners() {
+        // Filter and search
+        document.getElementById('categoryFilter').addEventListener('change', () => this.filterProducts());
+        document.getElementById('priceFilter').addEventListener('change', () => this.filterProducts());
+        document.getElementById('sortFilter').addEventListener('change', () => this.sortProducts());
+        document.getElementById('searchBtn').addEventListener('click', () => this.searchProducts());
+        document.getElementById('productSearch').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.searchProducts();
         });
+
+        // Cart functionality
+        document.getElementById('cartToggle').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggleCart();
+        });
+        document.getElementById('closeCart').addEventListener('click', () => this.closeCart());
+        document.getElementById('startShopping').addEventListener('click', () => this.closeCart());
+
+        // Product modal
+        document.getElementById('closeModal').addEventListener('click', () => this.closeProductModal());
+        document.getElementById('addToCartBtn').addEventListener('click', () => this.addToCartFromModal());
+
+        // Quantity controls
+        document.getElementById('decreaseQty').addEventListener('click', () => this.updateQuantity(-1));
+        document.getElementById('increaseQty').addEventListener('click', () => this.updateQuantity(1));
+
+        // Checkout
+        document.getElementById('checkoutBtn').addEventListener('click', () => this.openCheckout());
+        document.getElementById('closeCheckoutModal').addEventListener('click', () => this.closeCheckout());
+
+        // Checkout navigation
+        document.getElementById('nextStepBtn').addEventListener('click', () => this.nextCheckoutStep());
+        document.getElementById('prevStepBtn').addEventListener('click', () => this.prevCheckoutStep());
+        document.getElementById('placeOrderBtn').addEventListener('click', () => this.placeOrder());
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', () => this.selectPaymentMethod(method.dataset.method));
+        });
+
+        // Promo code
+        document.getElementById('applyPromoBtn').addEventListener('click', () => this.applyPromoCode());
+
+        // Close modals when clicking overlay
+        document.getElementById('overlay').addEventListener('click', () => {
+            this.closeProductModal();
+            this.closeCart();
+            this.closeCheckout();
+        });
+
+        // Newsletter subscription
+        document.getElementById('subscribeBtn').addEventListener('click', () => this.subscribeNewsletter());
     }
-    
-    function openCart() {
-        if (!cartSidebar) return;
-        cartSidebar.classList.add('open');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+    filterProducts() {
+        const category = document.getElementById('categoryFilter').value;
+        const priceRange = document.getElementById('priceFilter').value;
+        
+        let filtered = [...this.products];
+        
+        if (category) {
+            filtered = filtered.filter(p => p.category === category);
+        }
+        
+        if (priceRange) {
+            const [min, max] = priceRange.split('-').map(p => p === '+' ? Infinity : parseFloat(p));
+            filtered = filtered.filter(p => p.price >= min && (max === undefined || p.price <= max));
+        }
+        
+        this.products = filtered;
+        this.displayProducts();
     }
-    
-    function closeCartSidebar() {
-        if (!cartSidebar) return;
-        cartSidebar.classList.remove('open');
-        document.body.style.overflow = ''; // Restore scrolling
+
+    sortProducts() {
+        const sortBy = document.getElementById('sortFilter').value;
+        
+        switch (sortBy) {
+            case 'name':
+                this.products.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case 'price-low':
+                this.products.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-high':
+                this.products.sort((a, b) => b.price - a.price);
+                break;
+            case 'rating':
+                this.products.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+                break;
+            case 'newest':
+                this.products.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+                break;
+            default: // featured
+                this.products.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+        }
+        
+        this.displayProducts();
     }
-    
-    function addToCart(item) {
-        // Check if item already exists in cart
-        const existingItemIndex = cart.findIndex(i => 
-            i.id === item.id && i.size === item.size && i.isSubscription === item.isSubscription
+
+    searchProducts() {
+        const query = document.getElementById('productSearch').value.toLowerCase();
+        if (!query) {
+            this.loadProducts();
+            return;
+        }
+        
+        this.products = this.products.filter(p => 
+            p.name.toLowerCase().includes(query) ||
+            p.description.toLowerCase().includes(query) ||
+            p.category.toLowerCase().includes(query)
         );
         
-        if (existingItemIndex !== -1) {
-            // Update quantity if item exists
-            cart[existingItemIndex].quantity += item.quantity;
-        } else {
-            // Add new item
-            cart.push(item);
-        }
-        
-        // Update cart display
-        updateCartDisplay();
-        saveCartToStorage();
-        
-        // Show confirmation message
-        showToast(`${item.name} added to cart!`);
+        this.displayProducts();
     }
-    
-    function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCartDisplay();
-        saveCartToStorage();
+
+    openProductModal(productId) {
+        this.currentProduct = this.products.find(p => p._id === productId);
+        if (!this.currentProduct) return;
+        
+        this.populateProductModal();
+        document.getElementById('productModal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
     }
-    
-    function updateCartQuantity(index, newQuantity) {
-        if (newQuantity < 1) newQuantity = 1;
-        if (newQuantity > 10) newQuantity = 10;
+
+    populateProductModal() {
+        const product = this.currentProduct;
         
-        cart[index].quantity = newQuantity;
-        updateCartDisplay();
-        saveCartToStorage();
-    }
-    
-    function updateCartDisplay() {
-        // Update cart count
-        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-        if (cartCount) cartCount.textContent = totalItems;
-        if (cartItemCount) cartItemCount.textContent = `(${totalItems})`;
+        // Basic info
+        document.getElementById('modalProductName').textContent = product.name;
+        document.getElementById('modalCurrentPrice').textContent = `$${product.price}`;
+        document.getElementById('modalProductDescription').textContent = product.description;
         
-        // Show/hide empty cart message
-        if (emptyCartMessage && cartItems && cartSummary) {
-            if (cart.length === 0) {
-                emptyCartMessage.style.display = 'flex';
-                cartSummary.style.display = 'none';
-            } else {
-                emptyCartMessage.style.display = 'none';
-                cartSummary.style.display = 'block';
-            }
-        }
+        // Original price and discount
+        const originalPriceEl = document.getElementById('modalOriginalPrice');
+        const discountBadgeEl = document.getElementById('modalDiscountBadge');
         
-        // Populate cart items
-        if (cartItems) {
-            // Clear current items
-            cartItems.innerHTML = '';
+        if (product.originalPrice && product.originalPrice > product.price) {
+            originalPriceEl.textContent = `$${product.originalPrice}`;
+            originalPriceEl.style.display = 'inline';
             
-            if (cart.length === 0) {
-                cartItems.appendChild(emptyCartMessage);
+            const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+            discountBadgeEl.textContent = `${discount}% OFF`;
+            discountBadgeEl.style.display = 'inline';
+        } else {
+            originalPriceEl.style.display = 'none';
+            discountBadgeEl.style.display = 'none';
+        }
+        
+        // Images
+        const mainImage = document.getElementById('mainProductImage');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+        
+        if (product.images && product.images.length > 0) {
+            const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
+            mainImage.src = primaryImage.url;
+            mainImage.alt = primaryImage.alt || product.name;
+            
+            if (product.images.length > 1) {
+                thumbnailContainer.innerHTML = product.images.map((img, index) => 
+                    `<img src="${img.url}" alt="${img.alt}" class="thumbnail ${index === 0 ? 'active' : ''}" 
+                          onclick="shoppingApp.changeMainImage('${img.url}', ${index})">`
+                ).join('');
             } else {
-                // Add each item to cart
-                cart.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    
-                    let sizeText = '';
-                    switch (item.size) {
-                        case 'small': sizeText = 'Small (3-pack)'; break;
-                        case 'medium': sizeText = 'Medium (6-pack)'; break;
-                        case 'large': sizeText = 'Large (12-pack)'; break;
-                    }
-                    
-                    cartItem.innerHTML = `
-                        <div class="cart-item-image">
-                            <img src="${item.image}" alt="${item.name}">
-                        </div>
-                        <div class="cart-item-details">
-                            <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-size">${sizeText}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                            ${item.isSubscription ? '<div class="subscription-tag">Subscription (10% off)</div>' : ''}
-                            <div class="cart-item-quantity">
-                                <button class="cart-quantity-btn minus" data-index="${index}">-</button>
-                                <span>${item.quantity}</span>
-                                <button class="cart-quantity-btn plus" data-index="${index}">+</button>
-                            </div>
-                        </div>
-                        <button class="remove-item" data-index="${index}">
-                            <i class="bx bx-trash"></i>
-                        </button>
-                    `;
-                    
-                    cartItems.appendChild(cartItem);
-                });
-                
-                // Add event listeners to new cart items
-                document.querySelectorAll('.cart-quantity-btn.minus').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const index = parseInt(this.dataset.index);
-                        updateCartQuantity(index, cart[index].quantity - 1);
-                    });
-                });
-                
-                document.querySelectorAll('.cart-quantity-btn.plus').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const index = parseInt(this.dataset.index);
-                        updateCartQuantity(index, cart[index].quantity + 1);
-                    });
-                });
-                
-                document.querySelectorAll('.remove-item').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const index = parseInt(this.dataset.index);
-                        removeFromCart(index);
-                    });
-                });
+                thumbnailContainer.innerHTML = '';
             }
         }
         
-        // Update cart totals
-        updateCartTotals();
+        // Rating
+        this.displayRating('modalProductRating', product.rating || 0, product.numReviews || 0);
+        
+        // Benefits
+        const benefitsList = document.getElementById('benefitsList');
+        if (product.benefits && product.benefits.length > 0) {
+            benefitsList.innerHTML = product.benefits.map(benefit => `<li>${benefit}</li>`).join('');
+            document.getElementById('modalProductBenefits').style.display = 'block';
+        } else {
+            document.getElementById('modalProductBenefits').style.display = 'none';
+        }
+        
+        // Nutrition facts
+        const nutritionTableBody = document.getElementById('nutritionTableBody');
+        if (product.nutritionFacts) {
+            const facts = product.nutritionFacts;
+            nutritionTableBody.innerHTML = `
+                ${facts.calories ? `<tr><td>Calories</td><td>${facts.calories}</td></tr>` : ''}
+                ${facts.protein ? `<tr><td>Protein</td><td>${facts.protein}</td></tr>` : ''}
+                ${facts.carbohydrates ? `<tr><td>Carbohydrates</td><td>${facts.carbohydrates}</td></tr>` : ''}
+                ${facts.fat ? `<tr><td>Fat</td><td>${facts.fat}</td></tr>` : ''}
+                ${facts.fiber ? `<tr><td>Fiber</td><td>${facts.fiber}</td></tr>` : ''}
+            `;
+            document.getElementById('modalNutritionFacts').style.display = 'block';
+        } else {
+            document.getElementById('modalNutritionFacts').style.display = 'none';
+        }
+        
+        // Size options
+        const sizeOptions = document.getElementById('sizeOptions');
+        const sizeSelector = document.getElementById('sizeSelector');
+        
+        if (product.sizes && product.sizes.length > 0) {
+            sizeSelector.innerHTML = product.sizes.map((size, index) => 
+                `<button class="size-btn ${index === 0 ? 'active' : ''}" 
+                         data-size="${size.name}" data-price="${size.price}" data-stock="${size.stock}"
+                         onclick="shoppingApp.selectSize(this)">
+                    ${size.name} - $${size.price}
+                </button>`
+            ).join('');
+            sizeOptions.style.display = 'block';
+        } else {
+            sizeOptions.style.display = 'none';
+        }
+        
+        // Reset quantity
+        document.getElementById('productQuantity').value = 1;
     }
-    
-    function updateCartTotals() {
-        if (!cartSubtotal || !shippingCost || !cartTotal) return;
+
+    changeMainImage(url, index) {
+        document.getElementById('mainProductImage').src = url;
+        document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === index);
+        });
+    }
+
+    selectSize(button) {
+        document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
         
-        // Calculate subtotal
-        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+        // Update price display
+        const price = parseFloat(button.dataset.price);
+        document.getElementById('modalCurrentPrice').textContent = `$${price}`;
         
-        // Set shipping cost (free over $50)
-        const shipping = subtotal > 50 ? 0 : 5.99;
-        shippingCost.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+        // Update max quantity based on stock
+        const stock = parseInt(button.dataset.stock);
+        const quantityInput = document.getElementById('productQuantity');
+        quantityInput.max = stock;
+        if (parseInt(quantityInput.value) > stock) {
+            quantityInput.value = stock;
+        }
+    }
+
+    updateQuantity(change) {
+        const quantityInput = document.getElementById('productQuantity');
+        const currentValue = parseInt(quantityInput.value);
+        const newValue = Math.max(1, Math.min(parseInt(quantityInput.max) || 10, currentValue + change));
+        quantityInput.value = newValue;
+    }
+
+    displayRating(containerId, rating, numReviews) {
+        const container = document.getElementById(containerId);
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
         
-        // Apply discount if any
-        if (currentDiscount > 0) {
+        let starsHtml = '';
+        for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+                starsHtml += '<i class="bx bxs-star"></i>';
+            } else if (i === fullStars && hasHalfStar) {
+                starsHtml += '<i class="bx bxs-star-half"></i>';
+            } else {
+                starsHtml += '<i class="bx bx-star"></i>';
+            }
+        }
+        
+        container.innerHTML = `${starsHtml} <span>(${numReviews} reviews)</span>`;
+    }
+
+    closeProductModal() {
+        document.getElementById('productModal').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        this.currentProduct = null;
+    }
+
+    async quickAddToCart(productId) {
+        const product = this.products.find(p => p._id === productId);
+        if (!product) return;
+        
+        await this.addToCart(product, 1);
+        this.showNotification('Product added to cart!', 'success');
+    }
+
+    async addToCartFromModal() {
+        if (!this.currentProduct) return;
+        
+        const quantity = parseInt(document.getElementById('productQuantity').value);
+        const selectedSizeBtn = document.querySelector('.size-btn.active');
+        const size = selectedSizeBtn ? selectedSizeBtn.dataset.size : null;
+        
+        await this.addToCart(this.currentProduct, quantity, size);
+        this.closeProductModal();
+        this.showNotification('Product added to cart!', 'success');
+    }
+
+    async addToCart(product, quantity = 1, size = null) {
+        try {
+            // Check if user is logged in (for API calls)
+            const token = localStorage.getItem('authToken');
+            
+            if (token) {
+                // Make API call to add to cart
+                const response = await fetch('/api/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        productId: product._id,
+                        quantity,
+                        size
+                    })
+                });
+                
+                if (response.ok) {
+                    await this.loadCart();
+                    return;
+                }
+            }
+            
+            // Fallback to local storage
+            const existingItemIndex = this.cart.findIndex(
+                item => item.product._id === product._id && item.size === size
+            );
+            
+            if (existingItemIndex > -1) {
+                this.cart[existingItemIndex].quantity += quantity;
+            } else {
+                this.cart.push({
+                    _id: Date.now().toString(),
+                    product,
+                    quantity,
+                    size,
+                    price: this.getProductPrice(product, size)
+                });
+            }
+            
+            this.saveCartToStorage();
+            this.updateCartUI();
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+            this.showNotification('Error adding product to cart', 'error');
+        }
+    }
+
+    getProductPrice(product, size) {
+        if (size && product.sizes) {
+            const sizeOption = product.sizes.find(s => s.name === size);
+            return sizeOption ? sizeOption.price : product.price;
+        }
+        return product.price;
+    }
+
+    async loadCart() {
+        try {
+            const token = localStorage.getItem('authToken');
+            
+            if (token) {
+                const response = await fetch('/api/cart', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    this.cart = data.data.items || [];
+                    this.updateCartUI();
+                    return;
+                }
+            }
+            
+            // Fallback to local storage
+            const savedCart = localStorage.getItem('hopeBitesCart');
+            this.cart = savedCart ? JSON.parse(savedCart) : [];
+            this.updateCartUI();
+        } catch (error) {
+            console.error('Error loading cart:', error);
+            this.cart = [];
+            this.updateCartUI();
+        }
+    }
+
+    saveCartToStorage() {
+        localStorage.setItem('hopeBitesCart', JSON.stringify(this.cart));
+    }
+
+    updateCartUI() {
+        const cartCount = document.getElementById('cartCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartSummary = document.getElementById('cartSummary');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        
+        const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+        
+        if (this.cart.length === 0) {
+            emptyCartMessage.style.display = 'block';
+            cartSummary.style.display = 'none';
+            cartItems.innerHTML = '<div class="empty-cart-message" id="emptyCartMessage"><i class="bx bx-cart"></i><p>Your cart is empty</p><button class="start-shopping-btn" onclick="shoppingApp.closeCart()">Start Shopping</button></div>';
+            return;
+        }
+        
+        emptyCartMessage.style.display = 'none';
+        cartSummary.style.display = 'block';
+        
+        // Render cart items
+        cartItems.innerHTML = this.cart.map(item => {
+            const primaryImage = item.product.images?.find(img => img.isPrimary)?.url || 
+                                item.product.images?.[0]?.url || '/assets/img-1.jpg';
+            
+            return `
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="${primaryImage}" alt="${item.product.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.product.name}</div>
+                        ${item.size ? `<div class="cart-item-size">${item.size}</div>` : ''}
+                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="cart-quantity-btn" onclick="shoppingApp.updateCartItemQuantity('${item._id}', ${item.quantity - 1})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="cart-quantity-btn" onclick="shoppingApp.updateCartItemQuantity('${item._id}', ${item.quantity + 1})">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" onclick="shoppingApp.removeFromCart('${item._id}')">
+                        <i class='bx bx-trash'></i>
+                    </button>
+                </div>
+            `;
+        }).join('');
+        
+        // Update cart summary
+        this.updateCartSummary();
+    }
+
+    updateCartSummary() {
+        const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const tax = subtotal * 0.08; // 8% tax
+        const shipping = subtotal > 50 ? 0 : 5.99; // Free shipping over $50
+        
+        let discount = 0;
+        if (this.appliedPromo) {
+            if (this.appliedPromo.type === 'percentage') {
+                discount = subtotal * this.appliedPromo.discount;
+            } else {
+                discount = this.appliedPromo.discount;
+            }
+        }
+        
+        const total = subtotal - discount + tax + shipping;
+        
+        document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('cartTax').textContent = `$${tax.toFixed(2)}`;
+        document.getElementById('cartShipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+        document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+        
+        const discountRow = document.getElementById('discountRow');
+        if (discount > 0) {
+            document.getElementById('cartDiscount').textContent = `-$${discount.toFixed(2)}`;
             discountRow.style.display = 'flex';
-            const discountValue = (subtotal * (currentDiscount / 100)).toFixed(2);
-            discountAmount.textContent = `-$${discountValue}`;
         } else {
             discountRow.style.display = 'none';
         }
-        
-        // Calculate total
-        const total = subtotal + shipping - (subtotal * (currentDiscount / 100));
-        cartTotal.textContent = `$${total.toFixed(2)}`;
     }
-    
-    function applyPromoCode() {
-        const promoCode = promoCodeInput.value.trim().toUpperCase();
-        
-        // Sample promo codes
-        const promoCodes = {
-            'WELCOME10': 10,
-            'SUMMER20': 20,
-            'FREESHIP': 5
-        };
-        
-        if (promoCodes[promoCode]) {
-            currentDiscount = promoCodes[promoCode];
-            updateCartTotals();
-            showToast(`Promo code applied! ${currentDiscount}% discount`);
-            promoCodeInput.value = '';
-        } else {
-            showToast('Invalid promo code', 'error');
-        }
-    }
-    
-    // 6. STORAGE FUNCTIONS
-    function saveCartToStorage() {
-        localStorage.setItem('hopebitesCart', JSON.stringify(cart));
-        localStorage.setItem('hopebitesDiscount', currentDiscount.toString());
-    }
-    
-    function loadCartFromStorage() {
-        const savedCart = localStorage.getItem('hopebitesCart');
-        const savedDiscount = localStorage.getItem('hopebitesDiscount');
-        
-        if (savedCart) {
-            cart = JSON.parse(savedCart);
+
+    async updateCartItemQuantity(itemId, newQuantity) {
+        if (newQuantity < 1) {
+            this.removeFromCart(itemId);
+            return;
         }
         
-        if (savedDiscount) {
-            currentDiscount = parseFloat(savedDiscount);
-        }
-    }
-    
-    // 7. UTILITY FUNCTIONS
-    function showToast(message, type = 'success') {
-        // Create toast element if it doesn't exist
-        let toast = document.getElementById('toast-notification');
-        if (!toast) {
-            toast = document.createElement('div');
-            toast.id = 'toast-notification';
-            document.body.appendChild(toast);
+        try {
+            const token = localStorage.getItem('authToken');
             
-            // Add styles
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.left = '50%';
-            toast.style.transform = 'translateX(-50%)';
-            toast.style.padding = '10px 20px';
-            toast.style.borderRadius = '5px';
-            toast.style.color = 'white';
-            toast.style.fontWeight = '500';
-            toast.style.zIndex = '9999';
-            toast.style.transition = 'opacity 0.3s, transform 0.3s';
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateX(-50%) translateY(20px)';
+            if (token) {
+                const response = await fetch(`/api/cart/update/${itemId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ quantity: newQuantity })
+                });
+                
+                if (response.ok) {
+                    await this.loadCart();
+                    return;
+                }
+            }
+            
+            // Fallback to local storage
+            const itemIndex = this.cart.findIndex(item => item._id === itemId);
+            if (itemIndex > -1) {
+                this.cart[itemIndex].quantity = newQuantity;
+                this.saveCartToStorage();
+                this.updateCartUI();
+            }
+        } catch (error) {
+            console.error('Error updating cart item:', error);
+        }
+    }
+
+    async removeFromCart(itemId) {
+        try {
+            const token = localStorage.getItem('authToken');
+            
+            if (token) {
+                const response = await fetch(`/api/cart/remove/${itemId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    await this.loadCart();
+                    return;
+                }
+            }
+            
+            // Fallback to local storage
+            this.cart = this.cart.filter(item => item._id !== itemId);
+            this.saveCartToStorage();
+            this.updateCartUI();
+        } catch (error) {
+            console.error('Error removing from cart:', error);
+        }
+    }
+
+    async applyPromoCode() {
+        const code = document.getElementById('promoCodeInput').value.trim();
+        if (!code) return;
+        
+        try {
+            const response = await fetch('/api/cart/promo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                this.appliedPromo = data.data;
+                this.updateCartSummary();
+                this.showNotification(`Promo code applied: ${data.data.description}`, 'success');
+            } else {
+                this.showNotification('Invalid promo code', 'error');
+            }
+        } catch (error) {
+            // Fallback promo codes
+            const promoCodes = {
+                'WELCOME10': { discount: 0.10, type: 'percentage', description: '10% off your order' },
+                'FREESHIP': { discount: 5.99, type: 'fixed', description: 'Free shipping' }
+            };
+            
+            const promo = promoCodes[code.toUpperCase()];
+            if (promo) {
+                this.appliedPromo = promo;
+                this.updateCartSummary();
+                this.showNotification(`Promo code applied: ${promo.description}`, 'success');
+            } else {
+                this.showNotification('Invalid promo code', 'error');
+            }
+        }
+    }
+
+    toggleCart() {
+        const cartSidebar = document.getElementById('cartSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        cartSidebar.classList.toggle('open');
+        overlay.style.display = cartSidebar.classList.contains('open') ? 'block' : 'none';
+        
+        if (cartSidebar.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    closeCart() {
+        const cartSidebar = document.getElementById('cartSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        cartSidebar.classList.remove('open');
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    openCheckout() {
+        if (this.cart.length === 0) {
+            this.showNotification('Your cart is empty', 'error');
+            return;
         }
         
-        // Set toast type
-        if (type === 'success') {
-            toast.style.backgroundColor = 'var(--primary-color, #2E5339)';
-        } else if (type === 'error') {
-            toast.style.backgroundColor = 'var(--secondary-color, #dd300a)';
+        this.closeCart();
+        document.getElementById('checkoutModal').classList.add('active');
+        document.getElementById('overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        this.currentStep = 1;
+        this.updateCheckoutStep();
+        this.populateOrderReview();
+    }
+
+    closeCheckout() {
+        document.getElementById('checkoutModal').classList.remove('active');
+        document.getElementById('overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        this.currentStep = 1;
+    }
+
+    nextCheckoutStep() {
+        if (this.currentStep === 1 && !this.validateShippingForm()) {
+            return;
         }
         
-        // Set message and show toast
-        toast.textContent = message;
-        toast.style.opacity = '1';
-        toast.style.transform = 'translateX(-50%) translateY(0)';
+        if (this.currentStep === 2 && !this.validatePaymentForm()) {
+            return;
+        }
         
-        // Hide toast after 3 seconds
-        clearTimeout(toast.timeout);
-        toast.timeout = setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateX(-50%) translateY(20px)';
-        }, 3000);
+        this.currentStep++;
+        this.updateCheckoutStep();
+        
+        if (this.currentStep === 3) {
+            this.populateOrderReview();
+        }
     }
-    
-    // Initialize everything
-    init();
-});
 
+    prevCheckoutStep() {
+        this.currentStep--;
+        this.updateCheckoutStep();
+    }
 
-
-// Part 2 -- Checkout system
-document.addEventListener('DOMContentLoaded', function() {
-    // Cart and Product Data (Sample data - would normally come from your database)
-    const cartItems = [
-        { id: 1, name: "Eco-Friendly Water Bottle", price: 24.99, quantity: 2, image: "/api/placeholder/60/60" },
-        { id: 2, name: "Organic Cotton T-Shirt", price: 32.50, quantity: 1, image: "/api/placeholder/60/60" }
-    ];
-    
-    // Initialize variables
-    let currentStep = 1;
-    let selectedPaymentMethod = 'card';
-    let selectedShippingMethod = 'standard';
-    let shippingCost = 5.99;
-    let orderTotal = 0;
-    
-    // DOM Elements - Modals
-    const checkoutModal = document.getElementById('checkoutModal');
-    const confirmationModal = document.getElementById('confirmationModal');
-    const closeCheckoutBtn = document.getElementById('closeCheckout');
-    
-    // DOM Elements - Step Navigation
-    const stepIndicators = document.querySelectorAll('.step');
-    const step1Content = document.getElementById('step1Content');
-    const step2Content = document.getElementById('step2Content');
-    const step3Content = document.getElementById('step3Content');
-    
-    // DOM Elements - Navigation Buttons
-    const continueShopping = document.getElementById('continueShopping');
-    const toPaymentBtn = document.getElementById('toPaymentBtn');
-    const backToShipping = document.getElementById('backToShipping');
-    const toReviewBtn = document.getElementById('toReviewBtn');
-    const backToPayment = document.getElementById('backToPayment');
-    const placeOrderBtn = document.getElementById('placeOrderBtn');
-    const viewOrderBtn = document.getElementById('viewOrderBtn');
-    const continueBrowsingBtn = document.getElementById('continueBrowsingBtn');
-    
-    // DOM Elements - Payment Methods
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    const cardPaymentForm = document.getElementById('cardPaymentForm');
-    const paypalForm = document.getElementById('paypalForm');
-    const applePayForm = document.getElementById('applePayForm');
-    
-    // DOM Elements - Shipping Options
-    const shippingOptions = document.querySelectorAll('input[name="shipping"]');
-    
-    // DOM Elements - Form Elements
-    const shippingForm = document.getElementById('shippingForm');
-    const paymentForm = document.getElementById('paymentForm');
-    const termsAgree = document.getElementById('termsAgree');
-    
-    // DOM Elements - Review Order Elements
-    const reviewOrderItems = document.getElementById('reviewOrderItems');
-    const reviewShippingDetails = document.getElementById('reviewShippingDetails');
-    const reviewPaymentDetails = document.getElementById('reviewPaymentDetails');
-    const reviewSubtotal = document.getElementById('reviewSubtotal');
-    const reviewShipping = document.getElementById('reviewShipping');
-    const reviewDiscount = document.getElementById('reviewDiscount');
-    const reviewDiscountRow = document.getElementById('reviewDiscountRow');
-    const reviewTax = document.getElementById('reviewTax');
-    const reviewTotal = document.getElementById('reviewTotal');
-    
-    // DOM Elements - Confirmation Elements
-    const orderNumber = document.getElementById('orderNumber');
-    const confirmationEmail = document.getElementById('confirmationEmail');
-    const confirmationDetails = document.getElementById('confirmationDetails');
-    
-    // Function to show checkout modal
-    window.showCheckout = function() {
-        calculateCart();
-        checkoutModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling on background
-    };
-    
-    // Function to close checkout modal
-    function closeCheckout() {
-        checkoutModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    // Function to show confirmation modal
-    function showConfirmation() {
-        checkoutModal.classList.remove('active');
-        confirmationModal.classList.add('active');
-    }
-    
-    // Function to close confirmation modal
-    function closeConfirmation() {
-        confirmationModal.classList.remove('active');
-        document.body.style.overflow = '';
-        resetCheckout();
-    }
-    
-    // Calculate cart totals
-    function calculateCart() {
-        let subtotal = 0;
-        cartItems.forEach(item => {
-            subtotal += item.price * item.quantity;
+    updateCheckoutStep() {
+        // Update step indicators
+        document.querySelectorAll('.step').forEach((step, index) => {
+            step.classList.toggle('active', index + 1 === this.currentStep);
         });
         
-        // Apply shipping cost based on selected method
-        switch (selectedShippingMethod) {
-            case 'express':
-                shippingCost = 12.99;
-                break;
-            case 'nextday':
-                shippingCost = 19.99;
-                break;
-            default:
-                shippingCost = 5.99;
-        }
-        
-        // Calculate tax (example: 8.25%)
-        const taxRate = 0.0825;
-        const tax = subtotal * taxRate;
-        
-        // Calculate total
-        orderTotal = subtotal + shippingCost + tax;
-        
-        // Update review page
-        if (reviewSubtotal) {
-            reviewSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-            reviewShipping.textContent = `$${shippingCost.toFixed(2)}`;
-            reviewTax.textContent = `$${tax.toFixed(2)}`;
-            reviewTotal.textContent = `$${orderTotal.toFixed(2)}`;
-        }
-    }
-    
-    // Show step by number
-    function showStep(stepNumber) {
-        // Hide all steps
-        step1Content.classList.add('hidden');
-        step2Content.classList.add('hidden');
-        step3Content.classList.add('hidden');
-        
-        // Remove active class from all step indicators
-        stepIndicators.forEach(step => {
-            step.classList.remove('active');
+        // Show/hide step content
+        document.querySelectorAll('.checkout-step-content').forEach((content, index) => {
+            content.classList.toggle('hidden', index + 1 !== this.currentStep);
         });
         
-        // Show the requested step
-        document.getElementById(`step${stepNumber}Content`).classList.remove('hidden');
+        // Update navigation buttons
+        const prevBtn = document.getElementById('prevStepBtn');
+        const nextBtn = document.getElementById('nextStepBtn');
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
         
-        // Set the active step indicator
-        document.querySelector(`.step[data-step="${stepNumber}"]`).classList.add('active');
+        prevBtn.style.display = this.currentStep > 1 ? 'block' : 'none';
+        nextBtn.style.display = this.currentStep < 3 ? 'block' : 'none';
+        placeOrderBtn.style.display = this.currentStep === 3 ? 'block' : 'none';
         
-        // Update current step
-        currentStep = stepNumber;
-        
-        // If going to review step, update review information
-        if (stepNumber === 3) {
-            updateReviewPage();
+        // Mount Stripe card element on step 2
+        if (this.currentStep === 2 && this.cardElement) {
+            setTimeout(() => {
+                const cardElementContainer = document.getElementById('cardElement');
+                if (cardElementContainer && !cardElementContainer.hasChildNodes()) {
+                    this.cardElement.mount('#cardElement');
+                }
+            }, 100);
         }
     }
-    
-    // Update payment form based on selected method
-    function updatePaymentForm(method) {
-        // Hide all payment forms
-        cardPaymentForm.classList.add('hidden');
-        paypalForm.classList.add('hidden');
-        applePayForm.classList.add('hidden');
+
+    validateShippingForm() {
+        const form = document.getElementById('shippingForm');
+        const formData = new FormData(form);
         
-        // Show selected payment form
+        for (let [key, value] of formData.entries()) {
+            if (!value.trim()) {
+                this.showNotification('Please fill in all required fields', 'error');
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    validatePaymentForm() {
+        const selectedMethod = document.querySelector('.payment-method.active').dataset.method;
+        
+        if (selectedMethod === 'stripe') {
+            const cardName = document.getElementById('cardName').value.trim();
+            if (!cardName) {
+                this.showNotification('Please enter the name on card', 'error');
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    selectPaymentMethod(method) {
+        document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+        document.querySelector(`[data-method="${method}"]`).classList.add('active');
+        
+        document.querySelectorAll('.payment-form').forEach(form => form.classList.add('hidden'));
         document.getElementById(`${method}PaymentForm`).classList.remove('hidden');
-        
-        // Update selected payment method
-        selectedPaymentMethod = method;
     }
-    
-    // Update shipping method
-    function updateShippingMethod(method) {
-        selectedShippingMethod = method;
-        calculateCart();
-    }
-    
-    // Populate review page with data from previous steps
-    function updateReviewPage() {
-        // Populate order items
-        reviewOrderItems.innerHTML = '';
-        cartItems.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'order-item';
-            itemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="order-item-image">
-                <div class="order-item-details">
-                    <div class="order-item-name">${item.name}</div>
-                    <div class="order-item-info">Quantity: ${item.quantity}</div>
+
+    populateOrderReview() {
+        // Order items
+        const orderItemsList = document.getElementById('orderItemsList');
+        orderItemsList.innerHTML = this.cart.map(item => {
+            const primaryImage = item.product.images?.find(img => img.isPrimary)?.url || 
+                                item.product.images?.[0]?.url || '/assets/img-1.jpg';
+            
+            return `
+                <div class="order-item">
+                    <img src="${primaryImage}" alt="${item.product.name}" class="order-item-image">
+                    <div class="order-item-details">
+                        <div class="order-item-name">${item.product.name}</div>
+                        <div class="order-item-info">Qty: ${item.quantity}${item.size ? ` | Size: ${item.size}` : ''}</div>
+                    </div>
+                    <div class="order-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
-                <div class="order-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
             `;
-            reviewOrderItems.appendChild(itemElement);
-        });
+        }).join('');
         
-        // Populate shipping details
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const address = document.getElementById('address').value;
-        const city = document.getElementById('city').value;
-        const state = document.getElementById('state').value;
-        const zipCode = document.getElementById('zipCode').value;
-        const country = document.getElementById('country').value;
-        
-        let shippingMethodName = "Standard Shipping";
-        if (selectedShippingMethod === 'express') {
-            shippingMethodName = "Express Shipping";
-        } else if (selectedShippingMethod === 'nextday') {
-            shippingMethodName = "Next Day Delivery";
-        }
-        
-        reviewShippingDetails.innerHTML = `
-            <p>${firstName} ${lastName}</p>
-            <p>${address}</p>
-            <p>${city}, ${state} ${zipCode}</p>
-            <p>${country}</p>
-            <p><strong>Method:</strong> ${shippingMethodName} ($${shippingCost.toFixed(2)})</p>
+        // Shipping address
+        const formData = new FormData(document.getElementById('shippingForm'));
+        const shippingAddress = `
+            ${formData.get('firstName')} ${formData.get('lastName')}<br>
+            ${formData.get('address')}<br>
+            ${formData.get('city')}, ${formData.get('state')} ${formData.get('zipCode')}<br>
+            ${formData.get('country')}
         `;
+        document.getElementById('shippingAddressReview').innerHTML = shippingAddress;
         
-        // Populate payment details
-        let paymentMethodName = "";
-        switch (selectedPaymentMethod) {
-            case 'card':
-                const cardName = document.getElementById('cardName').value;
-                const cardNumber = document.getElementById('cardNumber').value;
-                paymentMethodName = `Credit Card (ending in ${cardNumber.slice(-4)})`;
-                break;
-            case 'paypal':
-                paymentMethodName = "PayPal";
-                break;
-            case 'apple':
-                paymentMethodName = "Apple Pay";
-                break;
-        }
-        
-        reviewPaymentDetails.innerHTML = `<p>${paymentMethodName}</p>`;
+        // Payment method
+        const selectedMethod = document.querySelector('.payment-method.active');
+        document.getElementById('paymentMethodReview').textContent = selectedMethod.textContent.trim();
         
         // Update totals
-        calculateCart();
+        const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const tax = subtotal * 0.08;
+        const shippingCost = this.getShippingCost();
         
-        // Check if discount is applied (example)
-        const hasDiscount = false; // Set to true to show discount
-        if (hasDiscount) {
+        let discount = 0;
+        if (this.appliedPromo) {
+            if (this.appliedPromo.type === 'percentage') {
+                discount = subtotal * this.appliedPromo.discount;
+            } else {
+                discount = this.appliedPromo.discount;
+            }
+        }
+        
+        const total = subtotal - discount + tax + shippingCost;
+        
+        document.getElementById('reviewSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('reviewShipping').textContent = shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`;
+        document.getElementById('reviewTax').textContent = `$${tax.toFixed(2)}`;
+        document.getElementById('reviewTotal').textContent = `$${total.toFixed(2)}`;
+        
+        const reviewDiscountRow = document.getElementById('reviewDiscountRow');
+        if (discount > 0) {
+            document.getElementById('reviewDiscount').textContent = `-$${discount.toFixed(2)}`;
             reviewDiscountRow.style.display = 'flex';
-            reviewDiscount.textContent = '-$10.00';
-            orderTotal -= 10;
-            reviewTotal.textContent = `$${orderTotal.toFixed(2)}`;
         } else {
             reviewDiscountRow.style.display = 'none';
         }
     }
-    
-    // Place Order function
-    function placeOrder() {
-        if (!termsAgree.checked) {
-            alert("Please agree to the Terms and Conditions to place your order.");
+
+    getShippingCost() {
+        const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+        if (!selectedShipping) return 5.99;
+        
+        switch (selectedShipping.value) {
+            case 'standard': return 5.99;
+            case 'express': return 12.99;
+            case 'overnight': return 24.99;
+            default: return 5.99;
+        }
+    }
+
+    async placeOrder() {
+        const termsCheckbox = document.getElementById('termsCheckbox');
+        if (!termsCheckbox.checked) {
+            this.showNotification('Please accept the terms and conditions', 'error');
             return;
         }
         
-        // Show loading indicator
-        const loadingOverlay = document.createElement('div');
-        loadingOverlay.className = 'loading-overlay';
-        loadingOverlay.innerHTML = '<div class="loading-spinner"></div>';
-        step3Content.appendChild(loadingOverlay);
-        
-        // Simulate order processing (would be an API call in a real system)
-        setTimeout(() => {
-            step3Content.removeChild(loadingOverlay);
+        try {
+            this.showLoading(true, 'Processing your order...');
             
-            // Generate order number
-            const randomOrderNum = Math.floor(100000 + Math.random() * 900000);
-            orderNumber.textContent = `#${randomOrderNum}`;
+            const selectedPaymentMethod = document.querySelector('.payment-method.active').dataset.method;
             
-            // Set confirmation email
-            confirmationEmail.textContent = document.getElementById('email').value;
-            
-            // Populate confirmation details
-            confirmationDetails.innerHTML = `
-                <div class="confirmation-item">
-                    <p><strong>Items:</strong> ${cartItems.length}</p>
-                    <p><strong>Shipping:</strong> ${reviewShippingDetails.querySelector('p:last-child').textContent}</p>
-                    <p><strong>Total:</strong> ${reviewTotal.textContent}</p>
-                </div>
-            `;
-            
-            // Show confirmation modal
-            showConfirmation();
-        }, 1500);
-    }
-    
-    // Reset checkout to initial state
-    function resetCheckout() {
-        // Reset step
-        showStep(1);
-        
-        // Reset forms
-        shippingForm.reset();
-        paymentForm.reset();
-        
-        // Reset payment method
-        updatePaymentForm('card');
-        paymentMethods.forEach(method => {
-            if (method.getAttribute('data-method') === 'card') {
-                method.classList.add('active');
-            } else {
-                method.classList.remove('active');
+            if (selectedPaymentMethod === 'stripe') {
+                await this.processStripePayment();
+            } else if (selectedPaymentMethod === 'paypal') {
+                await this.processPayPalPayment();
             }
-        });
-        
-        // Reset shipping method
-        selectedShippingMethod = 'standard';
-        document.querySelector('input[value="standard"]').checked = true;
-    }
-    
-    // Validate shipping form
-    function validateShippingForm() {
-        const requiredFields = [
-            'firstName', 'lastName', 'email', 'phone',
-            'address', 'city', 'state', 'zipCode', 'country'
-        ];
-        
-        for (const field of requiredFields) {
-            const element = document.getElementById(field);
-            if (!element.value.trim()) {
-                alert(`Please fill in the ${element.previousElementSibling.textContent} field.`);
-                element.focus();
-                return false;
-            }
+        } catch (error) {
+            console.error('Order placement error:', error);
+            this.showNotification('Error processing your order. Please try again.', 'error');
+            this.showLoading(false);
         }
-        
-        // Validate email format
-        const email = document.getElementById('email').value;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert("Please enter a valid email address.");
-            document.getElementById('email').focus();
-            return false;
-        }
-        
-        return true;
     }
-    
-    // Validate payment form
-    function validatePaymentForm() {
-        if (selectedPaymentMethod === 'card') {
-            const requiredFields = ['cardName', 'cardNumber', 'expiryDate', 'cvv'];
+
+    async processStripePayment() {
+        try {
+            const total = this.calculateOrderTotal();
             
-            for (const field of requiredFields) {
-                const element = document.getElementById(field);
-                if (!element.value.trim()) {
-                    alert(`Please fill in the ${element.previousElementSibling.textContent} field.`);
-                    element.focus();
-                    return false;
+            // Create payment intent
+            const response = await fetch('/api/payment/stripe/create-intent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('authToken') || ''}`
+                },
+                body: JSON.stringify({
+                    amount: total,
+                    currency: 'usd'
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to create payment intent');
+            }
+            
+            const { clientSecret } = await response.json();
+            
+            // Confirm payment with Stripe
+            const { error, paymentIntent } = await this.stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: this.cardElement,
+                    billing_details: {
+                        name: document.getElementById('cardName').value,
+                    },
                 }
+            });
+            
+            if (error) {
+                throw new Error(error.message);
             }
             
-            // Validate card number format (basic validation)
-            const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
-            if (!/^\d{16}$/.test(cardNumber)) {
-                alert("Please enter a valid 16-digit card number.");
-                document.getElementById('cardNumber').focus();
-                return false;
+            if (paymentIntent.status === 'succeeded') {
+                await this.completeOrder(paymentIntent.id);
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async processPayPalPayment() {
+        // PayPal integration would go here
+        // For demo purposes, we'll simulate a successful payment
+        setTimeout(async () => {
+            await this.completeOrder('paypal_demo_payment_id');
+        }, 2000);
+    }
+
+    async completeOrder(paymentId) {
+        try {
+            // Create order in database
+            const orderData = this.buildOrderData(paymentId);
+            
+            const response = await fetch('/api/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('authToken') || ''}`
+                },
+                body: JSON.stringify(orderData)
+            });
+            
+            let orderId;
+            if (response.ok) {
+                const data = await response.json();
+                orderId = data.data._id;
+            } else {
+                // Fallback for demo
+                orderId = 'ORDER_' + Date.now();
             }
             
-            // Validate expiry date format
-            const expiryDate = document.getElementById('expiryDate').value;
-            if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
-                alert("Please enter a valid expiry date in MM/YY format.");
-                document.getElementById('expiryDate').focus();
-                return false;
-            }
+            // Clear cart
+            this.cart = [];
+            this.saveCartToStorage();
+            this.updateCartUI();
             
-            // Validate CVV format
-            const cvv = document.getElementById('cvv').value;
-            if (!/^\d{3,4}$/.test(cvv)) {
-                alert("Please enter a valid CVV code.");
-                document.getElementById('cvv').focus();
-                return false;
+            // Show confirmation
+            this.showOrderConfirmation(orderId);
+            
+        } catch (error) {
+            console.error('Error completing order:', error);
+            // Still show confirmation for demo purposes
+            this.showOrderConfirmation('ORDER_' + Date.now());
+        }
+    }
+
+    buildOrderData(paymentId) {
+        const formData = new FormData(document.getElementById('shippingForm'));
+        const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+        
+        return {
+            orderItems: this.cart.map(item => ({
+                product: item.product._id,
+                name: item.product.name,
+                quantity: item.quantity,
+                price: item.price,
+                size: item.size,
+                image: item.product.images?.[0]?.url || '/assets/img-1.jpg'
+            })),
+            shippingInfo: {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                zipCode: formData.get('zipCode'),
+                country: formData.get('country')
+            },
+            paymentMethod: document.querySelector('.payment-method.active').textContent.trim(),
+            paymentResult: {
+                id: paymentId,
+                status: 'completed'
+            },
+            shippingMethod: selectedShipping ? selectedShipping.value : 'standard',
+            taxPrice: this.calculateOrderTotal() * 0.08,
+            shippingPrice: this.getShippingCost(),
+            totalPrice: this.calculateOrderTotal()
+        };
+    }
+
+    calculateOrderTotal() {
+        const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const tax = subtotal * 0.08;
+        const shipping = this.getShippingCost();
+        
+        let discount = 0;
+        if (this.appliedPromo) {
+            if (this.appliedPromo.type === 'percentage') {
+                discount = subtotal * this.appliedPromo.discount;
+            } else {
+                discount = this.appliedPromo.discount;
             }
         }
         
-        return true;
+        return subtotal - discount + tax + shipping;
     }
-    
-    // Event Listeners - Modal Controls
-    closeCheckoutBtn.addEventListener('click', closeCheckout);
-    continueShopping.addEventListener('click', closeCheckout);
-    
-    // Event Listeners - Step Navigation
-    toPaymentBtn.addEventListener('click', () => {
-        if (validateShippingForm()) {
-            showStep(2);
-        }
-    });
-    
-    backToShipping.addEventListener('click', () => {
-        showStep(1);
-    });
-    
-    toReviewBtn.addEventListener('click', () => {
-        if (validatePaymentForm()) {
-            showStep(3);
-        }
-    });
-    
-    backToPayment.addEventListener('click', () => {
-        showStep(2);
-    });
-    
-    placeOrderBtn.addEventListener('click', placeOrder);
-    
-    // Event Listeners - Payment Methods
-    paymentMethods.forEach(method => {
-        method.addEventListener('click', function() {
-            // Remove active class from all methods
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            
-            // Add active class to clicked method
-            this.classList.add('active');
-            
-            // Update payment form
-            updatePaymentForm(this.getAttribute('data-method'));
-        });
-    });
-    
-    // Event Listeners - Shipping Options
-    shippingOptions.forEach(option => {
-        option.addEventListener('change', function() {
-            updateShippingMethod(this.value);
-        });
-    });
-    
-    // Event Listeners - Confirmation Modal
-    viewOrderBtn.addEventListener('click', () => {
-        // This would typically go to an order details page
-        alert("View Order functionality would go to order details page.");
-        closeConfirmation();
-    });
-    
-    continueBrowsingBtn.addEventListener('click', closeConfirmation);
-    
-    // Card Format Helper Functions
-    const cardNumberInput = document.getElementById('cardNumber');
-    if (cardNumberInput) {
-        cardNumberInput.addEventListener('input', function(e) {
-            // Remove all non-digits
-            let value = this.value.replace(/\D/g, '');
-            
-            // Add space after every 4 digits
-            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-            
-            // Limit to 19 characters (16 digits + 3 spaces)
-            value = value.substring(0, 19);
-            
-            // Update input value
-            this.value = value;
-        });
-    }
-    
-    const expiryDateInput = document.getElementById('expiryDate');
-    if (expiryDateInput) {
-        expiryDateInput.addEventListener('input', function(e) {
-            // Remove all non-digits
-            let value = this.value.replace(/\D/g, '');
-            
-            // Add slash after first 2 digits
-            if (value.length > 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2);
+
+    showOrderConfirmation(orderId) {
+        this.showLoading(false);
+        this.closeCheckout();
+        
+        document.getElementById('orderNumber').textContent = orderId;
+        document.getElementById('confirmationEmail').textContent = 
+            document.getElementById('email').value || 'customer@example.com';
+        
+        const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+        let deliveryTime = '5-7 business days';
+        if (selectedShipping) {
+            switch (selectedShipping.value) {
+                case 'express': deliveryTime = '2-3 business days'; break;
+                case 'overnight': deliveryTime = '1 business day'; break;
             }
-            
-            // Limit to 5 characters (MM/YY)
-            value = value.substring(0, 5);
-            
-            // Update input value
-            this.value = value;
-        });
-    }
-    
-    // Initialize checkout - showing first step
-    resetCheckout();
-    
-    // For demo purposes - add a method to show the checkout modal from outside this script
-    window.addEventListener('keydown', function(e) {
-        // Pressing 'C' will open the checkout for demo purposes
-        if (e.key.toLowerCase() === 'c') {
-            showCheckout();
         }
-    });
-    
-    // Optional: Add a button to your page to open the checkout
-    const demoCheckoutButton = document.createElement('button');
-    demoCheckoutButton.textContent = "Open Checkout";
-    demoCheckoutButton.className = "primary-button";
-    demoCheckoutButton.style.position = "fixed";
-    demoCheckoutButton.style.bottom = "20px";
-    demoCheckoutButton.style.right = "20px";
-    demoCheckoutButton.style.zIndex = "999";
-    demoCheckoutButton.addEventListener('click', showCheckout);
-    document.body.appendChild(demoCheckoutButton);
-});
+        document.getElementById('estimatedDelivery').textContent = deliveryTime;
+        
+        document.getElementById('confirmationModal').classList.add('active');
+        document.getElementById('overlay').style.display = 'block';
+        
+        // Setup confirmation modal buttons
+        document.getElementById('continueShoppingBtn').onclick = () => {
+            document.getElementById('confirmationModal').classList.remove('active');
+            document.getElementById('overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+        
+        document.getElementById('viewOrderBtn').onclick = () => {
+            // Redirect to order details page (would be implemented)
+            alert('Order details page would open here');
+        };
+    }
 
+    async subscribeNewsletter() {
+        const email = document.getElementById('newsletterEmail').value.trim();
+        if (!email) {
+            this.showNotification('Please enter your email address', 'error');
+            return;
+        }
+        
+        // Simulate newsletter subscription
+        try {
+            // In a real app, this would call an API
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            this.showNotification('Successfully subscribed to newsletter!', 'success');
+            document.getElementById('newsletterEmail').value = '';
+        } catch (error) {
+            this.showNotification('Error subscribing to newsletter', 'error');
+        }
+    }
 
+    showLoading(show, message = 'Loading...') {
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        if (show) {
+            loadingIndicator.style.display = 'block';
+            loadingIndicator.querySelector('p').textContent = message;
+        } else {
+            loadingIndicator.style.display = 'none';
+        }
+    }
 
+    showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="bx ${type === 'success' ? 'bx-check-circle' : type === 'error' ? 'bx-error-circle' : 'bx-info-circle'}"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        // Add styles
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+}
 
-
-// Part 3 -- Footer
-// Theme Toggle Functionality
+// Initialize the shopping app when the page loads
+let shoppingApp;
 document.addEventListener('DOMContentLoaded', () => {
-    // Select the theme toggle button
-    const themeToggle = document.querySelector('.theme-toggle');
-    
-    // Check for saved theme preference or use system preference
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const currentTheme = localStorage.getItem('theme');
-    
-    // Set initial theme
-    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-    
-    // Toggle theme when button is clicked
-    themeToggle.addEventListener('click', () => {
-        // If current mode is dark, switch to light, and vice versa
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        // Set the new theme
-        document.documentElement.setAttribute('data-theme', newTheme);
-        
-        // Save preference to localStorage
-        localStorage.setItem('theme', newTheme);
-    });
-    
-    // Listen for system preference changes
-    prefersDarkScheme.addEventListener('change', (event) => {
-        // Only automatically switch if user hasn't manually set a preference
-        if (!localStorage.getItem('theme')) {
-            const newTheme = event.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-        }
-    });
-    
-    // Newsletter Form Submission (prevent default behavior for demo)
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const emailInput = newsletterForm.querySelector('input[type="email"]');
-            
-            // Simple validation
-            if (emailInput.value.trim() !== '' && emailInput.value.includes('@')) {
-                // Here you would typically send this to your backend
-                alert('Thank you for subscribing!');
-                emailInput.value = '';
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-    }
-    
-    // Smooth scrolling for footer navigation links
-    const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
-    footerLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100, // Offset for fixed header if you have one
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});     localStorage.setItem('theme', newTheme);
-
-
-    // Listen for system preference changes
-    prefersDarkScheme.addEventListener('change', (event) => {
-        // Only automatically switch if user hasn't manually set a preference
-        if (!localStorage.getItem('theme')) {
-            const newTheme = event.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-        }
-    });
-
-    // Newsletter Form Submission (prevent default behavior for demo)
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const emailInput = newsletterForm.querySelector('input[type="email"]');
-
-            // Simple validation
-            if (emailInput.value.trim() !== '' && emailInput.value.includes('@')) {
-                // Here you would typically send this to your backend
-                alert('Thank you for subscribing!');
-                emailInput.value = '';
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-    }
-
-    // Smooth scrolling for footer navigation links
-    const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
-    footerLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100, // Offset for fixed header if you have one
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    shoppingApp = new ShoppingApp();
+});
