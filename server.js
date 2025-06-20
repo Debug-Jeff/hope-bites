@@ -54,8 +54,8 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+// 🔧 FIXED: Serve static files from root directory (where your CSS/JS files are)
+app.use(express.static(path.join(__dirname)));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Mount routers
