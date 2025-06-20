@@ -137,3 +137,7 @@ coverage/
 
 # Production builds
 public/build/
+
+docs/
+
+!README.md
