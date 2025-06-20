@@ -46,7 +46,7 @@ Hope Bites is a comprehensive e-commerce platform focused on providing nutritiou
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/hope-bites.git
+git clone https://github.com/Debug-Jeff/hope-bites.git
 cd hope-bites
 ```
 
@@ -79,13 +79,6 @@ npm start
 6. **Access the application:**
 - Frontend: http://localhost:5000
 - API: http://localhost:5000/api
-
-## 📖 Documentation
-
-- [Setup Instructions](SETUP_INSTRUCTIONS.md) - Detailed setup guide
-- [API Documentation](docs/API.md) - Complete API reference
-- [Deployment Guide](docs/DEPLOYMENT.md) - Production deployment
-- [Contributing](CONTRIBUTING.md) - How to contribute
 
 ## 🛠 Tech Stack
 
@@ -229,27 +222,6 @@ EMAIL_PASSWORD=your_email_password
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Team
-
-- **Jeff Mutugi** - Chief Technical Officer
-- **Antonie Okuku** - Managing Director
-- **Armani** - Chief Operations Officer
-- **Marion** - Chief Research Officer
-- **Debora** - Human Resource Manager
-- **Nathan** - Supply Chain Manager
-
-## 📞 Support
-
-- **Email:** support@hopebites.com
-- **Website:** [hopebites.com](https://hopebites.com)
-- **Documentation:** [docs.hopebites.com](https://docs.hopebites.com)
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors who helped build this platform
-- Special thanks to the nutrition experts who guided our product development
-- Inspired by the mission to combat child malnutrition worldwide
 
 ---
 
